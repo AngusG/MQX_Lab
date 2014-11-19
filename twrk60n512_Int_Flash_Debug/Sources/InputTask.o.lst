@@ -1,0 +1,667 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"InputTask.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.comm	lwevent_group,36,4
+  19              		.section	.rodata
+  20              		.align	2
+  21              	.LC0:
+  22 0000 0A20496E 		.ascii	"\012 Input task started \012\000"
+  22      70757420 
+  22      7461736B 
+  22      20737461 
+  22      72746564 
+  23 0017 00       		.section	.text.Input_task,"ax",%progbits
+  24              		.align	2
+  25              		.global	Input_task
+  26              		.thumb
+  27              		.thumb_func
+  29              	Input_task:
+  30              	.LFB0:
+  31              		.file 1 "../Sources/InputTask.c"
+   1:../Sources/InputTask.c **** /*
+   2:../Sources/InputTask.c ****  * InputTask.c
+   3:../Sources/InputTask.c ****  *
+   4:../Sources/InputTask.c ****  *  Created on: Feb 6, 2014
+   5:../Sources/InputTask.c ****  *      Author: Embedded Access Inc
+   6:../Sources/InputTask.c ****  */
+   7:../Sources/InputTask.c **** 
+   8:../Sources/InputTask.c **** #include "main.h"
+   9:../Sources/InputTask.c **** 
+  10:../Sources/InputTask.c **** /* Lab 7 - defines */
+  11:../Sources/InputTask.c **** #define SW1_EVENT 0x00000001
+  12:../Sources/InputTask.c **** #define SW2_EVENT 0x00000002
+  13:../Sources/InputTask.c **** /* Lab 8 - defines */
+  14:../Sources/InputTask.c **** #define ADC_TIMER_EVENT 0x00000004
+  15:../Sources/InputTask.c **** 
+  16:../Sources/InputTask.c **** /* Lab 6 - Interrupts - Prototypes/Declarations */
+  17:../Sources/InputTask.c **** void init_switch(LWGPIO_STRUCT_PTR sw,
+  18:../Sources/InputTask.c **** 		LWGPIO_PIN_ID pin,
+  19:../Sources/InputTask.c **** 		uint32_t mux,
+  20:../Sources/InputTask.c **** 		INT_ISR_FPTR sw_isr
+  21:../Sources/InputTask.c **** 		);
+  22:../Sources/InputTask.c **** 
+  23:../Sources/InputTask.c **** void sw1_isr(void * param);
+  24:../Sources/InputTask.c **** void sw2_isr(void * param);
+  25:../Sources/InputTask.c **** void adc_timer_isr(void); //Lab 8
+  26:../Sources/InputTask.c **** 
+  27:../Sources/InputTask.c **** /* Lab 7 - Global LW Event structure */
+  28:../Sources/InputTask.c **** LWEVENT_STRUCT lwevent_group;
+  29:../Sources/InputTask.c **** /* Note:
+  30:../Sources/InputTask.c ****  * 
+  31:../Sources/InputTask.c ****  * Can do this because we only make a single instance.
+  32:../Sources/InputTask.c ****  * If multiple instances, declare LWEVENT_STRUCT within 
+  33:../Sources/InputTask.c ****  * the task. 
+  34:../Sources/InputTask.c ****  * 
+  35:../Sources/InputTask.c ****  * */
+  36:../Sources/InputTask.c **** 
+  37:../Sources/InputTask.c **** extern const LWADC_INIT_STRUCT BSP_DEFAULT_LWADC_MODULE;
+  38:../Sources/InputTask.c **** 
+  39:../Sources/InputTask.c **** /*TASK*-----------------------------------------------------
+  40:../Sources/InputTask.c **** * 
+  41:../Sources/InputTask.c **** * Task Name    : Input_task
+  42:../Sources/InputTask.c **** * Comments     :
+  43:../Sources/InputTask.c **** *    This is the Input task
+  44:../Sources/InputTask.c **** *
+  45:../Sources/InputTask.c **** *END*-----------------------------------------------------*/
+  46:../Sources/InputTask.c **** 
+  47:../Sources/InputTask.c **** void Input_task(uint32_t initial_data)
+  48:../Sources/InputTask.c **** {
+  32              		.loc 1 48 0
+  33              		.cfi_startproc
+  34              		@ args = 0, pretend = 0, frame = 144
+  35              		@ frame_needed = 1, uses_anonymous_args = 0
+  36 0000 80B5     		push	{r7, lr}
+  37              	.LCFI0:
+  38              		.cfi_def_cfa_offset 8
+  39              		.cfi_offset 7, -8
+  40              		.cfi_offset 14, -4
+  41 0002 A6B0     		sub	sp, sp, #152
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_offset 160
+  44 0004 02AF     		add	r7, sp, #8
+  45              	.LCFI2:
+  46              		.cfi_def_cfa 7, 152
+  47 0006 7860     		str	r0, [r7, #4]
+  49:../Sources/InputTask.c **** 	//int NUM=1;// this is used for dividing 
+  50:../Sources/InputTask.c **** 	_queue_id health_qid;
+  51:../Sources/InputTask.c **** 	uint32_t event_bits;
+  52:../Sources/InputTask.c **** 	APPLICATION_MESSAGE *msg;
+  53:../Sources/InputTask.c **** 	
+  54:../Sources/InputTask.c **** 	/* Lab 5 variables */
+  55:../Sources/InputTask.c **** 	LWGPIO_STRUCT sw1, sw2;
+  56:../Sources/InputTask.c **** //	LWGPIO_VALUE sw1_value, sw2_value;
+  57:../Sources/InputTask.c **** //	LWGPIO_VALUE sw1_last_value = LWGPIO_VALUE_HIGH,
+  58:../Sources/InputTask.c **** //				 sw2_last_value = LWGPIO_VALUE_HIGH; // retain the previous value of each switch
+  59:../Sources/InputTask.c **** 	
+  60:../Sources/InputTask.c **** 	/* Lab 8 vars */
+  61:../Sources/InputTask.c **** 	LWTIMER_PERIOD_STRUCT period;
+  62:../Sources/InputTask.c **** 	LWTIMER_STRUCT timer;
+  63:../Sources/InputTask.c **** 	
+  64:../Sources/InputTask.c **** 	/* Lab 9 vars */
+  65:../Sources/InputTask.c **** 	LWADC_STRUCT adc1_pot;
+  66:../Sources/InputTask.c **** 	LWADC_VALUE voltage;
+  67:../Sources/InputTask.c **** 	
+  68:../Sources/InputTask.c **** 	init_switch(&sw1, BSP_SW1, BSP_SW1_MUX_GPIO, sw1_isr);
+  48              		.loc 1 68 0
+  49 0008 07F17403 		add	r3, r7, #116
+  50 000c 1846     		mov	r0, r3
+  51 000e 4FF01301 		mov	r1, #19
+  52 0012 C8F20001 		movt	r1, 32768
+  53 0016 4FF00102 		mov	r2, #1
+  54 001a 40F20003 		movw	r3, #:lower16:sw1_isr
+  55 001e C0F20003 		movt	r3, #:upper16:sw1_isr
+  56 0022 FFF7FEFF 		bl	init_switch
+  69:../Sources/InputTask.c **** 	init_switch(&sw2, BSP_SW2, BSP_SW2_MUX_GPIO, sw2_isr);	
+  57              		.loc 1 69 0
+  58 0026 07F16403 		add	r3, r7, #100
+  59 002a 1846     		mov	r0, r3
+  60 002c 4FF09A01 		mov	r1, #154
+  61 0030 C8F20001 		movt	r1, 32768
+  62 0034 4FF00102 		mov	r2, #1
+  63 0038 40F20003 		movw	r3, #:lower16:sw2_isr
+  64 003c C0F20003 		movt	r3, #:upper16:sw2_isr
+  65 0040 FFF7FEFF 		bl	init_switch
+  70:../Sources/InputTask.c **** 	
+  71:../Sources/InputTask.c **** 	/* Lab 9 init adc */
+  72:../Sources/InputTask.c **** 	_lwadc_init(&BSP_DEFAULT_LWADC_MODULE);
+  66              		.loc 1 72 0
+  67 0044 40F20000 		movw	r0, #:lower16:lwadc1_init
+  68 0048 C0F20000 		movt	r0, #:upper16:lwadc1_init
+  69 004c FFF7FEFF 		bl	_lwadc_init
+  73:../Sources/InputTask.c **** 	_lwadc_init_input(&adc1_pot,BSP_ADC_POTENTIOMETER);
+  70              		.loc 1 73 0
+  71 0050 07F10C03 		add	r3, r7, #12
+  72 0054 1846     		mov	r0, r3
+  73 0056 42F21401 		movw	r1, #8212
+  74 005a FFF7FEFF 		bl	_lwadc_init_input
+  74:../Sources/InputTask.c **** 	_lwadc_set_attribute(&adc1_pot, LWADC_NUMERATOR, 12000);
+  75              		.loc 1 74 0
+  76 005e 07F10C03 		add	r3, r7, #12
+  77 0062 1846     		mov	r0, r3
+  78 0064 4FF00701 		mov	r1, #7
+  79 0068 42F6E062 		movw	r2, #12000
+  80 006c FFF7FEFF 		bl	_lwadc_set_attribute
+  75:../Sources/InputTask.c **** 	
+  76:../Sources/InputTask.c **** 	health_qid = _msgq_get_id(0, HEALTH_QUEUE);
+  81              		.loc 1 76 0
+  82 0070 4FF00000 		mov	r0, #0
+  83 0074 4FF00101 		mov	r1, #1
+  84 0078 FFF7FEFF 		bl	_msgq_get_id
+  85 007c 0346     		mov	r3, r0
+  86 007e A7F88E30 		strh	r3, [r7, #142]	@ movhi
+  77:../Sources/InputTask.c **** 	
+  78:../Sources/InputTask.c **** 	/* Lab 7 - init LW event */
+  79:../Sources/InputTask.c **** 	_lwevent_create(&lwevent_group,LWEVENT_AUTO_CLEAR);
+  87              		.loc 1 79 0
+  88 0082 40F20000 		movw	r0, #:lower16:lwevent_group
+  89 0086 C0F20000 		movt	r0, #:upper16:lwevent_group
+  90 008a 4FF00101 		mov	r1, #1
+  91 008e FFF7FEFF 		bl	_lwevent_create
+  80:../Sources/InputTask.c **** 	
+  81:../Sources/InputTask.c **** 	/* Lab 8 - init */
+  82:../Sources/InputTask.c **** 	_lwtimer_create_periodic_queue(&period, BSP_ALARM_FREQUENCY/10,0);
+  92              		.loc 1 82 0
+  93 0092 07F13C03 		add	r3, r7, #60
+  94 0096 1846     		mov	r0, r3
+  95 0098 4FF01401 		mov	r1, #20
+  96 009c 4FF00002 		mov	r2, #0
+  97 00a0 FFF7FEFF 		bl	_lwtimer_create_periodic_queue
+  83:../Sources/InputTask.c **** 	//period = 10Hz, 1/10th of a second expiry
+  84:../Sources/InputTask.c **** 	 	
+  85:../Sources/InputTask.c **** 	/* call adc_timer_isr with no parameters when timer expires */
+  86:../Sources/InputTask.c **** 	_lwtimer_add_timer_to_queue(&period, &timer, 0, adc_timer_isr, NULL);
+  98              		.loc 1 86 0
+  99 00a4 07F13C02 		add	r2, r7, #60
+ 100 00a8 07F12003 		add	r3, r7, #32
+ 101 00ac 4FF00001 		mov	r1, #0
+ 102 00b0 0091     		str	r1, [sp, #0]
+ 103 00b2 1046     		mov	r0, r2
+ 104 00b4 1946     		mov	r1, r3
+ 105 00b6 4FF00002 		mov	r2, #0
+ 106 00ba 40F20003 		movw	r3, #:lower16:adc_timer_isr
+ 107 00be C0F20003 		movt	r3, #:upper16:adc_timer_isr
+ 108 00c2 FFF7FEFF 		bl	_lwtimer_add_timer_to_queue
+  87:../Sources/InputTask.c **** 	
+  88:../Sources/InputTask.c **** 	printf("\n Input task started \n"); 
+ 109              		.loc 1 88 0
+ 110 00c6 40F20000 		movw	r0, #:lower16:.LC0
+ 111 00ca C0F20000 		movt	r0, #:upper16:.LC0
+ 112 00ce FFF7FEFF 		bl	_io_printf
+ 113              	.L5:
+  89:../Sources/InputTask.c **** 	
+  90:../Sources/InputTask.c **** 	while(1){		
+  91:../Sources/InputTask.c **** 		
+  92:../Sources/InputTask.c **** 		/* Lab 7 - wait for event bits indefinitely */
+  93:../Sources/InputTask.c **** 		_lwevent_wait_ticks(&lwevent_group, SW1_EVENT | SW2_EVENT | ADC_TIMER_EVENT, FALSE, 0);
+ 114              		.loc 1 93 0
+ 115 00d2 40F20000 		movw	r0, #:lower16:lwevent_group
+ 116 00d6 C0F20000 		movt	r0, #:upper16:lwevent_group
+ 117 00da 4FF00701 		mov	r1, #7
+ 118 00de 4FF00002 		mov	r2, #0
+ 119 00e2 4FF00003 		mov	r3, #0
+ 120 00e6 FFF7FEFF 		bl	_lwevent_wait_ticks
+  94:../Sources/InputTask.c **** 		
+  95:../Sources/InputTask.c **** 		/* Lab 7 - input task needs to know which bit was set */
+  96:../Sources/InputTask.c **** 		event_bits = _lwevent_get_signalled();
+ 121              		.loc 1 96 0
+ 122 00ea FFF7FEFF 		bl	_lwevent_get_signalled
+ 123 00ee C7F88800 		str	r0, [r7, #136]
+  97:../Sources/InputTask.c **** 		
+  98:../Sources/InputTask.c **** 		if (event_bits & ADC_TIMER_EVENT) {
+ 124              		.loc 1 98 0
+ 125 00f2 D7F88830 		ldr	r3, [r7, #136]
+ 126 00f6 03F00403 		and	r3, r3, #4
+ 127 00fa 002B     		cmp	r3, #0
+ 128 00fc 26D0     		beq	.L2
+  99:../Sources/InputTask.c **** 			if(_lwadc_read(&adc1_pot, &voltage)){	
+ 129              		.loc 1 99 0
+ 130 00fe 07F10C02 		add	r2, r7, #12
+ 131 0102 07F10803 		add	r3, r7, #8
+ 132 0106 1046     		mov	r0, r2
+ 133 0108 1946     		mov	r1, r3
+ 134 010a FFF7FEFF 		bl	_lwadc_read
+ 135 010e 0346     		mov	r3, r0
+ 136 0110 002B     		cmp	r3, #0
+ 137 0112 1BD0     		beq	.L2
+ 100:../Sources/InputTask.c **** 				
+ 101:../Sources/InputTask.c **** 				msg = _msg_alloc_system(sizeof(*msg));
+ 138              		.loc 1 101 0
+ 139 0114 4FF01000 		mov	r0, #16
+ 140 0118 FFF7FEFF 		bl	_msg_alloc_system
+ 141 011c C7F88400 		str	r0, [r7, #132]
+ 102:../Sources/InputTask.c **** 				
+ 103:../Sources/InputTask.c **** 				if (msg != NULL ) {
+ 142              		.loc 1 103 0
+ 143 0120 D7F88430 		ldr	r3, [r7, #132]
+ 144 0124 002B     		cmp	r3, #0
+ 145 0126 11D0     		beq	.L2
+ 104:../Sources/InputTask.c **** 					msg->HEADER.TARGET_QID = health_qid;
+ 146              		.loc 1 104 0
+ 147 0128 D7F88430 		ldr	r3, [r7, #132]
+ 148 012c B7F88E20 		ldrh	r2, [r7, #142]	@ movhi
+ 149 0130 5A80     		strh	r2, [r3, #2]	@ movhi
+ 105:../Sources/InputTask.c **** 					msg->MESSAGE_TYPE = ADC_READ_MESSAGE;
+ 150              		.loc 1 105 0
+ 151 0132 D7F88430 		ldr	r3, [r7, #132]
+ 152 0136 4FF00502 		mov	r2, #5
+ 153 013a 1A72     		strb	r2, [r3, #8]
+ 106:../Sources/InputTask.c **** 					msg->DATA = voltage;
+ 154              		.loc 1 106 0
+ 155 013c BA68     		ldr	r2, [r7, #8]
+ 156 013e D7F88430 		ldr	r3, [r7, #132]
+ 157 0142 DA60     		str	r2, [r3, #12]
+ 107:../Sources/InputTask.c **** 					_msgq_send(msg);
+ 158              		.loc 1 107 0
+ 159 0144 D7F88400 		ldr	r0, [r7, #132]
+ 160 0148 FFF7FEFF 		bl	_msgq_send
+ 161              	.L2:
+ 108:../Sources/InputTask.c **** 				}
+ 109:../Sources/InputTask.c **** 			}
+ 110:../Sources/InputTask.c **** 		}	
+ 111:../Sources/InputTask.c **** 		
+ 112:../Sources/InputTask.c **** //		sw1_value = lwgpio_get_value(&sw1);		
+ 113:../Sources/InputTask.c **** //		if (sw1_value != sw1_last_value) {			
+ 114:../Sources/InputTask.c **** //			sw1_last_value = sw1_value;
+ 115:../Sources/InputTask.c **** 		if(event_bits & SW1_EVENT){
+ 162              		.loc 1 115 0
+ 163 014c D7F88830 		ldr	r3, [r7, #136]
+ 164 0150 03F00103 		and	r3, r3, #1
+ 165 0154 002B     		cmp	r3, #0
+ 166 0156 1CD0     		beq	.L3
+ 116:../Sources/InputTask.c **** 			//_lwevent_clear(&lwevent_group, SW1_EVENT);
+ 117:../Sources/InputTask.c **** 			msg = _msg_alloc_system(sizeof(*msg));			
+ 167              		.loc 1 117 0
+ 168 0158 4FF01000 		mov	r0, #16
+ 169 015c FFF7FEFF 		bl	_msg_alloc_system
+ 170 0160 C7F88400 		str	r0, [r7, #132]
+ 118:../Sources/InputTask.c **** 			if (msg != NULL ) {
+ 171              		.loc 1 118 0
+ 172 0164 D7F88430 		ldr	r3, [r7, #132]
+ 173 0168 002B     		cmp	r3, #0
+ 174 016a 12D0     		beq	.L3
+ 119:../Sources/InputTask.c **** 				msg->HEADER.TARGET_QID = health_qid;
+ 175              		.loc 1 119 0
+ 176 016c D7F88430 		ldr	r3, [r7, #132]
+ 177 0170 B7F88E20 		ldrh	r2, [r7, #142]	@ movhi
+ 178 0174 5A80     		strh	r2, [r3, #2]	@ movhi
+ 120:../Sources/InputTask.c **** 				msg->MESSAGE_TYPE = SW1_Message;
+ 179              		.loc 1 120 0
+ 180 0176 D7F88430 		ldr	r3, [r7, #132]
+ 181 017a 4FF00302 		mov	r2, #3
+ 182 017e 1A72     		strb	r2, [r3, #8]
+ 121:../Sources/InputTask.c **** 				msg->DATA = 0;
+ 183              		.loc 1 121 0
+ 184 0180 D7F88430 		ldr	r3, [r7, #132]
+ 185 0184 4FF00002 		mov	r2, #0
+ 186 0188 DA60     		str	r2, [r3, #12]
+ 122:../Sources/InputTask.c **** 				
+ 123:../Sources/InputTask.c **** 				_msgq_send(msg);
+ 187              		.loc 1 123 0
+ 188 018a D7F88400 		ldr	r0, [r7, #132]
+ 189 018e FFF7FEFF 		bl	_msgq_send
+ 190              	.L3:
+ 124:../Sources/InputTask.c **** 			}
+ 125:../Sources/InputTask.c **** 		}		
+ 126:../Sources/InputTask.c **** 		if(event_bits & SW2_EVENT){
+ 191              		.loc 1 126 0
+ 192 0192 D7F88830 		ldr	r3, [r7, #136]
+ 193 0196 03F00203 		and	r3, r3, #2
+ 194 019a 002B     		cmp	r3, #0
+ 195 019c 1CD0     		beq	.L4
+ 127:../Sources/InputTask.c **** 			msg = _msg_alloc_system(sizeof(*msg));
+ 196              		.loc 1 127 0
+ 197 019e 4FF01000 		mov	r0, #16
+ 198 01a2 FFF7FEFF 		bl	_msg_alloc_system
+ 199 01a6 C7F88400 		str	r0, [r7, #132]
+ 128:../Sources/InputTask.c **** 			if (msg != NULL ) {
+ 200              		.loc 1 128 0
+ 201 01aa D7F88430 		ldr	r3, [r7, #132]
+ 202 01ae 002B     		cmp	r3, #0
+ 203 01b0 12D0     		beq	.L4
+ 129:../Sources/InputTask.c **** 				msg->HEADER.TARGET_QID = health_qid;
+ 204              		.loc 1 129 0
+ 205 01b2 D7F88430 		ldr	r3, [r7, #132]
+ 206 01b6 B7F88E20 		ldrh	r2, [r7, #142]	@ movhi
+ 207 01ba 5A80     		strh	r2, [r3, #2]	@ movhi
+ 130:../Sources/InputTask.c **** 				msg->MESSAGE_TYPE = SW2_Message;
+ 208              		.loc 1 130 0
+ 209 01bc D7F88430 		ldr	r3, [r7, #132]
+ 210 01c0 4FF00402 		mov	r2, #4
+ 211 01c4 1A72     		strb	r2, [r3, #8]
+ 131:../Sources/InputTask.c **** 				msg->DATA = 0;
+ 212              		.loc 1 131 0
+ 213 01c6 D7F88430 		ldr	r3, [r7, #132]
+ 214 01ca 4FF00002 		mov	r2, #0
+ 215 01ce DA60     		str	r2, [r3, #12]
+ 132:../Sources/InputTask.c **** 				
+ 133:../Sources/InputTask.c **** 				_msgq_send(msg);
+ 216              		.loc 1 133 0
+ 217 01d0 D7F88400 		ldr	r0, [r7, #132]
+ 218 01d4 FFF7FEFF 		bl	_msgq_send
+ 219              	.L4:
+ 134:../Sources/InputTask.c **** 			}
+ 135:../Sources/InputTask.c **** 		}	
+ 136:../Sources/InputTask.c **** 		_time_delay(100); 			
+ 220              		.loc 1 136 0
+ 221 01d8 4FF06400 		mov	r0, #100
+ 222 01dc FFF7FEFF 		bl	_time_delay
+ 137:../Sources/InputTask.c **** 	}    
+ 223              		.loc 1 137 0
+ 224 01e0 77E7     		b	.L5
+ 225              		.cfi_endproc
+ 226              	.LFE0:
+ 228 01e2 00BF     		.section	.text.adc_timer_isr,"ax",%progbits
+ 229              		.align	2
+ 230              		.global	adc_timer_isr
+ 231              		.thumb
+ 232              		.thumb_func
+ 234              	adc_timer_isr:
+ 235              	.LFB1:
+ 138:../Sources/InputTask.c **** }
+ 139:../Sources/InputTask.c **** /* Called every 1/10s when timer expires */
+ 140:../Sources/InputTask.c **** void adc_timer_isr(void){
+ 236              		.loc 1 140 0
+ 237              		.cfi_startproc
+ 238              		@ args = 0, pretend = 0, frame = 0
+ 239              		@ frame_needed = 1, uses_anonymous_args = 0
+ 240 0000 80B5     		push	{r7, lr}
+ 241              	.LCFI3:
+ 242              		.cfi_def_cfa_offset 8
+ 243              		.cfi_offset 7, -8
+ 244              		.cfi_offset 14, -4
+ 245 0002 00AF     		add	r7, sp, #0
+ 246              	.LCFI4:
+ 247              		.cfi_def_cfa_register 7
+ 141:../Sources/InputTask.c **** 	
+ 142:../Sources/InputTask.c **** 	_lwevent_set(&lwevent_group, ADC_TIMER_EVENT); //Set event bit
+ 248              		.loc 1 142 0
+ 249 0004 40F20000 		movw	r0, #:lower16:lwevent_group
+ 250 0008 C0F20000 		movt	r0, #:upper16:lwevent_group
+ 251 000c 4FF00401 		mov	r1, #4
+ 252 0010 FFF7FEFF 		bl	_lwevent_set
+ 143:../Sources/InputTask.c **** }
+ 253              		.loc 1 143 0
+ 254 0014 80BD     		pop	{r7, pc}
+ 255              		.cfi_endproc
+ 256              	.LFE1:
+ 258 0016 00BF     		.section	.text.init_switch,"ax",%progbits
+ 259              		.align	2
+ 260              		.global	init_switch
+ 261              		.thumb
+ 262              		.thumb_func
+ 264              	init_switch:
+ 265              	.LFB2:
+ 144:../Sources/InputTask.c **** 
+ 145:../Sources/InputTask.c **** 
+ 146:../Sources/InputTask.c **** void init_switch(LWGPIO_STRUCT_PTR sw,
+ 147:../Sources/InputTask.c **** 		LWGPIO_PIN_ID pin,
+ 148:../Sources/InputTask.c **** 		uint32_t mux,
+ 149:../Sources/InputTask.c **** 		INT_ISR_FPTR sw_isr
+ 150:../Sources/InputTask.c **** 		)
+ 151:../Sources/InputTask.c **** {
+ 266              		.loc 1 151 0
+ 267              		.cfi_startproc
+ 268              		@ args = 0, pretend = 0, frame = 16
+ 269              		@ frame_needed = 1, uses_anonymous_args = 0
+ 270 0000 80B5     		push	{r7, lr}
+ 271              	.LCFI5:
+ 272              		.cfi_def_cfa_offset 8
+ 273              		.cfi_offset 7, -8
+ 274              		.cfi_offset 14, -4
+ 275 0002 84B0     		sub	sp, sp, #16
+ 276              	.LCFI6:
+ 277              		.cfi_def_cfa_offset 24
+ 278 0004 00AF     		add	r7, sp, #0
+ 279              	.LCFI7:
+ 280              		.cfi_def_cfa_register 7
+ 281 0006 F860     		str	r0, [r7, #12]
+ 282 0008 B960     		str	r1, [r7, #8]
+ 283 000a 7A60     		str	r2, [r7, #4]
+ 284 000c 3B60     		str	r3, [r7, #0]
+ 152:../Sources/InputTask.c **** 	/* Initialize input pins */
+ 153:../Sources/InputTask.c **** 	lwgpio_init( sw, pin, LWGPIO_DIR_INPUT, LWGPIO_VALUE_NOCHANGE );
+ 285              		.loc 1 153 0
+ 286 000e F868     		ldr	r0, [r7, #12]
+ 287 0010 B968     		ldr	r1, [r7, #8]
+ 288 0012 4FF00002 		mov	r2, #0
+ 289 0016 4FF00203 		mov	r3, #2
+ 290 001a FFF7FEFF 		bl	lwgpio_init
+ 154:../Sources/InputTask.c **** 	
+ 155:../Sources/InputTask.c **** 	/* Set functionality/pin muxing  */
+ 156:../Sources/InputTask.c **** 	lwgpio_set_functionality( sw, mux );
+ 291              		.loc 1 156 0
+ 292 001e F868     		ldr	r0, [r7, #12]
+ 293 0020 7968     		ldr	r1, [r7, #4]
+ 294 0022 FFF7FEFF 		bl	lwgpio_set_functionality
+ 157:../Sources/InputTask.c **** 	
+ 158:../Sources/InputTask.c **** 	/* Pull up push button lines so that they are not floating, since switch drives to gnd */
+ 159:../Sources/InputTask.c **** 	lwgpio_set_attribute( sw, LWGPIO_ATTR_PULL_UP, LWGPIO_AVAL_ENABLE );
+ 295              		.loc 1 159 0
+ 296 0026 F868     		ldr	r0, [r7, #12]
+ 297 0028 4FF00101 		mov	r1, #1
+ 298 002c 4FF00102 		mov	r2, #1
+ 299 0030 FFF7FEFF 		bl	lwgpio_set_attribute
+ 160:../Sources/InputTask.c **** 	
+ 161:../Sources/InputTask.c **** 	/* Initialize an interrupt */
+ 162:../Sources/InputTask.c **** 	lwgpio_int_init( sw, LWGPIO_INT_MODE_FALLING);
+ 300              		.loc 1 162 0
+ 301 0034 F868     		ldr	r0, [r7, #12]
+ 302 0036 4FF00201 		mov	r1, #2
+ 303 003a FFF7FEFF 		bl	lwgpio_int_init
+ 163:../Sources/InputTask.c **** 	
+ 164:../Sources/InputTask.c **** 	/* Install the switch specific ISR */
+ 165:../Sources/InputTask.c **** 	_int_install_isr( lwgpio_int_get_vector(sw), sw_isr, sw);
+ 304              		.loc 1 165 0
+ 305 003e F868     		ldr	r0, [r7, #12]
+ 306 0040 FFF7FEFF 		bl	lwgpio_int_get_vector
+ 307 0044 0346     		mov	r3, r0
+ 308 0046 1846     		mov	r0, r3
+ 309 0048 3968     		ldr	r1, [r7, #0]
+ 310 004a FA68     		ldr	r2, [r7, #12]
+ 311 004c FFF7FEFF 		bl	_int_install_isr
+ 166:../Sources/InputTask.c **** 	
+ 167:../Sources/InputTask.c **** 	/* Enabling an ISR in the GPIO device */
+ 168:../Sources/InputTask.c **** 	lwgpio_int_enable( sw, TRUE);
+ 312              		.loc 1 168 0
+ 313 0050 F868     		ldr	r0, [r7, #12]
+ 314 0052 4FF00101 		mov	r1, #1
+ 315 0056 FFF7FEFF 		bl	lwgpio_int_enable
+ 169:../Sources/InputTask.c **** 	
+ 170:../Sources/InputTask.c **** 	/* 4 = main priority, 0 = sub level priority */
+ 171:../Sources/InputTask.c **** 	_bsp_int_init( lwgpio_int_get_vector(sw), 4, 0, TRUE);
+ 316              		.loc 1 171 0
+ 317 005a F868     		ldr	r0, [r7, #12]
+ 318 005c FFF7FEFF 		bl	lwgpio_int_get_vector
+ 319 0060 0346     		mov	r3, r0
+ 320 0062 1846     		mov	r0, r3
+ 321 0064 4FF00401 		mov	r1, #4
+ 322 0068 4FF00102 		mov	r2, #1
+ 323 006c FFF7FEFF 		bl	_nvic_int_init
+ 172:../Sources/InputTask.c **** }
+ 324              		.loc 1 172 0
+ 325 0070 07F11007 		add	r7, r7, #16
+ 326 0074 BD46     		mov	sp, r7
+ 327 0076 80BD     		pop	{r7, pc}
+ 328              		.cfi_endproc
+ 329              	.LFE2:
+ 331              		.section	.text.sw1_isr,"ax",%progbits
+ 332              		.align	2
+ 333              		.global	sw1_isr
+ 334              		.thumb
+ 335              		.thumb_func
+ 337              	sw1_isr:
+ 338              	.LFB3:
+ 173:../Sources/InputTask.c **** 
+ 174:../Sources/InputTask.c **** void sw1_isr(void * param) {
+ 339              		.loc 1 174 0
+ 340              		.cfi_startproc
+ 341              		@ args = 0, pretend = 0, frame = 16
+ 342              		@ frame_needed = 1, uses_anonymous_args = 0
+ 343 0000 80B5     		push	{r7, lr}
+ 344              	.LCFI8:
+ 345              		.cfi_def_cfa_offset 8
+ 346              		.cfi_offset 7, -8
+ 347              		.cfi_offset 14, -4
+ 348 0002 84B0     		sub	sp, sp, #16
+ 349              	.LCFI9:
+ 350              		.cfi_def_cfa_offset 24
+ 351 0004 00AF     		add	r7, sp, #0
+ 352              	.LCFI10:
+ 353              		.cfi_def_cfa_register 7
+ 354 0006 7860     		str	r0, [r7, #4]
+ 175:../Sources/InputTask.c **** 
+ 176:../Sources/InputTask.c **** 	LWGPIO_STRUCT_PTR sw = (LWGPIO_STRUCT_PTR) param;
+ 355              		.loc 1 176 0
+ 356 0008 7B68     		ldr	r3, [r7, #4]
+ 357 000a FB60     		str	r3, [r7, #12]
+ 177:../Sources/InputTask.c **** 	//APPLICATION_MESSAGE *msg;
+ 178:../Sources/InputTask.c **** 
+ 179:../Sources/InputTask.c **** 	lwgpio_int_clear_flag(sw);
+ 358              		.loc 1 179 0
+ 359 000c F868     		ldr	r0, [r7, #12]
+ 360 000e FFF7FEFF 		bl	lwgpio_int_clear_flag
+ 180:../Sources/InputTask.c **** 	
+ 181:../Sources/InputTask.c **** 	/* Lab 7 - shorten ISR */
+ 182:../Sources/InputTask.c **** 	_lwevent_set(&lwevent_group, SW1_EVENT);
+ 361              		.loc 1 182 0
+ 362 0012 40F20000 		movw	r0, #:lower16:lwevent_group
+ 363 0016 C0F20000 		movt	r0, #:upper16:lwevent_group
+ 364 001a 4FF00101 		mov	r1, #1
+ 365 001e FFF7FEFF 		bl	_lwevent_set
+ 183:../Sources/InputTask.c **** 	
+ 184:../Sources/InputTask.c **** 
+ 185:../Sources/InputTask.c **** 	/*
+ 186:../Sources/InputTask.c **** 	msg = _msg_alloc_system(sizeof(*msg));	
+ 187:../Sources/InputTask.c **** 	if (msg != NULL ) {
+ 188:../Sources/InputTask.c **** 		msg->HEADER.TARGET_QID =_msgq_get_id(0, HEALTH_QUEUE);
+ 189:../Sources/InputTask.c **** 		msg->MESSAGE_TYPE = SW1_Message;
+ 190:../Sources/InputTask.c **** 		msg->DATA = 0;
+ 191:../Sources/InputTask.c **** 
+ 192:../Sources/InputTask.c **** 		_msgq_send(msg);
+ 193:../Sources/InputTask.c **** 	}*/
+ 194:../Sources/InputTask.c **** }
+ 366              		.loc 1 194 0
+ 367 0022 07F11007 		add	r7, r7, #16
+ 368 0026 BD46     		mov	sp, r7
+ 369 0028 80BD     		pop	{r7, pc}
+ 370              		.cfi_endproc
+ 371              	.LFE3:
+ 373 002a 00BF     		.section	.text.sw2_isr,"ax",%progbits
+ 374              		.align	2
+ 375              		.global	sw2_isr
+ 376              		.thumb
+ 377              		.thumb_func
+ 379              	sw2_isr:
+ 380              	.LFB4:
+ 195:../Sources/InputTask.c **** 
+ 196:../Sources/InputTask.c **** void sw2_isr(void * param) {
+ 381              		.loc 1 196 0
+ 382              		.cfi_startproc
+ 383              		@ args = 0, pretend = 0, frame = 16
+ 384              		@ frame_needed = 1, uses_anonymous_args = 0
+ 385 0000 80B5     		push	{r7, lr}
+ 386              	.LCFI11:
+ 387              		.cfi_def_cfa_offset 8
+ 388              		.cfi_offset 7, -8
+ 389              		.cfi_offset 14, -4
+ 390 0002 84B0     		sub	sp, sp, #16
+ 391              	.LCFI12:
+ 392              		.cfi_def_cfa_offset 24
+ 393 0004 00AF     		add	r7, sp, #0
+ 394              	.LCFI13:
+ 395              		.cfi_def_cfa_register 7
+ 396 0006 7860     		str	r0, [r7, #4]
+ 197:../Sources/InputTask.c **** 
+ 198:../Sources/InputTask.c **** 	LWGPIO_STRUCT_PTR sw = (LWGPIO_STRUCT_PTR) param;
+ 397              		.loc 1 198 0
+ 398 0008 7B68     		ldr	r3, [r7, #4]
+ 399 000a FB60     		str	r3, [r7, #12]
+ 199:../Sources/InputTask.c **** 
+ 200:../Sources/InputTask.c **** 	lwgpio_int_clear_flag(sw);
+ 400              		.loc 1 200 0
+ 401 000c F868     		ldr	r0, [r7, #12]
+ 402 000e FFF7FEFF 		bl	lwgpio_int_clear_flag
+ 201:../Sources/InputTask.c **** 	_lwevent_set(&lwevent_group, SW2_EVENT);	
+ 403              		.loc 1 201 0
+ 404 0012 40F20000 		movw	r0, #:lower16:lwevent_group
+ 405 0016 C0F20000 		movt	r0, #:upper16:lwevent_group
+ 406 001a 4FF00201 		mov	r1, #2
+ 407 001e FFF7FEFF 		bl	_lwevent_set
+ 202:../Sources/InputTask.c **** }
+ 408              		.loc 1 202 0
+ 409 0022 07F11007 		add	r7, r7, #16
+ 410 0026 BD46     		mov	sp, r7
+ 411 0028 80BD     		pop	{r7, pc}
+ 412              		.cfi_endproc
+ 413              	.LFE4:
+ 415 002a 00BF     		.text
+ 416              	.Letext0:
+ 417              		.file 2 "C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cstdint"
+ 418              		.file 3 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psptypes.h"
+ 419              		.file 4 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/mqx.h"
+ 420              		.file 5 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/queue.h"
+ 421              		.file 6 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/MK60DZ10.h"
+ 422              		.file 7 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/lwtimer.h"
+ 423              		.file 8 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/lwgpio_kgpio.h"
+ 424              		.file 9 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/lwgpio.h"
+ 425              		.file 10 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/lwevent.h"
+ 426              		.file 11 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/lwadc_kadc.h"
+ 427              		.file 12 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/message.h"
+ 428              		.file 13 "../Sources/main.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 InputTask.c
+                            *COM*:00000024 lwevent_group
+C:\Users\Angus\AppData\Local\Temp\ccoXkjcu.s:20     .rodata:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\ccoXkjcu.s:21     .rodata:00000000 .LC0
+C:\Users\Angus\AppData\Local\Temp\ccoXkjcu.s:24     .text.Input_task:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccoXkjcu.s:29     .text.Input_task:00000000 Input_task
+C:\Users\Angus\AppData\Local\Temp\ccoXkjcu.s:337    .text.sw1_isr:00000000 sw1_isr
+C:\Users\Angus\AppData\Local\Temp\ccoXkjcu.s:264    .text.init_switch:00000000 init_switch
+C:\Users\Angus\AppData\Local\Temp\ccoXkjcu.s:379    .text.sw2_isr:00000000 sw2_isr
+C:\Users\Angus\AppData\Local\Temp\ccoXkjcu.s:234    .text.adc_timer_isr:00000000 adc_timer_isr
+C:\Users\Angus\AppData\Local\Temp\ccoXkjcu.s:229    .text.adc_timer_isr:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccoXkjcu.s:259    .text.init_switch:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccoXkjcu.s:332    .text.sw1_isr:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccoXkjcu.s:374    .text.sw2_isr:00000000 $t
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+lwadc1_init
+_lwadc_init
+_lwadc_init_input
+_lwadc_set_attribute
+_msgq_get_id
+_lwevent_create
+_lwtimer_create_periodic_queue
+_lwtimer_add_timer_to_queue
+_io_printf
+_lwevent_wait_ticks
+_lwevent_get_signalled
+_lwadc_read
+_msg_alloc_system
+_msgq_send
+_time_delay
+_lwevent_set
+lwgpio_init
+lwgpio_set_functionality
+lwgpio_set_attribute
+lwgpio_int_init
+lwgpio_int_get_vector
+_int_install_isr
+lwgpio_int_enable
+_nvic_int_init
+lwgpio_int_clear_flag

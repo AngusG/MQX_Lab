@@ -1,0 +1,7 @@
+Debugger/MK60N512VMD100.mem
+Debugger/init_kinetis.tcl
+Debugger/mass_erase_kinetis.tcl
+Sources/main.h
+Sources/main.c
+.settings/com.freescale.core.ide.newprojectwizard.prefs
+ReferencedRSESystems.xml

@@ -1,0 +1,185 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"CanTask.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.rodata
+  19              		.align	2
+  20              	.LC0:
+  21 0000 0A43616E 		.ascii	"\012Can_task %D has just started\012\000"
+  21      5F746173 
+  21      6B202544 
+  21      20686173 
+  21      206A7573 
+  22 001f 00       		.align	2
+  23              	.LC1:
+  24 0020 0A204361 		.ascii	"\012 Can task %d \012\000"
+  24      6E207461 
+  24      736B2025 
+  24      64200A00 
+  25              		.section	.text.Can_task,"ax",%progbits
+  26              		.align	2
+  27              		.global	Can_task
+  28              		.thumb
+  29              		.thumb_func
+  31              	Can_task:
+  32              	.LFB0:
+  33              		.file 1 "../Sources/CanTask.c"
+   1:../Sources/CanTask.c **** /*
+   2:../Sources/CanTask.c ****  * CanTask.c
+   3:../Sources/CanTask.c ****  *
+   4:../Sources/CanTask.c ****  *  Created on: Feb 6, 2014
+   5:../Sources/CanTask.c ****  *      Author: Embedded Access Inc
+   6:../Sources/CanTask.c ****  */
+   7:../Sources/CanTask.c **** 
+   8:../Sources/CanTask.c **** #include "main.h"
+   9:../Sources/CanTask.c **** 
+  10:../Sources/CanTask.c **** 
+  11:../Sources/CanTask.c **** /*TASK*-----------------------------------------------------
+  12:../Sources/CanTask.c **** * 
+  13:../Sources/CanTask.c **** * Task Name    : Can_task
+  14:../Sources/CanTask.c **** * Comments     :
+  15:../Sources/CanTask.c **** *    This is the Can task
+  16:../Sources/CanTask.c **** *
+  17:../Sources/CanTask.c **** *END*-----------------------------------------------------*/
+  18:../Sources/CanTask.c **** 
+  19:../Sources/CanTask.c **** void Can_task(uint32_t initial_data)
+  20:../Sources/CanTask.c **** {
+  34              		.loc 1 20 0
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 8
+  37              		@ frame_needed = 1, uses_anonymous_args = 0
+  38 0000 80B5     		push	{r7, lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 8
+  41              		.cfi_offset 7, -8
+  42              		.cfi_offset 14, -4
+  43 0002 82B0     		sub	sp, sp, #8
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 16
+  46 0004 00AF     		add	r7, sp, #0
+  47              	.LCFI2:
+  48              		.cfi_def_cfa_register 7
+  49 0006 7860     		str	r0, [r7, #4]
+  21:../Sources/CanTask.c **** 	
+  22:../Sources/CanTask.c **** 	/* Lab 4 additions */
+  23:../Sources/CanTask.c **** 	//_queue_id health_qid;
+  24:../Sources/CanTask.c **** 	//APPLICATION_MESSAGE *msg;	
+  25:../Sources/CanTask.c **** 	
+  26:../Sources/CanTask.c **** 	printf("\nCan_task %D has just started\n", initial_data);
+  50              		.loc 1 26 0
+  51 0008 40F20000 		movw	r0, #:lower16:.LC0
+  52 000c C0F20000 		movt	r0, #:upper16:.LC0
+  53 0010 7968     		ldr	r1, [r7, #4]
+  54 0012 FFF7FEFF 		bl	_io_printf
+  27:../Sources/CanTask.c **** 	
+  28:../Sources/CanTask.c **** 	/* Lab 4 additions */
+  29:../Sources/CanTask.c **** 	//health_qid = _msgq_get_id(); /* Get q ID for health task */
+  30:../Sources/CanTask.c **** 	
+  31:../Sources/CanTask.c **** 	_task_set_exit_handler( _task_get_id(), Can_Task_Exit_Handler );
+  55              		.loc 1 31 0
+  56 0016 FFF7FEFF 		bl	_task_get_id
+  57 001a 0346     		mov	r3, r0
+  58 001c 1846     		mov	r0, r3
+  59 001e 40F20001 		movw	r1, #:lower16:Can_Task_Exit_Handler
+  60 0022 C0F20001 		movt	r1, #:upper16:Can_Task_Exit_Handler
+  61 0026 FFF7FEFF 		bl	_task_set_exit_handler
+  62              	.L2:
+  32:../Sources/CanTask.c **** 	
+  33:../Sources/CanTask.c **** 	while(1){
+  34:../Sources/CanTask.c **** 		printf("\n Can task %d \n", initial_data); 
+  63              		.loc 1 34 0
+  64 002a 40F20000 		movw	r0, #:lower16:.LC1
+  65 002e C0F20000 		movt	r0, #:upper16:.LC1
+  66 0032 7968     		ldr	r1, [r7, #4]
+  67 0034 FFF7FEFF 		bl	_io_printf
+  35:../Sources/CanTask.c **** 		_time_delay(1000);
+  68              		.loc 1 35 0
+  69 0038 4FF47A70 		mov	r0, #1000
+  70 003c FFF7FEFF 		bl	_time_delay
+  36:../Sources/CanTask.c **** 	}   
+  71              		.loc 1 36 0
+  72 0040 F3E7     		b	.L2
+  73              		.cfi_endproc
+  74              	.LFE0:
+  76 0042 00BF     		.section	.rodata
+  77              		.align	2
+  78              	.LC2:
+  79 0030 43616E5F 		.ascii	"Can_Task_Exit_Handler: Can task is shutting down!\012"
+  79      5461736B 
+  79      5F457869 
+  79      745F4861 
+  79      6E646C65 
+  80 0062 00       		.ascii	"\000"
+  81 0063 00       		.section	.text.Can_Task_Exit_Handler,"ax",%progbits
+  82              		.align	2
+  83              		.global	Can_Task_Exit_Handler
+  84              		.thumb
+  85              		.thumb_func
+  87              	Can_Task_Exit_Handler:
+  88              	.LFB1:
+  37:../Sources/CanTask.c ****    _task_block();
+  38:../Sources/CanTask.c ****    
+  39:../Sources/CanTask.c **** }
+  40:../Sources/CanTask.c **** 
+  41:../Sources/CanTask.c **** /**
+  42:../Sources/CanTask.c ****  * Name     : Can_Task_Exit_Handler
+  43:../Sources/CanTask.c ****  * Purpose  : Allow for controller exit of Can_task
+  44:../Sources/CanTask.c ****  */
+  45:../Sources/CanTask.c **** 
+  46:../Sources/CanTask.c **** void Can_Task_Exit_Handler(void) 
+  47:../Sources/CanTask.c **** {
+  89              		.loc 1 47 0
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 1, uses_anonymous_args = 0
+  93 0000 80B5     		push	{r7, lr}
+  94              	.LCFI3:
+  95              		.cfi_def_cfa_offset 8
+  96              		.cfi_offset 7, -8
+  97              		.cfi_offset 14, -4
+  98 0002 00AF     		add	r7, sp, #0
+  99              	.LCFI4:
+ 100              		.cfi_def_cfa_register 7
+  48:../Sources/CanTask.c **** 	printf("Can_Task_Exit_Handler: Can task is shutting down!\n");
+ 101              		.loc 1 48 0
+ 102 0004 40F20000 		movw	r0, #:lower16:.LC2
+ 103 0008 C0F20000 		movt	r0, #:upper16:.LC2
+ 104 000c FFF7FEFF 		bl	_io_printf
+  49:../Sources/CanTask.c **** }
+ 105              		.loc 1 49 0
+ 106 0010 80BD     		pop	{r7, pc}
+ 107              		.cfi_endproc
+ 108              	.LFE1:
+ 110 0012 00BF     		.text
+ 111              	.Letext0:
+ 112              		.file 2 "C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cstdint"
+DEFINED SYMBOLS
+                            *ABS*:00000000 CanTask.c
+C:\Users\Angus\AppData\Local\Temp\ccv9kD4c.s:19     .rodata:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\ccv9kD4c.s:20     .rodata:00000000 .LC0
+C:\Users\Angus\AppData\Local\Temp\ccv9kD4c.s:23     .rodata:00000020 .LC1
+C:\Users\Angus\AppData\Local\Temp\ccv9kD4c.s:26     .text.Can_task:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccv9kD4c.s:31     .text.Can_task:00000000 Can_task
+C:\Users\Angus\AppData\Local\Temp\ccv9kD4c.s:87     .text.Can_Task_Exit_Handler:00000000 Can_Task_Exit_Handler
+C:\Users\Angus\AppData\Local\Temp\ccv9kD4c.s:78     .rodata:00000030 .LC2
+C:\Users\Angus\AppData\Local\Temp\ccv9kD4c.s:82     .text.Can_Task_Exit_Handler:00000000 $t
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+_io_printf
+_task_get_id
+_task_set_exit_handler
+_time_delay

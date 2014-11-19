@@ -1,0 +1,142 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	MQX_template_list
+  19              		.section	.rodata
+  20              		.align	2
+  21              	.LC0:
+  22 0000 4865616C 		.ascii	"Health_task\000"
+  22      74685F74 
+  22      61736B00 
+  23              		.align	2
+  24              	.LC1:
+  25 000c 44697370 		.ascii	"Display_task\000"
+  25      6C61795F 
+  25      7461736B 
+  25      00
+  26 0019 000000   		.align	2
+  27              	.LC2:
+  28 001c 41636365 		.ascii	"Accel_task\000"
+  28      6C5F7461 
+  28      736B00
+  29 0027 00       		.align	2
+  30              	.LC3:
+  31 0028 54656D70 		.ascii	"Temp_task\000"
+  31      5F746173 
+  31      6B00
+  32 0032 0000     		.align	2
+  33              	.LC4:
+  34 0034 496E7075 		.ascii	"Input_task\000"
+  34      745F7461 
+  34      736B00
+  35 003f 00       		.align	2
+  36              	.LC5:
+  37 0040 55695F74 		.ascii	"Ui_task\000"
+  37      61736B00 
+  38              		.align	2
+  39              	.LC6:
+  40 0048 54686566 		.ascii	"Theft_task\000"
+  40      745F7461 
+  40      736B00
+  41 0053 00       		.section	.data.MQX_template_list,"aw",%progbits
+  42              		.align	2
+  45              	MQX_template_list:
+  46 0000 01000000 		.word	1
+  47 0004 00000000 		.word	Health_task
+  48 0008 DC050000 		.word	1500
+  49 000c 09000000 		.word	9
+  50 0010 00000000 		.word	.LC0
+  51 0014 01000000 		.word	1
+  52 0018 00000000 		.space	8
+  52      00000000 
+  53 0020 02000000 		.word	2
+  54 0024 00000000 		.word	Display_task
+  55 0028 DC050000 		.word	1500
+  56 002c 0B000000 		.word	11
+  57 0030 0C000000 		.word	.LC1
+  58 0034 01000000 		.word	1
+  59 0038 00000000 		.space	8
+  59      00000000 
+  60 0040 03000000 		.word	3
+  61 0044 00000000 		.word	Accel_task
+  62 0048 DC050000 		.word	1500
+  63 004c 0A000000 		.word	10
+  64 0050 1C000000 		.word	.LC2
+  65 0054 01000000 		.word	1
+  66 0058 00000000 		.space	8
+  66      00000000 
+  67 0060 04000000 		.word	4
+  68 0064 00000000 		.word	Temp_task
+  69 0068 DC050000 		.word	1500
+  70 006c 0A000000 		.word	10
+  71 0070 28000000 		.word	.LC3
+  72 0074 01000000 		.word	1
+  73 0078 00000000 		.space	8
+  73      00000000 
+  74 0080 05000000 		.word	5
+  75 0084 00000000 		.word	Input_task
+  76 0088 DC050000 		.word	1500
+  77 008c 0A000000 		.word	10
+  78 0090 34000000 		.word	.LC4
+  79 0094 01000000 		.word	1
+  80 0098 00000000 		.space	8
+  80      00000000 
+  81 00a0 07000000 		.word	7
+  82 00a4 00000000 		.word	Ui_task
+  83 00a8 DC050000 		.word	1500
+  84 00ac 0C000000 		.word	12
+  85 00b0 40000000 		.word	.LC5
+  86 00b4 01000000 		.word	1
+  87 00b8 00000000 		.space	8
+  87      00000000 
+  88 00c0 08000000 		.word	8
+  89 00c4 00000000 		.word	Theft_task
+  90 00c8 DC050000 		.word	1500
+  91 00cc 0A000000 		.word	10
+  92 00d0 48000000 		.word	.LC6
+  93 00d4 01000000 		.word	1
+  94 00d8 00000000 		.space	8
+  94      00000000 
+  95 00e0 00000000 		.word	0
+  96 00e4 00000000 		.word	0
+  97 00e8 00000000 		.word	0
+  98 00ec 00000000 		.word	0
+  99 00f0 00000000 		.word	0
+ 100 00f4 00000000 		.word	0
+ 101 00f8 00000000 		.space	8
+ 101      00000000 
+ 102              		.text
+ 103              	.Letext0:
+ 104              		.file 1 "C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cstdint"
+ 105              		.file 2 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psptypes.h"
+ 106              		.file 3 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/mqx.h"
+ 107              		.file 4 "../Sources/main.h"
+ 108              		.file 5 "../Sources/main.c"
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\Angus\AppData\Local\Temp\ccNWrDgi.s:45     .data.MQX_template_list:00000000 MQX_template_list
+C:\Users\Angus\AppData\Local\Temp\ccNWrDgi.s:20     .rodata:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\ccNWrDgi.s:42     .data.MQX_template_list:00000000 $d
+
+UNDEFINED SYMBOLS
+Health_task
+Display_task
+Accel_task
+Temp_task
+Input_task
+Ui_task
+Theft_task

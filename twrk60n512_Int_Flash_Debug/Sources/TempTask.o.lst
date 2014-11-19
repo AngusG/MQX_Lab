@@ -1,0 +1,163 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"TempTask.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.rodata
+  19              		.align	2
+  20              	.LC0:
+  21 0000 0A205465 		.ascii	"\012 Temp task started\012\000"
+  21      6D702074 
+  21      61736B20 
+  21      73746172 
+  21      7465640A 
+  22 0015 000000   		.section	.text.Temp_task,"ax",%progbits
+  23              		.align	2
+  24              		.global	Temp_task
+  25              		.thumb
+  26              		.thumb_func
+  28              	Temp_task:
+  29              	.LFB0:
+  30              		.file 1 "../Sources/TempTask.c"
+   1:../Sources/TempTask.c **** /*
+   2:../Sources/TempTask.c ****  * TempTask.c
+   3:../Sources/TempTask.c ****  *
+   4:../Sources/TempTask.c ****  *  Created on: Feb 6, 2014
+   5:../Sources/TempTask.c ****  *      Author: Embedded Access Inc
+   6:../Sources/TempTask.c ****  */
+   7:../Sources/TempTask.c **** 
+   8:../Sources/TempTask.c **** #include "main.h"
+   9:../Sources/TempTask.c **** 
+  10:../Sources/TempTask.c **** 
+  11:../Sources/TempTask.c **** /*TASK*-----------------------------------------------------
+  12:../Sources/TempTask.c **** * 
+  13:../Sources/TempTask.c **** * Task Name    : Temp_task
+  14:../Sources/TempTask.c **** * Comments     :
+  15:../Sources/TempTask.c **** *    This is the Temperature task
+  16:../Sources/TempTask.c **** *
+  17:../Sources/TempTask.c **** *END*-----------------------------------------------------*/
+  18:../Sources/TempTask.c **** 
+  19:../Sources/TempTask.c **** void Temp_task(uint32_t initial_data)
+  20:../Sources/TempTask.c **** {
+  31              		.loc 1 20 0
+  32              		.cfi_startproc
+  33              		@ args = 0, pretend = 0, frame = 16
+  34              		@ frame_needed = 1, uses_anonymous_args = 0
+  35 0000 80B5     		push	{r7, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 7, -8
+  39              		.cfi_offset 14, -4
+  40 0002 84B0     		sub	sp, sp, #16
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_offset 24
+  43 0004 00AF     		add	r7, sp, #0
+  44              	.LCFI2:
+  45              		.cfi_def_cfa_register 7
+  46 0006 7860     		str	r0, [r7, #4]
+  21:../Sources/TempTask.c **** 	_queue_id  health_qid;
+  22:../Sources/TempTask.c **** 	APPLICATION_MESSAGE * msg;
+  23:../Sources/TempTask.c **** 		
+  24:../Sources/TempTask.c **** 	printf("\n Temp task started\n"); 
+  47              		.loc 1 24 0
+  48 0008 40F20000 		movw	r0, #:lower16:.LC0
+  49 000c C0F20000 		movt	r0, #:upper16:.LC0
+  50 0010 FFF7FEFF 		bl	_io_printf
+  25:../Sources/TempTask.c **** 	
+  26:../Sources/TempTask.c **** 	_task_block(); // Per Lab 5 requirements
+  51              		.loc 1 26 0
+  52 0014 FFF7FEFF 		bl	_task_block
+  27:../Sources/TempTask.c **** 	
+  28:../Sources/TempTask.c **** 	health_qid = _msgq_get_id(0, HEALTH_QUEUE);
+  53              		.loc 1 28 0
+  54 0018 4FF00000 		mov	r0, #0
+  55 001c 4FF00101 		mov	r1, #1
+  56 0020 FFF7FEFF 		bl	_msgq_get_id
+  57 0024 0346     		mov	r3, r0
+  58 0026 FB81     		strh	r3, [r7, #14]	@ movhi
+  59 0028 00E0     		b	.L3
+  60              	.L4:
+  29:../Sources/TempTask.c **** 	while(1){
+  30:../Sources/TempTask.c **** 		
+  31:../Sources/TempTask.c **** 		_time_delay(5000);
+  32:../Sources/TempTask.c **** 		msg = _msg_alloc_system(sizeof(*msg));
+  33:../Sources/TempTask.c **** 		if( msg != NULL){
+  34:../Sources/TempTask.c **** 			msg->HEADER.TARGET_QID = health_qid;
+  35:../Sources/TempTask.c **** 			msg->MESSAGE_TYPE = TEMP_MESSAGE;
+  36:../Sources/TempTask.c **** 			msg->DATA = 0;
+  37:../Sources/TempTask.c **** 			
+  38:../Sources/TempTask.c **** 			_msgq_send(msg);
+  39:../Sources/TempTask.c **** 		}	
+  40:../Sources/TempTask.c **** 	}   
+  61              		.loc 1 40 0
+  62 002a 00BF     		nop
+  63              	.L3:
+  31:../Sources/TempTask.c **** 		_time_delay(5000);
+  64              		.loc 1 31 0
+  65 002c 41F28830 		movw	r0, #5000
+  66 0030 FFF7FEFF 		bl	_time_delay
+  32:../Sources/TempTask.c **** 		msg = _msg_alloc_system(sizeof(*msg));
+  67              		.loc 1 32 0
+  68 0034 4FF01000 		mov	r0, #16
+  69 0038 FFF7FEFF 		bl	_msg_alloc_system
+  70 003c B860     		str	r0, [r7, #8]
+  33:../Sources/TempTask.c **** 		if( msg != NULL){
+  71              		.loc 1 33 0
+  72 003e BB68     		ldr	r3, [r7, #8]
+  73 0040 002B     		cmp	r3, #0
+  74 0042 F2D0     		beq	.L4
+  34:../Sources/TempTask.c **** 			msg->HEADER.TARGET_QID = health_qid;
+  75              		.loc 1 34 0
+  76 0044 BB68     		ldr	r3, [r7, #8]
+  77 0046 FA89     		ldrh	r2, [r7, #14]	@ movhi
+  78 0048 5A80     		strh	r2, [r3, #2]	@ movhi
+  35:../Sources/TempTask.c **** 			msg->MESSAGE_TYPE = TEMP_MESSAGE;
+  79              		.loc 1 35 0
+  80 004a BB68     		ldr	r3, [r7, #8]
+  81 004c 4FF00102 		mov	r2, #1
+  82 0050 1A72     		strb	r2, [r3, #8]
+  36:../Sources/TempTask.c **** 			msg->DATA = 0;
+  83              		.loc 1 36 0
+  84 0052 BB68     		ldr	r3, [r7, #8]
+  85 0054 4FF00002 		mov	r2, #0
+  86 0058 DA60     		str	r2, [r3, #12]
+  38:../Sources/TempTask.c **** 			_msgq_send(msg);
+  87              		.loc 1 38 0
+  88 005a B868     		ldr	r0, [r7, #8]
+  89 005c FFF7FEFF 		bl	_msgq_send
+  90              		.loc 1 40 0
+  91 0060 E3E7     		b	.L4
+  92              		.cfi_endproc
+  93              	.LFE0:
+  95 0062 00BF     		.text
+  96              	.Letext0:
+  97              		.file 2 "C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cstdint"
+  98              		.file 3 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/message.h"
+  99              		.file 4 "../Sources/main.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 TempTask.c
+C:\Users\Angus\AppData\Local\Temp\ccVQnqGh.s:19     .rodata:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\ccVQnqGh.s:20     .rodata:00000000 .LC0
+C:\Users\Angus\AppData\Local\Temp\ccVQnqGh.s:23     .text.Temp_task:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccVQnqGh.s:28     .text.Temp_task:00000000 Temp_task
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+_io_printf
+_task_block
+_msgq_get_id
+_time_delay
+_msg_alloc_system
+_msgq_send

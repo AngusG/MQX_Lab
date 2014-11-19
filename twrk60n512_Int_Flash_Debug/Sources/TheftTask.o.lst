@@ -1,0 +1,135 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"TheftTask.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.rodata
+  19              		.align	2
+  20              	.LC0:
+  21 0000 0A205468 		.ascii	"\012 Theft: Hello World \012\000"
+  21      6566743A 
+  21      2048656C 
+  21      6C6F2057 
+  21      6F726C64 
+  22 0017 00       		.align	2
+  23              	.LC1:
+  24 0018 54686566 		.ascii	"Theft task received message %d\012\000"
+  24      74207461 
+  24      736B2072 
+  24      65636569 
+  24      76656420 
+  25              		.section	.text.Theft_task,"ax",%progbits
+  26              		.align	2
+  27              		.global	Theft_task
+  28              		.thumb
+  29              		.thumb_func
+  31              	Theft_task:
+  32              	.LFB0:
+  33              		.file 1 "../Sources/TheftTask.c"
+   1:../Sources/TheftTask.c **** /*
+   2:../Sources/TheftTask.c ****  * TheftTask.c
+   3:../Sources/TheftTask.c ****  *
+   4:../Sources/TheftTask.c ****  *  Created on: Feb 6, 2014
+   5:../Sources/TheftTask.c ****  *      Author: Embedded Access Inc
+   6:../Sources/TheftTask.c ****  */
+   7:../Sources/TheftTask.c **** 
+   8:../Sources/TheftTask.c **** #include "main.h"
+   9:../Sources/TheftTask.c **** 
+  10:../Sources/TheftTask.c **** 
+  11:../Sources/TheftTask.c **** /*TASK*-----------------------------------------------------
+  12:../Sources/TheftTask.c **** * 
+  13:../Sources/TheftTask.c **** * Task Name    :Theft_task
+  14:../Sources/TheftTask.c **** * Comments     :
+  15:../Sources/TheftTask.c **** *    This is the Theft task
+  16:../Sources/TheftTask.c **** *
+  17:../Sources/TheftTask.c **** *END*-----------------------------------------------------*/
+  18:../Sources/TheftTask.c **** 
+  19:../Sources/TheftTask.c **** void Theft_task(uint32_t initial_data)
+  20:../Sources/TheftTask.c **** {
+  34              		.loc 1 20 0
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 16
+  37              		@ frame_needed = 1, uses_anonymous_args = 0
+  38 0000 80B5     		push	{r7, lr}
+  39              	.LCFI0:
+  40              		.cfi_def_cfa_offset 8
+  41              		.cfi_offset 7, -8
+  42              		.cfi_offset 14, -4
+  43 0002 84B0     		sub	sp, sp, #16
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 24
+  46 0004 00AF     		add	r7, sp, #0
+  47              	.LCFI2:
+  48              		.cfi_def_cfa_register 7
+  49 0006 7860     		str	r0, [r7, #4]
+  21:../Sources/TheftTask.c **** 	_queue_id my_qid;
+  22:../Sources/TheftTask.c **** 	APPLICATION_MESSAGE * msg;
+  23:../Sources/TheftTask.c **** 	
+  24:../Sources/TheftTask.c **** 	printf("\n Theft: Hello World \n"); 
+  50              		.loc 1 24 0
+  51 0008 40F20000 		movw	r0, #:lower16:.LC0
+  52 000c C0F20000 		movt	r0, #:upper16:.LC0
+  53 0010 FFF7FEFF 		bl	_io_printf
+  25:../Sources/TheftTask.c **** 	
+  26:../Sources/TheftTask.c **** 	my_qid = _msgq_open(THEFT_QUEUE, 0);
+  54              		.loc 1 26 0
+  55 0014 4FF00300 		mov	r0, #3
+  56 0018 4FF00001 		mov	r1, #0
+  57 001c FFF7FEFF 		bl	_msgq_open
+  58 0020 0346     		mov	r3, r0
+  59 0022 FB81     		strh	r3, [r7, #14]	@ movhi
+  60              	.L2:
+  27:../Sources/TheftTask.c **** 		
+  28:../Sources/TheftTask.c **** 	while(1){
+  29:../Sources/TheftTask.c **** 		msg = _msgq_receive(my_qid, 0);
+  61              		.loc 1 29 0
+  62 0024 FB89     		ldrh	r3, [r7, #14]
+  63 0026 1846     		mov	r0, r3
+  64 0028 4FF00001 		mov	r1, #0
+  65 002c FFF7FEFF 		bl	_msgq_receive
+  66 0030 B860     		str	r0, [r7, #8]
+  30:../Sources/TheftTask.c **** 		printf("Theft task received message %d\n", msg->MESSAGE_TYPE);
+  67              		.loc 1 30 0
+  68 0032 BB68     		ldr	r3, [r7, #8]
+  69 0034 1B7A     		ldrb	r3, [r3, #8]	@ zero_extendqisi2
+  70 0036 40F20000 		movw	r0, #:lower16:.LC1
+  71 003a C0F20000 		movt	r0, #:upper16:.LC1
+  72 003e 1946     		mov	r1, r3
+  73 0040 FFF7FEFF 		bl	_io_printf
+  31:../Sources/TheftTask.c **** 		// _time_delay(1000);
+  32:../Sources/TheftTask.c **** 		//_sched_yield();
+  33:../Sources/TheftTask.c **** 	}	
+  74              		.loc 1 33 0
+  75 0044 EEE7     		b	.L2
+  76              		.cfi_endproc
+  77              	.LFE0:
+  79 0046 00BF     		.text
+  80              	.Letext0:
+  81              		.file 2 "C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cstdint"
+  82              		.file 3 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/message.h"
+  83              		.file 4 "../Sources/main.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 TheftTask.c
+C:\Users\Angus\AppData\Local\Temp\cclq1Ufk.s:19     .rodata:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\cclq1Ufk.s:20     .rodata:00000000 .LC0
+C:\Users\Angus\AppData\Local\Temp\cclq1Ufk.s:23     .rodata:00000018 .LC1
+C:\Users\Angus\AppData\Local\Temp\cclq1Ufk.s:26     .text.Theft_task:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\cclq1Ufk.s:31     .text.Theft_task:00000000 Theft_task
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+_io_printf
+_msgq_open
+_msgq_receive

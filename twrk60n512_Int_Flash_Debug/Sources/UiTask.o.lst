@@ -1,0 +1,640 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"UiTask.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.rodata
+  19              		.align	2
+  20              	.LC0:
+  21 0000 0A205569 		.ascii	"\012 Ui: Hello World \012\000"
+  21      3A204865 
+  21      6C6C6F20 
+  21      576F726C 
+  21      64200A00 
+  22              		.align	2
+  23              	.LC1:
+  24 0014 0A3E00   		.ascii	"\012>\000"
+  25 0017 00       		.align	2
+  26              	.LC2:
+  27 0018 0A20456E 		.ascii	"\012 Enter a number of CAN Tasks to create [1-10]: "
+  27      74657220 
+  27      61206E75 
+  27      6D626572 
+  27      206F6620 
+  28 0048 0A00     		.ascii	"\012\000"
+  29 004a 0000     		.align	2
+  30              	.LC3:
+  31 004c 54727920 		.ascii	"Try Again. Enter a number from 1-10: \012\000"
+  31      41676169 
+  31      6E2E2045 
+  31      6E746572 
+  31      2061206E 
+  32 0073 00       		.align	2
+  33              	.LC4:
+  34 0074 256400   		.ascii	"%d\000"
+  35 0077 00       		.align	2
+  36              	.LC5:
+  37 0078 0A436F75 		.ascii	"\012Could not create Can_task\012\000"
+  37      6C64206E 
+  37      6F742063 
+  37      72656174 
+  37      65204361 
+  38              		.align	2
+  39              	.LC6:
+  40 0094 0A437265 		.ascii	"\012Created task 0x%08x\000"
+  40      61746564 
+  40      20746173 
+  40      6B203078 
+  40      25303878 
+  41 00a9 000000   		.align	2
+  42              	.LC7:
+  43 00ac 0A204465 		.ascii	"\012 Destroying task 0x%08x \012\000"
+  43      7374726F 
+  43      79696E67 
+  43      20746173 
+  43      6B203078 
+  44 00c7 00       		.align	2
+  45              	.LC8:
+  46 00c8 0A41626F 		.ascii	"\012Aborting task 0x%08x \012\000"
+  46      7274696E 
+  46      67207461 
+  46      736B2030 
+  46      78253038 
+  47              		.align	2
+  48              	.LC9:
+  49 00e0 0A526573 		.ascii	"\012Restarting task 0x%08x\000"
+  49      74617274 
+  49      696E6720 
+  49      7461736B 
+  49      20307825 
+  50              		.align	2
+  51              	.LC10:
+  52 00f8 0A632D20 		.ascii	"\012c- create can tasks\000"
+  52      63726561 
+  52      74652063 
+  52      616E2074 
+  52      61736B73 
+  53 010d 000000   		.align	2
+  54              	.LC11:
+  55 0110 0A612D20 		.ascii	"\012a- abort can tasks\000"
+  55      61626F72 
+  55      74206361 
+  55      6E207461 
+  55      736B7300 
+  56              		.align	2
+  57              	.LC12:
+  58 0124 0A642D20 		.ascii	"\012d- destroy can tasks\000"
+  58      64657374 
+  58      726F7920 
+  58      63616E20 
+  58      7461736B 
+  59 013a 0000     		.align	2
+  60              	.LC13:
+  61 013c 0A722D20 		.ascii	"\012r- restart can tasks\000"
+  61      72657374 
+  61      61727420 
+  61      63616E20 
+  61      7461736B 
+  62 0152 0000     		.align	2
+  63              	.LC14:
+  64 0154 0A682D20 		.ascii	"\012h- help\000"
+  64      68656C70 
+  64      00
+  65 015d 000000   		.align	2
+  66              	.LC15:
+  67 0160 496E7661 		.ascii	"Invalid selection!\012\000"
+  67      6C696420 
+  67      73656C65 
+  67      6374696F 
+  67      6E210A00 
+  68              		.section	.text.Ui_task,"ax",%progbits
+  69              		.align	2
+  70              		.global	Ui_task
+  71              		.thumb
+  72              		.thumb_func
+  74              	Ui_task:
+  75              	.LFB0:
+  76              		.file 1 "../Sources/UiTask.c"
+   1:../Sources/UiTask.c **** /*
+   2:../Sources/UiTask.c ****  * UiTask.c
+   3:../Sources/UiTask.c ****  *
+   4:../Sources/UiTask.c ****  *  Created on: Feb 6, 2014
+   5:../Sources/UiTask.c ****  *      Author: Embedded Access Inc
+   6:../Sources/UiTask.c ****  */
+   7:../Sources/UiTask.c **** 
+   8:../Sources/UiTask.c **** #include "main.h"
+   9:../Sources/UiTask.c **** 
+  10:../Sources/UiTask.c **** /*TASK*-----------------------------------------------------
+  11:../Sources/UiTask.c **** * 
+  12:../Sources/UiTask.c **** * Task Name    : Ui_task
+  13:../Sources/UiTask.c **** * Comments     :
+  14:../Sources/UiTask.c **** *    This is the User Interface task
+  15:../Sources/UiTask.c **** *
+  16:../Sources/UiTask.c **** *END*-----------------------------------------------------*/
+  17:../Sources/UiTask.c **** 
+  18:../Sources/UiTask.c **** void Ui_task(uint32_t initial_data)
+  19:../Sources/UiTask.c **** {
+  77              		.loc 1 19 0
+  78              		.cfi_startproc
+  79              		@ args = 0, pretend = 0, frame = 64
+  80              		@ frame_needed = 1, uses_anonymous_args = 0
+  81 0000 90B5     		push	{r4, r7, lr}
+  82              	.LCFI0:
+  83              		.cfi_def_cfa_offset 12
+  84              		.cfi_offset 4, -12
+  85              		.cfi_offset 7, -8
+  86              		.cfi_offset 14, -4
+  87 0002 91B0     		sub	sp, sp, #68
+  88              	.LCFI1:
+  89              		.cfi_def_cfa_offset 80
+  90 0004 00AF     		add	r7, sp, #0
+  91              	.LCFI2:
+  92              		.cfi_def_cfa_register 7
+  93 0006 7860     		str	r0, [r7, #4]
+  20:../Sources/UiTask.c **** 	uint32_t numCanTasks, i;
+  21:../Sources/UiTask.c **** 	char c;
+  22:../Sources/UiTask.c **** 	_task_id ids[10] = {0};
+  94              		.loc 1 22 0
+  95 0008 07F10C03 		add	r3, r7, #12
+  96 000c 4FF00002 		mov	r2, #0
+  97 0010 1A60     		str	r2, [r3, #0]
+  98 0012 03F10403 		add	r3, r3, #4
+  99 0016 4FF00002 		mov	r2, #0
+ 100 001a 1A60     		str	r2, [r3, #0]
+ 101 001c 03F10403 		add	r3, r3, #4
+ 102 0020 4FF00002 		mov	r2, #0
+ 103 0024 1A60     		str	r2, [r3, #0]
+ 104 0026 03F10403 		add	r3, r3, #4
+ 105 002a 4FF00002 		mov	r2, #0
+ 106 002e 1A60     		str	r2, [r3, #0]
+ 107 0030 03F10403 		add	r3, r3, #4
+ 108 0034 4FF00002 		mov	r2, #0
+ 109 0038 1A60     		str	r2, [r3, #0]
+ 110 003a 03F10403 		add	r3, r3, #4
+ 111 003e 4FF00002 		mov	r2, #0
+ 112 0042 1A60     		str	r2, [r3, #0]
+ 113 0044 03F10403 		add	r3, r3, #4
+ 114 0048 4FF00002 		mov	r2, #0
+ 115 004c 1A60     		str	r2, [r3, #0]
+ 116 004e 03F10403 		add	r3, r3, #4
+ 117 0052 4FF00002 		mov	r2, #0
+ 118 0056 1A60     		str	r2, [r3, #0]
+ 119 0058 03F10403 		add	r3, r3, #4
+ 120 005c 4FF00002 		mov	r2, #0
+ 121 0060 1A60     		str	r2, [r3, #0]
+ 122 0062 03F10403 		add	r3, r3, #4
+ 123 0066 4FF00002 		mov	r2, #0
+ 124 006a 1A60     		str	r2, [r3, #0]
+ 125 006c 03F10403 		add	r3, r3, #4
+  23:../Sources/UiTask.c **** 	
+  24:../Sources/UiTask.c **** 	printf("\n Ui: Hello World \n"); 
+ 126              		.loc 1 24 0
+ 127 0070 40F20000 		movw	r0, #:lower16:.LC0
+ 128 0074 C0F20000 		movt	r0, #:upper16:.LC0
+ 129 0078 FFF7FEFF 		bl	_io_printf
+ 130              	.L26:
+  25:../Sources/UiTask.c **** 	
+  26:../Sources/UiTask.c **** 	while(1){	
+  27:../Sources/UiTask.c **** 		
+  28:../Sources/UiTask.c **** 		printf("\n>");
+ 131              		.loc 1 28 0
+ 132 007c 40F20000 		movw	r0, #:lower16:.LC1
+ 133 0080 C0F20000 		movt	r0, #:upper16:.LC1
+ 134 0084 FFF7FEFF 		bl	_io_printf
+  29:../Sources/UiTask.c **** 		c = fgetc(stdin);
+ 135              		.loc 1 29 0
+ 136 0088 4FF00000 		mov	r0, #0
+ 137 008c FFF7FEFF 		bl	_io_get_handle
+ 138 0090 0346     		mov	r3, r0
+ 139 0092 1846     		mov	r0, r3
+ 140 0094 FFF7FEFF 		bl	_io_fgetc
+ 141 0098 0346     		mov	r3, r0
+ 142 009a 87F83F30 		strb	r3, [r7, #63]
+  30:../Sources/UiTask.c **** 		
+  31:../Sources/UiTask.c **** 		switch(c){
+ 143              		.loc 1 31 0
+ 144 009e 97F83F30 		ldrb	r3, [r7, #63]	@ zero_extendqisi2
+ 145 00a2 A3F16103 		sub	r3, r3, #97
+ 146 00a6 112B     		cmp	r3, #17
+ 147 00a8 00F24D81 		bhi	.L2
+ 148 00ac 01A1     		adr	r1, .L8
+ 149 00ae 51F823F0 		ldr	pc, [r1, r3, lsl #2]
+ 150 00b2 00BF     		.align	2
+ 151              	.L8:
+ 152 00b4 2B020000 		.word	.L3+1
+ 153 00b8 47030000 		.word	.L2+1
+ 154 00bc FD000000 		.word	.L4+1
+ 155 00c0 B7010000 		.word	.L5+1
+ 156 00c4 47030000 		.word	.L2+1
+ 157 00c8 47030000 		.word	.L2+1
+ 158 00cc 47030000 		.word	.L2+1
+ 159 00d0 09030000 		.word	.L6+1
+ 160 00d4 47030000 		.word	.L2+1
+ 161 00d8 47030000 		.word	.L2+1
+ 162 00dc 47030000 		.word	.L2+1
+ 163 00e0 47030000 		.word	.L2+1
+ 164 00e4 47030000 		.word	.L2+1
+ 165 00e8 47030000 		.word	.L2+1
+ 166 00ec 47030000 		.word	.L2+1
+ 167 00f0 47030000 		.word	.L2+1
+ 168 00f4 47030000 		.word	.L2+1
+ 169 00f8 9F020000 		.word	.L7+1
+ 170              	.L4:
+  32:../Sources/UiTask.c **** 			
+  33:../Sources/UiTask.c **** 		case 'c':
+  34:../Sources/UiTask.c **** 			printf("\n Enter a number of CAN Tasks to create [1-10]: \n"); 
+ 171              		.loc 1 34 0
+ 172 00fc 40F20000 		movw	r0, #:lower16:.LC2
+ 173 0100 C0F20000 		movt	r0, #:upper16:.LC2
+ 174 0104 FFF7FEFF 		bl	_io_printf
+  35:../Sources/UiTask.c **** 			
+  36:../Sources/UiTask.c **** 			while(!(scanf("%d", &numCanTasks))){
+ 175              		.loc 1 36 0
+ 176 0108 05E0     		b	.L9
+ 177              	.L10:
+  37:../Sources/UiTask.c **** 				printf("Try Again. Enter a number from 1-10: \n");
+ 178              		.loc 1 37 0
+ 179 010a 40F20000 		movw	r0, #:lower16:.LC3
+ 180 010e C0F20000 		movt	r0, #:upper16:.LC3
+ 181 0112 FFF7FEFF 		bl	_io_printf
+ 182              	.L9:
+  36:../Sources/UiTask.c **** 			while(!(scanf("%d", &numCanTasks))){
+ 183              		.loc 1 36 0
+ 184 0116 07F13803 		add	r3, r7, #56
+ 185 011a 40F20000 		movw	r0, #:lower16:.LC4
+ 186 011e C0F20000 		movt	r0, #:upper16:.LC4
+ 187 0122 1946     		mov	r1, r3
+ 188 0124 FFF7FEFF 		bl	_io_scanf
+ 189 0128 0346     		mov	r3, r0
+ 190 012a 002B     		cmp	r3, #0
+ 191 012c EDD0     		beq	.L10
+  38:../Sources/UiTask.c **** 			}
+  39:../Sources/UiTask.c **** 			if(numCanTasks > 10)
+ 192              		.loc 1 39 0
+ 193 012e BB6B     		ldr	r3, [r7, #56]
+ 194 0130 0A2B     		cmp	r3, #10
+ 195 0132 02D9     		bls	.L11
+  40:../Sources/UiTask.c **** 				numCanTasks = 10;
+ 196              		.loc 1 40 0
+ 197 0134 4FF00A03 		mov	r3, #10
+ 198 0138 BB63     		str	r3, [r7, #56]
+ 199              	.L11:
+  41:../Sources/UiTask.c **** 			
+  42:../Sources/UiTask.c **** 			for(i=0; i<numCanTasks; i++){
+ 200              		.loc 1 42 0
+ 201 013a 4FF00003 		mov	r3, #0
+ 202 013e 7B63     		str	r3, [r7, #52]
+ 203 0140 34E0     		b	.L12
+ 204              	.L15:
+  43:../Sources/UiTask.c **** 				
+  44:../Sources/UiTask.c **** 				ids[i] = _task_create(0, CAN_TASK, i);				
+ 205              		.loc 1 44 0
+ 206 0142 7C6B     		ldr	r4, [r7, #52]
+ 207 0144 7B6B     		ldr	r3, [r7, #52]
+ 208 0146 4FF00000 		mov	r0, #0
+ 209 014a 4FF00601 		mov	r1, #6
+ 210 014e 1A46     		mov	r2, r3
+ 211 0150 FFF7FEFF 		bl	_task_create
+ 212 0154 0246     		mov	r2, r0
+ 213 0156 4FEA8403 		lsl	r3, r4, #2
+ 214 015a 07F14001 		add	r1, r7, #64
+ 215 015e CB18     		adds	r3, r1, r3
+ 216 0160 43F8342C 		str	r2, [r3, #-52]
+  45:../Sources/UiTask.c **** 				if (ids[i] == MQX_NULL_TASK_ID)
+ 217              		.loc 1 45 0
+ 218 0164 7B6B     		ldr	r3, [r7, #52]
+ 219 0166 4FEA8303 		lsl	r3, r3, #2
+ 220 016a 07F14002 		add	r2, r7, #64
+ 221 016e D318     		adds	r3, r2, r3
+ 222 0170 53F8343C 		ldr	r3, [r3, #-52]
+ 223 0174 002B     		cmp	r3, #0
+ 224 0176 06D1     		bne	.L13
+  46:../Sources/UiTask.c **** 				      printf ("\nCould not create Can_task\n");
+ 225              		.loc 1 46 0
+ 226 0178 40F20000 		movw	r0, #:lower16:.LC5
+ 227 017c C0F20000 		movt	r0, #:upper16:.LC5
+ 228 0180 FFF7FEFF 		bl	_io_printf
+ 229 0184 0EE0     		b	.L14
+ 230              	.L13:
+  47:../Sources/UiTask.c **** 				else
+  48:../Sources/UiTask.c **** 					printf("\nCreated task 0x%08x", ids[i]);
+ 231              		.loc 1 48 0
+ 232 0186 7B6B     		ldr	r3, [r7, #52]
+ 233 0188 4FEA8303 		lsl	r3, r3, #2
+ 234 018c 07F14001 		add	r1, r7, #64
+ 235 0190 CB18     		adds	r3, r1, r3
+ 236 0192 53F8343C 		ldr	r3, [r3, #-52]
+ 237 0196 40F20000 		movw	r0, #:lower16:.LC6
+ 238 019a C0F20000 		movt	r0, #:upper16:.LC6
+ 239 019e 1946     		mov	r1, r3
+ 240 01a0 FFF7FEFF 		bl	_io_printf
+ 241              	.L14:
+  42:../Sources/UiTask.c **** 			for(i=0; i<numCanTasks; i++){
+ 242              		.loc 1 42 0
+ 243 01a4 7B6B     		ldr	r3, [r7, #52]
+ 244 01a6 03F10103 		add	r3, r3, #1
+ 245 01aa 7B63     		str	r3, [r7, #52]
+ 246              	.L12:
+  42:../Sources/UiTask.c **** 			for(i=0; i<numCanTasks; i++){
+ 247              		.loc 1 42 0 is_stmt 0
+ 248 01ac 7A6B     		ldr	r2, [r7, #52]
+ 249 01ae BB6B     		ldr	r3, [r7, #56]
+ 250 01b0 9A42     		cmp	r2, r3
+ 251 01b2 C6D3     		bcc	.L15
+  49:../Sources/UiTask.c **** 			}
+  50:../Sources/UiTask.c **** 			break;
+ 252              		.loc 1 50 0 is_stmt 1
+ 253 01b4 CEE0     		b	.L16
+ 254              	.L5:
+  51:../Sources/UiTask.c **** 			
+  52:../Sources/UiTask.c **** 		case 'd':		
+  53:../Sources/UiTask.c **** 			
+  54:../Sources/UiTask.c **** 			for(i=0; i<10; i++){ //for(all tasks)
+ 255              		.loc 1 54 0
+ 256 01b6 4FF00003 		mov	r3, #0
+ 257 01ba 7B63     		str	r3, [r7, #52]
+ 258 01bc 31E0     		b	.L17
+ 259              	.L19:
+  55:../Sources/UiTask.c **** 				
+  56:../Sources/UiTask.c **** 				if(ids[i]){
+ 260              		.loc 1 56 0
+ 261 01be 7B6B     		ldr	r3, [r7, #52]
+ 262 01c0 4FEA8303 		lsl	r3, r3, #2
+ 263 01c4 07F14002 		add	r2, r7, #64
+ 264 01c8 D318     		adds	r3, r2, r3
+ 265 01ca 53F8343C 		ldr	r3, [r3, #-52]
+ 266 01ce 002B     		cmp	r3, #0
+ 267 01d0 23D0     		beq	.L18
+  57:../Sources/UiTask.c **** 					
+  58:../Sources/UiTask.c **** 					printf ("\n Destroying task 0x%08x \n", ids[i]);
+ 268              		.loc 1 58 0
+ 269 01d2 7B6B     		ldr	r3, [r7, #52]
+ 270 01d4 4FEA8303 		lsl	r3, r3, #2
+ 271 01d8 07F14001 		add	r1, r7, #64
+ 272 01dc CB18     		adds	r3, r1, r3
+ 273 01de 53F8343C 		ldr	r3, [r3, #-52]
+ 274 01e2 40F20000 		movw	r0, #:lower16:.LC7
+ 275 01e6 C0F20000 		movt	r0, #:upper16:.LC7
+ 276 01ea 1946     		mov	r1, r3
+ 277 01ec FFF7FEFF 		bl	_io_printf
+  59:../Sources/UiTask.c **** 					_task_destroy(ids[i]);
+ 278              		.loc 1 59 0
+ 279 01f0 7B6B     		ldr	r3, [r7, #52]
+ 280 01f2 4FEA8303 		lsl	r3, r3, #2
+ 281 01f6 07F14002 		add	r2, r7, #64
+ 282 01fa D318     		adds	r3, r2, r3
+ 283 01fc 53F8343C 		ldr	r3, [r3, #-52]
+ 284 0200 1846     		mov	r0, r3
+ 285 0202 FFF7FEFF 		bl	_task_destroy
+  60:../Sources/UiTask.c **** 					ids[i] = 0;
+ 286              		.loc 1 60 0
+ 287 0206 7B6B     		ldr	r3, [r7, #52]
+ 288 0208 4FEA8303 		lsl	r3, r3, #2
+ 289 020c 07F14001 		add	r1, r7, #64
+ 290 0210 CB18     		adds	r3, r1, r3
+ 291 0212 4FF00002 		mov	r2, #0
+ 292 0216 43F8342C 		str	r2, [r3, #-52]
+ 293              	.L18:
+  54:../Sources/UiTask.c **** 			for(i=0; i<10; i++){ //for(all tasks)
+ 294              		.loc 1 54 0
+ 295 021a 7B6B     		ldr	r3, [r7, #52]
+ 296 021c 03F10103 		add	r3, r3, #1
+ 297 0220 7B63     		str	r3, [r7, #52]
+ 298              	.L17:
+  54:../Sources/UiTask.c **** 			for(i=0; i<10; i++){ //for(all tasks)
+ 299              		.loc 1 54 0 is_stmt 0
+ 300 0222 7B6B     		ldr	r3, [r7, #52]
+ 301 0224 092B     		cmp	r3, #9
+ 302 0226 CAD9     		bls	.L19
+  61:../Sources/UiTask.c **** 				}
+  62:../Sources/UiTask.c **** 			}
+  63:../Sources/UiTask.c **** 			break;	
+ 303              		.loc 1 63 0 is_stmt 1
+ 304 0228 94E0     		b	.L16
+ 305              	.L3:
+  64:../Sources/UiTask.c **** 			
+  65:../Sources/UiTask.c **** 		case 'a':
+  66:../Sources/UiTask.c **** 				for (i=0; i<10; i++) {
+ 306              		.loc 1 66 0
+ 307 022a 4FF00003 		mov	r3, #0
+ 308 022e 7B63     		str	r3, [r7, #52]
+ 309 0230 31E0     		b	.L20
+ 310              	.L22:
+  67:../Sources/UiTask.c **** 					if (ids[i]) {
+ 311              		.loc 1 67 0
+ 312 0232 7B6B     		ldr	r3, [r7, #52]
+ 313 0234 4FEA8303 		lsl	r3, r3, #2
+ 314 0238 07F14002 		add	r2, r7, #64
+ 315 023c D318     		adds	r3, r2, r3
+ 316 023e 53F8343C 		ldr	r3, [r3, #-52]
+ 317 0242 002B     		cmp	r3, #0
+ 318 0244 23D0     		beq	.L21
+  68:../Sources/UiTask.c **** 						printf("\nAborting task 0x%08x \n", ids[i]);
+ 319              		.loc 1 68 0
+ 320 0246 7B6B     		ldr	r3, [r7, #52]
+ 321 0248 4FEA8303 		lsl	r3, r3, #2
+ 322 024c 07F14001 		add	r1, r7, #64
+ 323 0250 CB18     		adds	r3, r1, r3
+ 324 0252 53F8343C 		ldr	r3, [r3, #-52]
+ 325 0256 40F20000 		movw	r0, #:lower16:.LC8
+ 326 025a C0F20000 		movt	r0, #:upper16:.LC8
+ 327 025e 1946     		mov	r1, r3
+ 328 0260 FFF7FEFF 		bl	_io_printf
+  69:../Sources/UiTask.c **** 						_task_abort(ids[i]);
+ 329              		.loc 1 69 0
+ 330 0264 7B6B     		ldr	r3, [r7, #52]
+ 331 0266 4FEA8303 		lsl	r3, r3, #2
+ 332 026a 07F14002 		add	r2, r7, #64
+ 333 026e D318     		adds	r3, r2, r3
+ 334 0270 53F8343C 		ldr	r3, [r3, #-52]
+ 335 0274 1846     		mov	r0, r3
+ 336 0276 FFF7FEFF 		bl	_task_abort
+  70:../Sources/UiTask.c **** 						ids[i] =0;
+ 337              		.loc 1 70 0
+ 338 027a 7B6B     		ldr	r3, [r7, #52]
+ 339 027c 4FEA8303 		lsl	r3, r3, #2
+ 340 0280 07F14001 		add	r1, r7, #64
+ 341 0284 CB18     		adds	r3, r1, r3
+ 342 0286 4FF00002 		mov	r2, #0
+ 343 028a 43F8342C 		str	r2, [r3, #-52]
+ 344              	.L21:
+  66:../Sources/UiTask.c **** 				for (i=0; i<10; i++) {
+ 345              		.loc 1 66 0
+ 346 028e 7B6B     		ldr	r3, [r7, #52]
+ 347 0290 03F10103 		add	r3, r3, #1
+ 348 0294 7B63     		str	r3, [r7, #52]
+ 349              	.L20:
+  66:../Sources/UiTask.c **** 				for (i=0; i<10; i++) {
+ 350              		.loc 1 66 0 is_stmt 0
+ 351 0296 7B6B     		ldr	r3, [r7, #52]
+ 352 0298 092B     		cmp	r3, #9
+ 353 029a CAD9     		bls	.L22
+  71:../Sources/UiTask.c **** 					}
+  72:../Sources/UiTask.c **** 				}
+  73:../Sources/UiTask.c **** 				break;
+ 354              		.loc 1 73 0 is_stmt 1
+ 355 029c 5AE0     		b	.L16
+ 356              	.L7:
+  74:../Sources/UiTask.c **** 				
+  75:../Sources/UiTask.c **** 		case 'r':
+  76:../Sources/UiTask.c **** 				for (i=0; i<10; i++) {
+ 357              		.loc 1 76 0
+ 358 029e 4FF00003 		mov	r3, #0
+ 359 02a2 7B63     		str	r3, [r7, #52]
+ 360 02a4 2CE0     		b	.L23
+ 361              	.L25:
+  77:../Sources/UiTask.c **** 					if (ids[i]) {
+ 362              		.loc 1 77 0
+ 363 02a6 7B6B     		ldr	r3, [r7, #52]
+ 364 02a8 4FEA8303 		lsl	r3, r3, #2
+ 365 02ac 07F14002 		add	r2, r7, #64
+ 366 02b0 D318     		adds	r3, r2, r3
+ 367 02b2 53F8343C 		ldr	r3, [r3, #-52]
+ 368 02b6 002B     		cmp	r3, #0
+ 369 02b8 1ED0     		beq	.L24
+  78:../Sources/UiTask.c **** 						printf("\nRestarting task 0x%08x", ids[i]);
+ 370              		.loc 1 78 0
+ 371 02ba 7B6B     		ldr	r3, [r7, #52]
+ 372 02bc 4FEA8303 		lsl	r3, r3, #2
+ 373 02c0 07F14001 		add	r1, r7, #64
+ 374 02c4 CB18     		adds	r3, r1, r3
+ 375 02c6 53F8343C 		ldr	r3, [r3, #-52]
+ 376 02ca 40F20000 		movw	r0, #:lower16:.LC9
+ 377 02ce C0F20000 		movt	r0, #:upper16:.LC9
+ 378 02d2 1946     		mov	r1, r3
+ 379 02d4 FFF7FEFF 		bl	_io_printf
+  79:../Sources/UiTask.c **** 						_task_restart(ids[i],&i, FALSE);
+ 380              		.loc 1 79 0
+ 381 02d8 7B6B     		ldr	r3, [r7, #52]
+ 382 02da 4FEA8303 		lsl	r3, r3, #2
+ 383 02de 07F14002 		add	r2, r7, #64
+ 384 02e2 D318     		adds	r3, r2, r3
+ 385 02e4 53F8342C 		ldr	r2, [r3, #-52]
+ 386 02e8 07F13403 		add	r3, r7, #52
+ 387 02ec 1046     		mov	r0, r2
+ 388 02ee 1946     		mov	r1, r3
+ 389 02f0 4FF00002 		mov	r2, #0
+ 390 02f4 FFF7FEFF 		bl	_task_restart
+ 391              	.L24:
+  76:../Sources/UiTask.c **** 				for (i=0; i<10; i++) {
+ 392              		.loc 1 76 0
+ 393 02f8 7B6B     		ldr	r3, [r7, #52]
+ 394 02fa 03F10103 		add	r3, r3, #1
+ 395 02fe 7B63     		str	r3, [r7, #52]
+ 396              	.L23:
+  76:../Sources/UiTask.c **** 				for (i=0; i<10; i++) {
+ 397              		.loc 1 76 0 is_stmt 0
+ 398 0300 7B6B     		ldr	r3, [r7, #52]
+ 399 0302 092B     		cmp	r3, #9
+ 400 0304 CFD9     		bls	.L25
+  80:../Sources/UiTask.c **** 					}
+  81:../Sources/UiTask.c **** 				}
+  82:../Sources/UiTask.c **** 				break;		
+ 401              		.loc 1 82 0 is_stmt 1
+ 402 0306 25E0     		b	.L16
+ 403              	.L6:
+  83:../Sources/UiTask.c **** 			
+  84:../Sources/UiTask.c **** 			
+  85:../Sources/UiTask.c **** 		case 'h':
+  86:../Sources/UiTask.c **** 			printf("\nc- create can tasks");
+ 404              		.loc 1 86 0
+ 405 0308 40F20000 		movw	r0, #:lower16:.LC10
+ 406 030c C0F20000 		movt	r0, #:upper16:.LC10
+ 407 0310 FFF7FEFF 		bl	_io_printf
+  87:../Sources/UiTask.c **** 			printf("\na- abort can tasks");
+ 408              		.loc 1 87 0
+ 409 0314 40F20000 		movw	r0, #:lower16:.LC11
+ 410 0318 C0F20000 		movt	r0, #:upper16:.LC11
+ 411 031c FFF7FEFF 		bl	_io_printf
+  88:../Sources/UiTask.c **** 			printf("\nd- destroy can tasks");
+ 412              		.loc 1 88 0
+ 413 0320 40F20000 		movw	r0, #:lower16:.LC12
+ 414 0324 C0F20000 		movt	r0, #:upper16:.LC12
+ 415 0328 FFF7FEFF 		bl	_io_printf
+  89:../Sources/UiTask.c **** 			printf("\nr- restart can tasks");
+ 416              		.loc 1 89 0
+ 417 032c 40F20000 		movw	r0, #:lower16:.LC13
+ 418 0330 C0F20000 		movt	r0, #:upper16:.LC13
+ 419 0334 FFF7FEFF 		bl	_io_printf
+  90:../Sources/UiTask.c **** 			printf("\nh- help");
+ 420              		.loc 1 90 0
+ 421 0338 40F20000 		movw	r0, #:lower16:.LC14
+ 422 033c C0F20000 		movt	r0, #:upper16:.LC14
+ 423 0340 FFF7FEFF 		bl	_io_printf
+  91:../Sources/UiTask.c **** 			break;			
+ 424              		.loc 1 91 0
+ 425 0344 06E0     		b	.L16
+ 426              	.L2:
+  92:../Sources/UiTask.c **** 		
+  93:../Sources/UiTask.c **** 		default:
+  94:../Sources/UiTask.c **** 				printf("Invalid selection!\n");
+ 427              		.loc 1 94 0
+ 428 0346 40F20000 		movw	r0, #:lower16:.LC15
+ 429 034a C0F20000 		movt	r0, #:upper16:.LC15
+ 430 034e FFF7FEFF 		bl	_io_printf
+  95:../Sources/UiTask.c **** 				break;
+ 431              		.loc 1 95 0
+ 432 0352 00BF     		nop
+ 433              	.L16:
+  96:../Sources/UiTask.c **** 		}
+  97:../Sources/UiTask.c **** 		
+  98:../Sources/UiTask.c **** 	}
+ 434              		.loc 1 98 0
+ 435 0354 92E6     		b	.L26
+ 436              		.cfi_endproc
+ 437              	.LFE0:
+ 439 0356 00BF     		.text
+ 440              	.Letext0:
+ 441              		.file 2 "C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cstdint"
+ 442              		.file 3 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psptypes.h"
+ 443              		.file 4 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/mqx.h"
+ 444              		.file 5 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/queue.h"
+ 445              		.file 6 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/fio.h"
+ 446              		.file 7 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/io.h"
+ 447              		.file 8 "../Sources/main.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 UiTask.c
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:19     .rodata:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:20     .rodata:00000000 .LC0
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:23     .rodata:00000014 .LC1
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:26     .rodata:00000018 .LC2
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:30     .rodata:0000004c .LC3
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:33     .rodata:00000074 .LC4
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:36     .rodata:00000078 .LC5
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:39     .rodata:00000094 .LC6
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:42     .rodata:000000ac .LC7
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:45     .rodata:000000c8 .LC8
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:48     .rodata:000000e0 .LC9
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:51     .rodata:000000f8 .LC10
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:54     .rodata:00000110 .LC11
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:57     .rodata:00000124 .LC12
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:60     .rodata:0000013c .LC13
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:63     .rodata:00000154 .LC14
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:66     .rodata:00000160 .LC15
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:69     .text.Ui_task:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:74     .text.Ui_task:00000000 Ui_task
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:152    .text.Ui_task:000000b4 $d
+C:\Users\Angus\AppData\Local\Temp\cct6QmZg.s:172    .text.Ui_task:000000fc $t
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+_io_printf
+_io_get_handle
+_io_fgetc
+_io_scanf
+_task_create
+_task_destroy
+_task_abort
+_task_restart
