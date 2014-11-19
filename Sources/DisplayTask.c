@@ -63,14 +63,9 @@ void Display_task(uint32_t initial_data)
 				break;
 			
 			case ADC_READ_MESSAGE:
-				/*
-				if(msg->DATA<600){
-					lwgpio_toggle_value(&leds[2]);					
-				}
-				else {
-					// Toggle blue LED
-					lwgpio_toggle_value(&leds[3]);
-				}*/
+				/* 
+					TODO: output ADC potentiometer data directly to serial
+				*/
 				break;
 				
 			case TOUCH_MESSAGE:

@@ -206,16 +206,6 @@ void sw1_isr(void * param) {
 	
 	/* Lab 7 - shorten ISR */
 	_lwevent_set(&lwevent_group, SW1_EVENT);
-	
-
-	/*
-	msg = _msg_alloc_system(sizeof(*msg));	
-	if (msg != NULL ) {
-		msg->HEADER.TARGET_QID =_msgq_get_id(0, HEALTH_QUEUE);
-		msg->MESSAGE_TYPE = SW1_Message;
-		msg->DATA = 0;
-		_msgq_send(msg);
-	}*/
 }
 
 void sw2_isr(void * param) {

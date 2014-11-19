@@ -39,7 +39,6 @@ void Health_task(uint32_t initial_data)
 	my_qid = _msgq_open(HEALTH_QUEUE, 0); /* Open message queue for health task */
 	display_qid = _msgq_get_id(0, DISPLAY_QUEUE);	
 	
-	//printf("\n Health: Hello World\n"); 
 	while(1){		
 		msg = _msgq_receive(my_qid, 0);		
 		//printf("Health task received a message\n");

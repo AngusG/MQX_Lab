@@ -57,7 +57,7 @@ void Accel_task(uint32_t initial_data)
 	   /* configure the MMA7660 */
 	   InitializeMMA7660();
 	
-	printf("\n Accel: Hello World \n"); 
+	//printf("\n Accel: Hello World \n"); 
 	
 	//_task_block(); // Per Lab 5 requirements	
 	health_qid = _msgq_get_id(0, HEALTH_QUEUE);		
