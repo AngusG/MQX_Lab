@@ -41,7 +41,7 @@ void Ui_task(uint32_t initial_data)
 			
 			for(i=0; i<numCanTasks; i++){
 				
-				ids[i] = _task_create(0, CAN_TASK, i);				
+				//ids[i] = _task_create(0, CAN_TASK, i);
 				if (ids[i] == MQX_NULL_TASK_ID)
 				      printf ("\nCould not create Can_task\n");
 				else

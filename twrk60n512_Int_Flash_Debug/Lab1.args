@@ -1,3 +1,4 @@
+"./Sources/tsi.o"
 "./Sources/main.o"
 "./Sources/UiTask.o"
 "./Sources/TheftTask.o"

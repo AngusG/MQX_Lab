@@ -95,7 +95,7 @@
   79 0094 01000000 		.word	1
   80 0098 00000000 		.space	8
   80      00000000 
-  81 00a0 07000000 		.word	7
+  81 00a0 06000000 		.word	6
   82 00a4 00000000 		.word	Ui_task
   83 00a8 DC050000 		.word	1500
   84 00ac 0C000000 		.word	12
@@ -103,7 +103,7 @@
   86 00b4 01000000 		.word	1
   87 00b8 00000000 		.space	8
   87      00000000 
-  88 00c0 08000000 		.word	8
+  88 00c0 07000000 		.word	7
   89 00c4 00000000 		.word	Theft_task
   90 00c8 DC050000 		.word	1500
   91 00cc 0A000000 		.word	10
@@ -128,9 +128,9 @@
  108              		.file 5 "../Sources/main.c"
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\Angus\AppData\Local\Temp\ccNWrDgi.s:45     .data.MQX_template_list:00000000 MQX_template_list
-C:\Users\Angus\AppData\Local\Temp\ccNWrDgi.s:20     .rodata:00000000 $d
-C:\Users\Angus\AppData\Local\Temp\ccNWrDgi.s:42     .data.MQX_template_list:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\cc7dezNT.s:45     .data.MQX_template_list:00000000 MQX_template_list
+C:\Users\Angus\AppData\Local\Temp\cc7dezNT.s:20     .rodata:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\cc7dezNT.s:42     .data.MQX_template_list:00000000 $d
 
 UNDEFINED SYMBOLS
 Health_task

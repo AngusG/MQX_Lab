@@ -16,6 +16,7 @@
 *
 *END*-----------------------------------------------------*/
 
+
 void Display_task(uint32_t initial_data)
 {
 	_queue_id my_qid;
@@ -50,6 +51,7 @@ void Display_task(uint32_t initial_data)
 			printf("Display task received message %d: %d\n", msg->MESSAGE_TYPE,msg->DATA);
 
 			switch (msg->MESSAGE_TYPE) {
+			
 			case SW1_Message:
 				lwgpio_set_value(&leds[0], LWGPIO_VALUE_LOW); // Orange -ON
 				break;
@@ -61,23 +63,34 @@ void Display_task(uint32_t initial_data)
 				break;
 			
 			case ADC_READ_MESSAGE:
+				/*
 				if(msg->DATA<600){
 					lwgpio_toggle_value(&leds[2]);					
 				}
 				else {
-					/* Toggle blue LED */
+					// Toggle blue LED
 					lwgpio_toggle_value(&leds[3]);
-				}
+				}*/
 				break;
+				
+			case TOUCH_MESSAGE:
+				
+				if(1 == msg->DATA)
+					lwgpio_toggle_value(&leds[0]); //toggle orange LED
+				else if(2 == msg->DATA)
+					lwgpio_toggle_value(&leds[1]); //toggle yellow LED
+				else if(3 == msg->DATA)
+					lwgpio_toggle_value(&leds[2]); //toggle green LED
+				else if(4 == msg->DATA)
+					lwgpio_toggle_value(&leds[3]); //toggle blue LED
+				
+				break;
+			
 			}			
 			_msg_free(msg);
-		}
+		}  
 		else{
 			lwgpio_toggle_value(&leds[2]); //toggle green LED
 		}
-		
-		//_time_delay(1000);
-		//_sched_yield();
-		//_task_block();
-	}  
+	}
 }

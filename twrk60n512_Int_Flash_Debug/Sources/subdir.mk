@@ -14,6 +14,7 @@ C_SRCS_QUOTED += \
 "../Sources/TheftTask.c" \
 "../Sources/UiTask.c" \
 "../Sources/main.c" \
+"../Sources/tsi.c" \
 
 C_SRCS += \
 ../Sources/AccelTask.c \
@@ -24,6 +25,7 @@ C_SRCS += \
 ../Sources/TheftTask.c \
 ../Sources/UiTask.c \
 ../Sources/main.c \
+../Sources/tsi.c \
 
 OBJS += \
 ./Sources/AccelTask.o \
@@ -34,6 +36,7 @@ OBJS += \
 ./Sources/TheftTask.o \
 ./Sources/UiTask.o \
 ./Sources/main.o \
+./Sources/tsi.o \
 
 C_DEPS += \
 ./Sources/AccelTask.d \
@@ -44,6 +47,7 @@ C_DEPS += \
 ./Sources/TheftTask.d \
 ./Sources/UiTask.d \
 ./Sources/main.d \
+./Sources/tsi.d \
 
 OBJS_QUOTED += \
 "./Sources/AccelTask.o" \
@@ -54,6 +58,7 @@ OBJS_QUOTED += \
 "./Sources/TheftTask.o" \
 "./Sources/UiTask.o" \
 "./Sources/main.o" \
+"./Sources/tsi.o" \
 
 C_DEPS_QUOTED += \
 "./Sources/AccelTask.d" \
@@ -64,6 +69,7 @@ C_DEPS_QUOTED += \
 "./Sources/TheftTask.d" \
 "./Sources/UiTask.d" \
 "./Sources/main.d" \
+"./Sources/tsi.d" \
 
 OBJS_OS_FORMAT += \
 ./Sources/AccelTask.o \
@@ -74,6 +80,7 @@ OBJS_OS_FORMAT += \
 ./Sources/TheftTask.o \
 ./Sources/UiTask.o \
 ./Sources/main.o \
+./Sources/tsi.o \
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -138,6 +145,14 @@ Sources/main.o: ../Sources/main.c
 	@echo 'Executing target #8 $<'
 	@echo 'Invoking: ARM Ltd Windows GCC C Compiler'
 	"$(ARMSourceryDirEnv)/arm-none-eabi-gcc" "$<" @"Sources/main.args" -Wa,-adhlns="$@.lst" -MMD -MP -MF"$(@:%.o=%.d)" -o"Sources/main.o"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+Sources/tsi.o: ../Sources/tsi.c
+	@echo 'Building file: $<'
+	@echo 'Executing target #9 $<'
+	@echo 'Invoking: ARM Ltd Windows GCC C Compiler'
+	"$(ARMSourceryDirEnv)/arm-none-eabi-gcc" "$<" @"Sources/tsi.args" -Wa,-adhlns="$@.lst" -MMD -MP -MF"$(@:%.o=%.d)" -o"Sources/tsi.o"
 	@echo 'Finished building: $<'
 	@echo ' '
 

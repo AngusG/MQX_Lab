@@ -42,7 +42,7 @@ void Health_task(uint32_t initial_data)
 	//printf("\n Health: Hello World\n"); 
 	while(1){		
 		msg = _msgq_receive(my_qid, 0);		
-		printf("Health task received a message\n");
+		//printf("Health task received a message\n");
 		msg->HEADER.TARGET_QID = display_qid;
 		
 		_msgq_send(msg);

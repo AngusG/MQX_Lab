@@ -2,7 +2,7 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
-#Progress monitor hint: 8
+#Progress monitor hint: 9
 first : all
 -include ../makefile.init
 
@@ -57,7 +57,7 @@ all: warning-messages explicit-dependencies Lab1.elf secondary-outputs
 # Tool invocations
 Lab1.elf: $(OBJS) $(USER_OBJS) $(FREESCALE)/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/intflash.ld
 	@echo 'Building target: $@'
-	@echo 'Executing target #9 $@'
+	@echo 'Executing target #10 $@'
 	@echo 'Invoking: ARM Ltd Windows GCC C Linker'
 	"$(ARMSourceryDirEnv)/arm-none-eabi-gcc"    @"Lab1.args" -o"Lab1.elf"
 	@echo 'Finished building target: $@'

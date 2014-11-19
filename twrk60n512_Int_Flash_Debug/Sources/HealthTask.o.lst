@@ -23,21 +23,14 @@
   21      20746173 
   21      6B207374 
   21      61727465 
-  22 0017 00       		.align	2
-  23              	.LC1:
-  24 0018 4865616C 		.ascii	"Health task received a message\012\000"
-  24      74682074 
-  24      61736B20 
-  24      72656365 
-  24      69766564 
-  25              		.section	.text.Health_task,"ax",%progbits
-  26              		.align	2
-  27              		.global	Health_task
-  28              		.thumb
-  29              		.thumb_func
-  31              	Health_task:
-  32              	.LFB0:
-  33              		.file 1 "../Sources/HealthTask.c"
+  22 0017 00       		.section	.text.Health_task,"ax",%progbits
+  23              		.align	2
+  24              		.global	Health_task
+  25              		.thumb
+  26              		.thumb_func
+  28              	Health_task:
+  29              	.LFB0:
+  30              		.file 1 "../Sources/HealthTask.c"
    1:../Sources/HealthTask.c **** /*
    2:../Sources/HealthTask.c ****  * HealthTask.c
    3:../Sources/HealthTask.c ****  *
@@ -58,42 +51,42 @@
   18:../Sources/HealthTask.c **** 
   19:../Sources/HealthTask.c **** void Health_task(uint32_t initial_data)
   20:../Sources/HealthTask.c **** {
-  34              		.loc 1 20 0
-  35              		.cfi_startproc
-  36              		@ args = 0, pretend = 0, frame = 16
-  37              		@ frame_needed = 1, uses_anonymous_args = 0
-  38 0000 80B5     		push	{r7, lr}
-  39              	.LCFI0:
-  40              		.cfi_def_cfa_offset 8
-  41              		.cfi_offset 7, -8
-  42              		.cfi_offset 14, -4
-  43 0002 84B0     		sub	sp, sp, #16
-  44              	.LCFI1:
-  45              		.cfi_def_cfa_offset 24
-  46 0004 00AF     		add	r7, sp, #0
-  47              	.LCFI2:
-  48              		.cfi_def_cfa_register 7
-  49 0006 7860     		str	r0, [r7, #4]
+  31              		.loc 1 20 0
+  32              		.cfi_startproc
+  33              		@ args = 0, pretend = 0, frame = 16
+  34              		@ frame_needed = 1, uses_anonymous_args = 0
+  35 0000 80B5     		push	{r7, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 7, -8
+  39              		.cfi_offset 14, -4
+  40 0002 84B0     		sub	sp, sp, #16
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_offset 24
+  43 0004 00AF     		add	r7, sp, #0
+  44              	.LCFI2:
+  45              		.cfi_def_cfa_register 7
+  46 0006 7860     		str	r0, [r7, #4]
   21:../Sources/HealthTask.c **** 	_queue_id my_qid, display_qid;
   22:../Sources/HealthTask.c **** 	APPLICATION_MESSAGE * msg;
   23:../Sources/HealthTask.c **** 	
   24:../Sources/HealthTask.c **** 	printf("\n Health task started\n"); 
-  50              		.loc 1 24 0
-  51 0008 40F20000 		movw	r0, #:lower16:.LC0
-  52 000c C0F20000 		movt	r0, #:upper16:.LC0
-  53 0010 FFF7FEFF 		bl	_io_printf
+  47              		.loc 1 24 0
+  48 0008 40F20000 		movw	r0, #:lower16:.LC0
+  49 000c C0F20000 		movt	r0, #:upper16:.LC0
+  50 0010 FFF7FEFF 		bl	_io_printf
   25:../Sources/HealthTask.c **** 	
   26:../Sources/HealthTask.c **** 	 _klog_create(2*1024,0); //2048 Byte buffer, stop logging when full
-  54              		.loc 1 26 0
-  55 0014 4FF40060 		mov	r0, #2048
-  56 0018 4FF00001 		mov	r1, #0
-  57 001c FFF7FEFF 		bl	_klog_create
+  51              		.loc 1 26 0
+  52 0014 4FF40060 		mov	r0, #2048
+  53 0018 4FF00001 		mov	r1, #0
+  54 001c FFF7FEFF 		bl	_klog_create
   27:../Sources/HealthTask.c **** 	
   28:../Sources/HealthTask.c **** 	 _klog_control(KLOG_ENABLED | KLOG_CONTEXT_ENABLED |
-  58              		.loc 1 28 0
-  59 0020 46F61300 		movw	r0, #26643
-  60 0024 4FF00101 		mov	r1, #1
-  61 0028 FFF7FEFF 		bl	_klog_control
+  55              		.loc 1 28 0
+  56 0020 46F61300 		movw	r0, #26643
+  57 0024 4FF00101 		mov	r1, #1
+  58 0028 FFF7FEFF 		bl	_klog_control
   29:../Sources/HealthTask.c **** 			 	   KLOG_FUNCTIONS_ENABLED | KLOG_TIME_FUNCTIONS | KLOG_EVENT_FUNCTIONS |
   30:../Sources/HealthTask.c **** 			 	   //KLOG_TASK_QUALIFIED	  | 
   31:../Sources/HealthTask.c **** 			 	   //KLOG_NAME_FUNCTIONS 	  ,
@@ -102,79 +95,74 @@
   34:../Sources/HealthTask.c **** 			 	   TRUE ); //Enable kernel logging	 
   35:../Sources/HealthTask.c **** 	 
   36:../Sources/HealthTask.c **** 	_klog_enable_logging_task(_task_get_id()); /* Only tasks that enable klog can log */	
-  62              		.loc 1 36 0
-  63 002c FFF7FEFF 		bl	_task_get_id
-  64 0030 0346     		mov	r3, r0
-  65 0032 1846     		mov	r0, r3
-  66 0034 FFF7FEFF 		bl	_klog_enable_logging_task
+  59              		.loc 1 36 0
+  60 002c FFF7FEFF 		bl	_task_get_id
+  61 0030 0346     		mov	r3, r0
+  62 0032 1846     		mov	r0, r3
+  63 0034 FFF7FEFF 		bl	_klog_enable_logging_task
   37:../Sources/HealthTask.c **** 	_msgpool_create_system(sizeof(*msg), 10, 0, 0);	
-  67              		.loc 1 37 0
-  68 0038 4FF01000 		mov	r0, #16
-  69 003c 4FF00A01 		mov	r1, #10
-  70 0040 4FF00002 		mov	r2, #0
-  71 0044 4FF00003 		mov	r3, #0
-  72 0048 FFF7FEFF 		bl	_msgpool_create_system
+  64              		.loc 1 37 0
+  65 0038 4FF01000 		mov	r0, #16
+  66 003c 4FF00A01 		mov	r1, #10
+  67 0040 4FF00002 		mov	r2, #0
+  68 0044 4FF00003 		mov	r3, #0
+  69 0048 FFF7FEFF 		bl	_msgpool_create_system
   38:../Sources/HealthTask.c **** 	
   39:../Sources/HealthTask.c **** 	my_qid = _msgq_open(HEALTH_QUEUE, 0); /* Open message queue for health task */
-  73              		.loc 1 39 0
-  74 004c 4FF00100 		mov	r0, #1
-  75 0050 4FF00001 		mov	r1, #0
-  76 0054 FFF7FEFF 		bl	_msgq_open
-  77 0058 0346     		mov	r3, r0
-  78 005a FB81     		strh	r3, [r7, #14]	@ movhi
+  70              		.loc 1 39 0
+  71 004c 4FF00100 		mov	r0, #1
+  72 0050 4FF00001 		mov	r1, #0
+  73 0054 FFF7FEFF 		bl	_msgq_open
+  74 0058 0346     		mov	r3, r0
+  75 005a FB81     		strh	r3, [r7, #14]	@ movhi
   40:../Sources/HealthTask.c **** 	display_qid = _msgq_get_id(0, DISPLAY_QUEUE);	
-  79              		.loc 1 40 0
-  80 005c 4FF00000 		mov	r0, #0
-  81 0060 4FF00201 		mov	r1, #2
-  82 0064 FFF7FEFF 		bl	_msgq_get_id
-  83 0068 0346     		mov	r3, r0
-  84 006a BB81     		strh	r3, [r7, #12]	@ movhi
-  85              	.L2:
+  76              		.loc 1 40 0
+  77 005c 4FF00000 		mov	r0, #0
+  78 0060 4FF00201 		mov	r1, #2
+  79 0064 FFF7FEFF 		bl	_msgq_get_id
+  80 0068 0346     		mov	r3, r0
+  81 006a BB81     		strh	r3, [r7, #12]	@ movhi
+  82              	.L2:
   41:../Sources/HealthTask.c **** 	
   42:../Sources/HealthTask.c **** 	//printf("\n Health: Hello World\n"); 
   43:../Sources/HealthTask.c **** 	while(1){		
   44:../Sources/HealthTask.c **** 		msg = _msgq_receive(my_qid, 0);		
-  86              		.loc 1 44 0
-  87 006c FB89     		ldrh	r3, [r7, #14]
-  88 006e 1846     		mov	r0, r3
-  89 0070 4FF00001 		mov	r1, #0
-  90 0074 FFF7FEFF 		bl	_msgq_receive
-  91 0078 B860     		str	r0, [r7, #8]
-  45:../Sources/HealthTask.c **** 		printf("Health task received a message\n");
-  92              		.loc 1 45 0
-  93 007a 40F20000 		movw	r0, #:lower16:.LC1
-  94 007e C0F20000 		movt	r0, #:upper16:.LC1
-  95 0082 FFF7FEFF 		bl	_io_printf
+  83              		.loc 1 44 0
+  84 006c FB89     		ldrh	r3, [r7, #14]
+  85 006e 1846     		mov	r0, r3
+  86 0070 4FF00001 		mov	r1, #0
+  87 0074 FFF7FEFF 		bl	_msgq_receive
+  88 0078 B860     		str	r0, [r7, #8]
+  45:../Sources/HealthTask.c **** 		//printf("Health task received a message\n");
   46:../Sources/HealthTask.c **** 		msg->HEADER.TARGET_QID = display_qid;
-  96              		.loc 1 46 0
-  97 0086 BB68     		ldr	r3, [r7, #8]
-  98 0088 BA89     		ldrh	r2, [r7, #12]	@ movhi
-  99 008a 5A80     		strh	r2, [r3, #2]	@ movhi
+  89              		.loc 1 46 0
+  90 007a BB68     		ldr	r3, [r7, #8]
+  91 007c BA89     		ldrh	r2, [r7, #12]	@ movhi
+  92 007e 5A80     		strh	r2, [r3, #2]	@ movhi
   47:../Sources/HealthTask.c **** 		
   48:../Sources/HealthTask.c **** 		_msgq_send(msg);
- 100              		.loc 1 48 0
- 101 008c B868     		ldr	r0, [r7, #8]
- 102 008e FFF7FEFF 		bl	_msgq_send
+  93              		.loc 1 48 0
+  94 0080 B868     		ldr	r0, [r7, #8]
+  95 0082 FFF7FEFF 		bl	_msgq_send
   49:../Sources/HealthTask.c **** 		
   50:../Sources/HealthTask.c **** 		//_time_delay(1000);
   51:../Sources/HealthTask.c **** 		//_sched_yield(); // Task puts itself at the end of the ready-to-run queue (for its priority)
   52:../Sources/HealthTask.c **** 	}
- 103              		.loc 1 52 0
- 104 0092 EBE7     		b	.L2
- 105              		.cfi_endproc
- 106              	.LFE0:
- 108              		.text
- 109              	.Letext0:
- 110              		.file 2 "C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cstdint"
- 111              		.file 3 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/message.h"
- 112              		.file 4 "../Sources/main.h"
+  96              		.loc 1 52 0
+  97 0086 F1E7     		b	.L2
+  98              		.cfi_endproc
+  99              	.LFE0:
+ 101              		.text
+ 102              	.Letext0:
+ 103              		.file 2 "C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cstdint"
+ 104              		.file 3 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/message.h"
+ 105              		.file 4 "../Sources/main.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 HealthTask.c
-C:\Users\Angus\AppData\Local\Temp\cc7xCeZj.s:19     .rodata:00000000 $d
-C:\Users\Angus\AppData\Local\Temp\cc7xCeZj.s:20     .rodata:00000000 .LC0
-C:\Users\Angus\AppData\Local\Temp\cc7xCeZj.s:23     .rodata:00000018 .LC1
-C:\Users\Angus\AppData\Local\Temp\cc7xCeZj.s:26     .text.Health_task:00000000 $t
-C:\Users\Angus\AppData\Local\Temp\cc7xCeZj.s:31     .text.Health_task:00000000 Health_task
+C:\Users\Angus\AppData\Local\Temp\ccGe7PbL.s:19     .rodata:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\ccGe7PbL.s:20     .rodata:00000000 .LC0
+C:\Users\Angus\AppData\Local\Temp\ccGe7PbL.s:23     .text.Health_task:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccGe7PbL.s:28     .text.Health_task:00000000 Health_task
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

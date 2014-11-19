@@ -12,6 +12,54 @@
 #include <lwtimer.h> //lab 8
 #include <klog.h> //lab10
 
+/* Add legacy support (MQX 3.8 -> 4.1)*/ 
+#include <psptypes_legacy.h>
+
+/* Lab 7 - defines */
+#define SW1_EVENT 0x00000001
+#define SW2_EVENT 0x00000002
+/* Lab 8 - defines */
+#define ADC_TIMER_EVENT 0x00000004
+/* Add TSI */
+#define TOUCH1_EVENT 0x00000008 //bit 3
+#define TOUCH2_EVENT 0x00000010 //bit 4
+#define TOUCH3_EVENT 0x00000020 //bit 5
+#define TOUCH4_EVENT 0x00000040 //bit 6
+
+#define DEMO_DATA 0x0007F000
+
+/* Sensor Struct */
+typedef struct
+{
+  int_8 mma7660_x;
+  int_8 mma7660_y;
+  int_8 mma7660_z;
+  uint_8 mma7660_status;
+  int_8 pot;
+  int_8 temp_int;
+  int_8 temp_dec;
+} SENSOR_DATA;
+
+/* Mode enum */
+typedef volatile enum {
+   TOUCH=0,
+   TILT,
+   GAME,
+   MAX_MODES
+} DEMO_MODE;
+
+/* Global Variables */
+extern SENSOR_DATA Sensor;
+extern DEMO_MODE mode;
+extern LWSEM_STRUCT touch_sem;
+extern char print_accel;
+extern unsigned char current_score;
+extern unsigned char high_score;
+
+/*
+uint_16  g16ElectrodeTouch[16] = {0};
+uint_16  g16ElectrodeBaseline[16] = {0};
+uint_32  g32DebounceCounter[16] = {DBOUNCE_COUNTS};*/
 
 
 typedef enum {
@@ -20,7 +68,6 @@ typedef enum {
 	ACCEL_TASK,
 	TEMP_TASK,
 	INPUT_TASK,
-	CAN_TASK,
 	UI_TASK,
 	THEFT_TASK
 } TASK_TEMPLATE_INDEX_T;
@@ -31,7 +78,7 @@ extern void Display_task(uint32_t);
 extern void Accel_task(uint32_t);
 extern void Temp_task(uint32_t);
 extern void Input_task(uint32_t);
-extern void Can_task(uint32_t);
+//extern void Can_task(uint32_t);
 extern void Ui_task(uint32_t);
 extern void Theft_task(uint32_t);
 
@@ -45,7 +92,7 @@ typedef enum {
 	SW1_Message,
 	SW2_Message,
 	ADC_READ_MESSAGE,
-	CAN_MESSAGE, 
+	TOUCH_MESSAGE, 
 	TIMER_MESSAGE, 
 	ISR_MESSAGE, 
 	HEALTH_MESSAGE, 
@@ -68,7 +115,7 @@ typedef enum {
 	THEFT_QUEUE
 } APPLICATION_QUEUE_T;
 
-
+/*
 typedef struct
 {
   uint8_t mma7660_x;
@@ -78,7 +125,7 @@ typedef struct
   uint8_t pot;
   uint8_t temp_int;
   uint8_t temp_dec;
-} SENSOR_DATA;
+} SENSOR_DATA;*/
 
 
 /* PPP device must be set manually and 

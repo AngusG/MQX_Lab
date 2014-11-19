@@ -40,9 +40,9 @@ void print_accelerometer_data()
 {
    //MMA7660 Sensor
 
-   printf("Accel: X = %d, ", Sensor.mma7660_x );
-   printf("Y = %08d, ", Sensor.mma7660_y );
-   printf("Z = %08d\r\n", Sensor.mma7660_z );
+   printf("Accel: X = %03d, ", Sensor.mma7660_x );
+   printf("Y = %03d, ", Sensor.mma7660_y );
+   printf("Z = %03d\r\n", Sensor.mma7660_z );
 }
 
 void Accel_task(uint32_t initial_data)

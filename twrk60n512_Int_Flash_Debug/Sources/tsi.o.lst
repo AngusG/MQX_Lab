@@ -1,0 +1,992 @@
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"tsi.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	g16ElectrodeTouch
+  19              		.section	.bss.g16ElectrodeTouch,"aw",%nobits
+  20              		.align	2
+  23              	g16ElectrodeTouch:
+  24 0000 00000000 		.space	32
+  24      00000000 
+  24      00000000 
+  24      00000000 
+  24      00000000 
+  25              		.global	g16ElectrodeBaseline
+  26              		.section	.bss.g16ElectrodeBaseline,"aw",%nobits
+  27              		.align	2
+  30              	g16ElectrodeBaseline:
+  31 0000 00000000 		.space	32
+  31      00000000 
+  31      00000000 
+  31      00000000 
+  31      00000000 
+  32              		.global	g32DebounceCounter
+  33              		.section	.data.g32DebounceCounter,"aw",%progbits
+  34              		.align	2
+  37              	g32DebounceCounter:
+  38 0000 10000000 		.word	16
+  39 0004 00000000 		.space	60
+  39      00000000 
+  39      00000000 
+  39      00000000 
+  39      00000000 
+  40              		.section	.text.TSI_Start,"ax",%progbits
+  41              		.align	2
+  42              		.global	TSI_Start
+  43              		.thumb
+  44              		.thumb_func
+  46              	TSI_Start:
+  47              	.LFB0:
+  48              		.file 1 "../Sources/tsi.c"
+   1:../Sources/tsi.c **** /**************************************************************************
+   2:../Sources/tsi.c **** *
+   3:../Sources/tsi.c **** * FileName: TSI_Task.c
+   4:../Sources/tsi.c **** *
+   5:../Sources/tsi.c **** * Comments: Uses TSI driver to read touch pad presses
+   6:../Sources/tsi.c **** *
+   7:../Sources/tsi.c **** *
+   8:../Sources/tsi.c **** ***************************************************************************/
+   9:../Sources/tsi.c **** 
+  10:../Sources/tsi.c **** 
+  11:../Sources/tsi.c **** #include "tsi.h"
+  12:../Sources/tsi.c **** 
+  13:../Sources/tsi.c **** uint_16  g16ElectrodeTouch[16] = {0};
+  14:../Sources/tsi.c **** uint_16  g16ElectrodeBaseline[16] = {0};
+  15:../Sources/tsi.c **** uint_32  g32DebounceCounter[16] = {DBOUNCE_COUNTS};
+  16:../Sources/tsi.c **** 
+  17:../Sources/tsi.c **** 
+  18:../Sources/tsi.c **** //extern const LWEVENT_STRUCT lwevent_group;
+  19:../Sources/tsi.c **** extern LWEVENT_STRUCT lwevent_group;
+  20:../Sources/tsi.c **** 
+  21:../Sources/tsi.c **** 
+  22:../Sources/tsi.c **** /*
+  23:../Sources/tsi.c ****  * Functions for setting up the touch pads
+  24:../Sources/tsi.c ****  *
+  25:../Sources/tsi.c ****  */
+  26:../Sources/tsi.c **** 
+  27:../Sources/tsi.c **** void TSI_Start()
+  28:../Sources/tsi.c **** {
+  49              		.loc 1 28 0
+  50              		.cfi_startproc
+  51              		@ args = 0, pretend = 0, frame = 0
+  52              		@ frame_needed = 1, uses_anonymous_args = 0
+  53 0000 80B5     		push	{r7, lr}
+  54              	.LCFI0:
+  55              		.cfi_def_cfa_offset 8
+  56              		.cfi_offset 7, -8
+  57              		.cfi_offset 14, -4
+  58 0002 00AF     		add	r7, sp, #0
+  59              	.LCFI1:
+  60              		.cfi_def_cfa_register 7
+  29:../Sources/tsi.c ****   TSI_Init();
+  61              		.loc 1 29 0
+  62 0004 FFF7FEFF 		bl	TSI_Init
+  30:../Sources/tsi.c ****   TSI_SelfCalibration();
+  63              		.loc 1 30 0
+  64 0008 FFF7FEFF 		bl	TSI_SelfCalibration
+  31:../Sources/tsi.c **** 
+  32:../Sources/tsi.c ****   START_SCANNING;
+  65              		.loc 1 32 0
+  66 000c 4FF4A043 		mov	r3, #20480
+  67 0010 C4F20403 		movt	r3, 16388
+  68 0014 4FF4A042 		mov	r2, #20480
+  69 0018 C4F20402 		movt	r2, 16388
+  70 001c 1268     		ldr	r2, [r2, #0]
+  71 001e 42F00202 		orr	r2, r2, #2
+  72 0022 1A60     		str	r2, [r3, #0]
+  33:../Sources/tsi.c ****   ENABLE_EOS_INT;
+  73              		.loc 1 33 0
+  74 0024 4FF4A043 		mov	r3, #20480
+  75 0028 C4F20403 		movt	r3, 16388
+  76 002c 4FF4A042 		mov	r2, #20480
+  77 0030 C4F20402 		movt	r2, 16388
+  78 0034 1268     		ldr	r2, [r2, #0]
+  79 0036 42F05002 		orr	r2, r2, #80
+  80 003a 1A60     		str	r2, [r3, #0]
+  34:../Sources/tsi.c ****   ENABLE_TSI;
+  81              		.loc 1 34 0
+  82 003c 4FF4A043 		mov	r3, #20480
+  83 0040 C4F20403 		movt	r3, 16388
+  84 0044 4FF4A042 		mov	r2, #20480
+  85 0048 C4F20402 		movt	r2, 16388
+  86 004c 1268     		ldr	r2, [r2, #0]
+  87 004e 42F08002 		orr	r2, r2, #128
+  88 0052 1A60     		str	r2, [r3, #0]
+  35:../Sources/tsi.c **** }
+  89              		.loc 1 35 0
+  90 0054 80BD     		pop	{r7, pc}
+  91              		.cfi_endproc
+  92              	.LFE0:
+  94 0056 00BF     		.section	.text.TSI_Init,"ax",%progbits
+  95              		.align	2
+  96              		.global	TSI_Init
+  97              		.thumb
+  98              		.thumb_func
+ 100              	TSI_Init:
+ 101              	.LFB1:
+  36:../Sources/tsi.c **** 
+  37:../Sources/tsi.c **** /********************************************************************************
+  38:../Sources/tsi.c ****  *   TSI_Init: Initializes TSI module
+  39:../Sources/tsi.c ****  * Notes:
+  40:../Sources/tsi.c ****  *    -
+  41:../Sources/tsi.c ****  ********************************************************************************/
+  42:../Sources/tsi.c **** void TSI_Init(void)
+  43:../Sources/tsi.c **** {
+ 102              		.loc 1 43 0
+ 103              		.cfi_startproc
+ 104              		@ args = 0, pretend = 0, frame = 0
+ 105              		@ frame_needed = 1, uses_anonymous_args = 0
+ 106 0000 80B5     		push	{r7, lr}
+ 107              	.LCFI2:
+ 108              		.cfi_def_cfa_offset 8
+ 109              		.cfi_offset 7, -8
+ 110              		.cfi_offset 14, -4
+ 111 0002 00AF     		add	r7, sp, #0
+ 112              	.LCFI3:
+ 113              		.cfi_def_cfa_register 7
+  44:../Sources/tsi.c ****   SIM_SCGC5 |= (SIM_SCGC5_TSI_MASK); //Turn on clock to TSI module
+ 114              		.loc 1 44 0
+ 115 0004 4FF4E043 		mov	r3, #28672
+ 116 0008 C4F20403 		movt	r3, 16388
+ 117 000c 4FF4E042 		mov	r2, #28672
+ 118 0010 C4F20402 		movt	r2, 16388
+ 119 0014 02F58152 		add	r2, r2, #4128
+ 120 0018 02F11802 		add	r2, r2, #24
+ 121 001c 1268     		ldr	r2, [r2, #0]
+ 122 001e 42F02002 		orr	r2, r2, #32
+ 123 0022 03F58153 		add	r3, r3, #4128
+ 124 0026 03F11803 		add	r3, r3, #24
+ 125 002a 1A60     		str	r2, [r3, #0]
+  45:../Sources/tsi.c ****   PORTA_PCR4 = PORT_PCR_MUX(0);      //Enable ALT0 for portA4
+ 126              		.loc 1 45 0
+ 127 002c 4FF41043 		mov	r3, #36864
+ 128 0030 C4F20403 		movt	r3, 16388
+ 129 0034 4FF00002 		mov	r2, #0
+ 130 0038 1A61     		str	r2, [r3, #16]
+  46:../Sources/tsi.c ****   PORTB_PCR2 = PORT_PCR_MUX(0);      //Enable ALT0 for portB2
+ 131              		.loc 1 46 0
+ 132 003a 4FF42043 		mov	r3, #40960
+ 133 003e C4F20403 		movt	r3, 16388
+ 134 0042 4FF00002 		mov	r2, #0
+ 135 0046 9A60     		str	r2, [r3, #8]
+  47:../Sources/tsi.c ****   PORTB_PCR3 = PORT_PCR_MUX(0);      //Enable ALT0 for portB3
+ 136              		.loc 1 47 0
+ 137 0048 4FF42043 		mov	r3, #40960
+ 138 004c C4F20403 		movt	r3, 16388
+ 139 0050 4FF00002 		mov	r2, #0
+ 140 0054 DA60     		str	r2, [r3, #12]
+  48:../Sources/tsi.c ****   PORTB_PCR16 = PORT_PCR_MUX(0);      //Enable ALT0 for portB16
+ 141              		.loc 1 48 0
+ 142 0056 4FF42043 		mov	r3, #40960
+ 143 005a C4F20403 		movt	r3, 16388
+ 144 005e 4FF00002 		mov	r2, #0
+ 145 0062 1A64     		str	r2, [r3, #64]
+  49:../Sources/tsi.c **** 
+  50:../Sources/tsi.c **** 
+  51:../Sources/tsi.c ****   TSI0_GENCS |= ((TSI_GENCS_NSCN(10))|(TSI_GENCS_PS(3)));
+ 146              		.loc 1 51 0
+ 147 0064 4FF4A043 		mov	r3, #20480
+ 148 0068 C4F20403 		movt	r3, 16388
+ 149 006c 4FF4A042 		mov	r2, #20480
+ 150 0070 C4F20402 		movt	r2, 16388
+ 151 0074 1268     		ldr	r2, [r2, #0]
+ 152 0076 42F4A602 		orr	r2, r2, #5439488
+ 153 007a 1A60     		str	r2, [r3, #0]
+  52:../Sources/tsi.c ****   TSI0_SCANC |= ((TSI_SCANC_EXTCHRG(3))|(TSI_SCANC_REFCHRG(31))|(TSI_SCANC_DELVOL(7))|(TSI_SCANC_SM
+ 154              		.loc 1 52 0
+ 155 007c 4FF4A043 		mov	r3, #20480
+ 156 0080 C4F20403 		movt	r3, 16388
+ 157 0084 4FF4A042 		mov	r2, #20480
+ 158 0088 C4F20402 		movt	r2, 16388
+ 159 008c 5268     		ldr	r2, [r2, #4]
+ 160 008e 42F07842 		orr	r2, r2, #-134217728
+ 161 0092 42F4F812 		orr	r2, r2, #2031616
+ 162 0096 5A60     		str	r2, [r3, #4]
+  53:../Sources/tsi.c **** 
+  54:../Sources/tsi.c ****   ELECTRODE_ENABLE_REG = ELECTRODE0_EN_MASK|ELECTRODE1_EN_MASK|ELECTRODE2_EN_MASK|ELECTRODE3_EN_MAS
+ 163              		.loc 1 54 0
+ 164 0098 4FF4A043 		mov	r3, #20480
+ 165 009c C4F20403 		movt	r3, 16388
+ 166 00a0 4FF46872 		mov	r2, #928
+ 167 00a4 9A60     		str	r2, [r3, #8]
+  55:../Sources/tsi.c **** 
+  56:../Sources/tsi.c ****   TSI0_GENCS |= (TSI_GENCS_TSIEN_MASK);  //Enables TSI
+ 168              		.loc 1 56 0
+ 169 00a6 4FF4A043 		mov	r3, #20480
+ 170 00aa C4F20403 		movt	r3, 16388
+ 171 00ae 4FF4A042 		mov	r2, #20480
+ 172 00b2 C4F20402 		movt	r2, 16388
+ 173 00b6 1268     		ldr	r2, [r2, #0]
+ 174 00b8 42F08002 		orr	r2, r2, #128
+ 175 00bc 1A60     		str	r2, [r3, #0]
+  57:../Sources/tsi.c **** 
+  58:../Sources/tsi.c ****   /* Init TSI interrupts */
+  59:../Sources/tsi.c ****   _int_install_isr(INT_TSI0, TSI_isr, NULL);
+ 176              		.loc 1 59 0
+ 177 00be 4FF06300 		mov	r0, #99
+ 178 00c2 40F20001 		movw	r1, #:lower16:TSI_isr
+ 179 00c6 C0F20001 		movt	r1, #:upper16:TSI_isr
+ 180 00ca 4FF00002 		mov	r2, #0
+ 181 00ce FFF7FEFF 		bl	_int_install_isr
+  60:../Sources/tsi.c ****   _nvic_int_init(INT_TSI0, 4, TRUE);
+ 182              		.loc 1 60 0
+ 183 00d2 4FF06300 		mov	r0, #99
+ 184 00d6 4FF00401 		mov	r1, #4
+ 185 00da 4FF00102 		mov	r2, #1
+ 186 00de FFF7FEFF 		bl	_nvic_int_init
+  61:../Sources/tsi.c ****   /***********************/
+  62:../Sources/tsi.c **** 
+  63:../Sources/tsi.c **** }
+ 187              		.loc 1 63 0
+ 188 00e2 80BD     		pop	{r7, pc}
+ 189              		.cfi_endproc
+ 190              	.LFE1:
+ 192              		.section	.text.TSI_SelfCalibration,"ax",%progbits
+ 193              		.align	2
+ 194              		.global	TSI_SelfCalibration
+ 195              		.thumb
+ 196              		.thumb_func
+ 198              	TSI_SelfCalibration:
+ 199              	.LFB2:
+  64:../Sources/tsi.c **** 
+  65:../Sources/tsi.c **** /********************************************************************************
+  66:../Sources/tsi.c ****  *   TSI_SelfCalibration: Simple auto calibration version
+  67:../Sources/tsi.c ****  * Notes:
+  68:../Sources/tsi.c ****  *    - Very simple, only sums a prefixed amount to the current baseline
+  69:../Sources/tsi.c ****  ********************************************************************************/
+  70:../Sources/tsi.c **** void TSI_SelfCalibration(void)
+  71:../Sources/tsi.c **** {
+ 200              		.loc 1 71 0
+ 201              		.cfi_startproc
+ 202              		@ args = 0, pretend = 0, frame = 0
+ 203              		@ frame_needed = 1, uses_anonymous_args = 0
+ 204 0000 80B5     		push	{r7, lr}
+ 205              	.LCFI4:
+ 206              		.cfi_def_cfa_offset 8
+ 207              		.cfi_offset 7, -8
+ 208              		.cfi_offset 14, -4
+ 209 0002 00AF     		add	r7, sp, #0
+ 210              	.LCFI5:
+ 211              		.cfi_def_cfa_register 7
+  72:../Sources/tsi.c ****   TSI0_GENCS |= TSI_GENCS_SWTS_MASK;
+ 212              		.loc 1 72 0
+ 213 0004 4FF4A043 		mov	r3, #20480
+ 214 0008 C4F20403 		movt	r3, 16388
+ 215 000c 4FF4A042 		mov	r2, #20480
+ 216 0010 C4F20402 		movt	r2, 16388
+ 217 0014 1268     		ldr	r2, [r2, #0]
+ 218 0016 42F48072 		orr	r2, r2, #256
+ 219 001a 1A60     		str	r2, [r3, #0]
+  73:../Sources/tsi.c **** 
+  74:../Sources/tsi.c ****   while(!(TSI0_GENCS&TSI_GENCS_EOSF_MASK)){};
+ 220              		.loc 1 74 0
+ 221 001c 00BF     		nop
+ 222              	.L4:
+ 223              		.loc 1 74 0 is_stmt 0
+ 224 001e 4FF4A043 		mov	r3, #20480
+ 225 0022 C4F20403 		movt	r3, 16388
+ 226 0026 1B68     		ldr	r3, [r3, #0]
+ 227 0028 03F40043 		and	r3, r3, #32768
+ 228 002c 002B     		cmp	r3, #0
+ 229 002e F6D0     		beq	.L4
+  75:../Sources/tsi.c **** 
+  76:../Sources/tsi.c ****   _time_delay(1000);
+ 230              		.loc 1 76 0 is_stmt 1
+ 231 0030 4FF47A70 		mov	r0, #1000
+ 232 0034 FFF7FEFF 		bl	_time_delay
+  77:../Sources/tsi.c **** 
+  78:../Sources/tsi.c ****   g16ElectrodeBaseline[ELECTRODE0] = ELECTRODE0_COUNT;
+ 233              		.loc 1 78 0
+ 234 0038 4FF4A043 		mov	r3, #20480
+ 235 003c C4F20403 		movt	r3, 16388
+ 236 0040 D3F80831 		ldr	r3, [r3, #264]
+ 237 0044 4FEA1343 		lsr	r3, r3, #16
+ 238 0048 9AB2     		uxth	r2, r3
+ 239 004a 40F20003 		movw	r3, #:lower16:g16ElectrodeBaseline
+ 240 004e C0F20003 		movt	r3, #:upper16:g16ElectrodeBaseline
+ 241 0052 1A80     		strh	r2, [r3, #0]	@ movhi
+  79:../Sources/tsi.c ****   ELECTRODE0_OVERRUN = (uint_32)((g16ElectrodeBaseline[ELECTRODE0]+ELECTRODE0_OVRRUN));
+ 242              		.loc 1 79 0
+ 243 0054 4FF4A043 		mov	r3, #20480
+ 244 0058 C4F20403 		movt	r3, 16388
+ 245 005c 40F20002 		movw	r2, #:lower16:g16ElectrodeBaseline
+ 246 0060 C0F20002 		movt	r2, #:upper16:g16ElectrodeBaseline
+ 247 0064 1288     		ldrh	r2, [r2, #0]
+ 248 0066 02F57042 		add	r2, r2, #61440
+ 249 006a C3F83421 		str	r2, [r3, #308]
+  80:../Sources/tsi.c ****   g16ElectrodeTouch[ELECTRODE0] = g16ElectrodeBaseline[ELECTRODE0] + ELECTRODE0_TOUCH;
+ 250              		.loc 1 80 0
+ 251 006e 40F20003 		movw	r3, #:lower16:g16ElectrodeBaseline
+ 252 0072 C0F20003 		movt	r3, #:upper16:g16ElectrodeBaseline
+ 253 0076 1B88     		ldrh	r3, [r3, #0]
+ 254 0078 03F50073 		add	r3, r3, #512
+ 255 007c 9AB2     		uxth	r2, r3
+ 256 007e 40F20003 		movw	r3, #:lower16:g16ElectrodeTouch
+ 257 0082 C0F20003 		movt	r3, #:upper16:g16ElectrodeTouch
+ 258 0086 1A80     		strh	r2, [r3, #0]	@ movhi
+  81:../Sources/tsi.c **** 
+  82:../Sources/tsi.c ****   g16ElectrodeBaseline[ELECTRODE1] = ELECTRODE1_COUNT;
+ 259              		.loc 1 82 0
+ 260 0088 4FF4A043 		mov	r3, #20480
+ 261 008c C4F20403 		movt	r3, 16388
+ 262 0090 D3F81031 		ldr	r3, [r3, #272]
+ 263 0094 9AB2     		uxth	r2, r3
+ 264 0096 40F20003 		movw	r3, #:lower16:g16ElectrodeBaseline
+ 265 009a C0F20003 		movt	r3, #:upper16:g16ElectrodeBaseline
+ 266 009e 5A80     		strh	r2, [r3, #2]	@ movhi
+  83:../Sources/tsi.c ****   ELECTRODE1_OVERRUN = (uint_32)((g16ElectrodeBaseline[ELECTRODE1]+ELECTRODE1_OVRRUN));
+ 267              		.loc 1 83 0
+ 268 00a0 4FF4A043 		mov	r3, #20480
+ 269 00a4 C4F20403 		movt	r3, 16388
+ 270 00a8 40F20002 		movw	r2, #:lower16:g16ElectrodeBaseline
+ 271 00ac C0F20002 		movt	r2, #:upper16:g16ElectrodeBaseline
+ 272 00b0 5288     		ldrh	r2, [r2, #2]
+ 273 00b2 02F57042 		add	r2, r2, #61440
+ 274 00b6 C3F84021 		str	r2, [r3, #320]
+  84:../Sources/tsi.c ****   g16ElectrodeTouch[ELECTRODE1] = g16ElectrodeBaseline[ELECTRODE1] + ELECTRODE1_TOUCH;
+ 275              		.loc 1 84 0
+ 276 00ba 40F20003 		movw	r3, #:lower16:g16ElectrodeBaseline
+ 277 00be C0F20003 		movt	r3, #:upper16:g16ElectrodeBaseline
+ 278 00c2 5B88     		ldrh	r3, [r3, #2]
+ 279 00c4 03F50073 		add	r3, r3, #512
+ 280 00c8 9AB2     		uxth	r2, r3
+ 281 00ca 40F20003 		movw	r3, #:lower16:g16ElectrodeTouch
+ 282 00ce C0F20003 		movt	r3, #:upper16:g16ElectrodeTouch
+ 283 00d2 5A80     		strh	r2, [r3, #2]	@ movhi
+  85:../Sources/tsi.c **** 
+  86:../Sources/tsi.c ****   g16ElectrodeBaseline[ELECTRODE2] = ELECTRODE2_COUNT;
+ 284              		.loc 1 86 0
+ 285 00d4 4FF4A043 		mov	r3, #20480
+ 286 00d8 C4F20403 		movt	r3, 16388
+ 287 00dc D3F80C31 		ldr	r3, [r3, #268]
+ 288 00e0 4FEA1343 		lsr	r3, r3, #16
+ 289 00e4 9AB2     		uxth	r2, r3
+ 290 00e6 40F20003 		movw	r3, #:lower16:g16ElectrodeBaseline
+ 291 00ea C0F20003 		movt	r3, #:upper16:g16ElectrodeBaseline
+ 292 00ee 9A80     		strh	r2, [r3, #4]	@ movhi
+  87:../Sources/tsi.c ****   ELECTRODE2_OVERRUN = (uint_32)((g16ElectrodeBaseline[ELECTRODE2]+ELECTRODE2_OVRRUN));
+ 293              		.loc 1 87 0
+ 294 00f0 4FF4A043 		mov	r3, #20480
+ 295 00f4 C4F20403 		movt	r3, 16388
+ 296 00f8 40F20002 		movw	r2, #:lower16:g16ElectrodeBaseline
+ 297 00fc C0F20002 		movt	r2, #:upper16:g16ElectrodeBaseline
+ 298 0100 9288     		ldrh	r2, [r2, #4]
+ 299 0102 02F57042 		add	r2, r2, #61440
+ 300 0106 C3F83C21 		str	r2, [r3, #316]
+  88:../Sources/tsi.c ****   g16ElectrodeTouch[ELECTRODE2] = g16ElectrodeBaseline[ELECTRODE2] + ELECTRODE2_TOUCH;
+ 301              		.loc 1 88 0
+ 302 010a 40F20003 		movw	r3, #:lower16:g16ElectrodeBaseline
+ 303 010e C0F20003 		movt	r3, #:upper16:g16ElectrodeBaseline
+ 304 0112 9B88     		ldrh	r3, [r3, #4]
+ 305 0114 03F50073 		add	r3, r3, #512
+ 306 0118 9AB2     		uxth	r2, r3
+ 307 011a 40F20003 		movw	r3, #:lower16:g16ElectrodeTouch
+ 308 011e C0F20003 		movt	r3, #:upper16:g16ElectrodeTouch
+ 309 0122 9A80     		strh	r2, [r3, #4]	@ movhi
+  89:../Sources/tsi.c **** 
+  90:../Sources/tsi.c ****   g16ElectrodeBaseline[ELECTRODE3] = ELECTRODE3_COUNT;
+ 310              		.loc 1 90 0
+ 311 0124 4FF4A043 		mov	r3, #20480
+ 312 0128 C4F20403 		movt	r3, 16388
+ 313 012c D3F81031 		ldr	r3, [r3, #272]
+ 314 0130 4FEA1343 		lsr	r3, r3, #16
+ 315 0134 9AB2     		uxth	r2, r3
+ 316 0136 40F20003 		movw	r3, #:lower16:g16ElectrodeBaseline
+ 317 013a C0F20003 		movt	r3, #:upper16:g16ElectrodeBaseline
+ 318 013e DA80     		strh	r2, [r3, #6]	@ movhi
+  91:../Sources/tsi.c ****   ELECTRODE3_OVERRUN = (uint_32)((g16ElectrodeBaseline[ELECTRODE3]+ELECTRODE3_OVRRUN));
+ 319              		.loc 1 91 0
+ 320 0140 4FF4A043 		mov	r3, #20480
+ 321 0144 C4F20403 		movt	r3, 16388
+ 322 0148 40F20002 		movw	r2, #:lower16:g16ElectrodeBaseline
+ 323 014c C0F20002 		movt	r2, #:upper16:g16ElectrodeBaseline
+ 324 0150 D288     		ldrh	r2, [r2, #6]
+ 325 0152 02F57042 		add	r2, r2, #61440
+ 326 0156 C3F84421 		str	r2, [r3, #324]
+  92:../Sources/tsi.c ****   g16ElectrodeTouch[ELECTRODE3] = g16ElectrodeBaseline[ELECTRODE3] + ELECTRODE3_TOUCH;
+ 327              		.loc 1 92 0
+ 328 015a 40F20003 		movw	r3, #:lower16:g16ElectrodeBaseline
+ 329 015e C0F20003 		movt	r3, #:upper16:g16ElectrodeBaseline
+ 330 0162 DB88     		ldrh	r3, [r3, #6]
+ 331 0164 03F50073 		add	r3, r3, #512
+ 332 0168 9AB2     		uxth	r2, r3
+ 333 016a 40F20003 		movw	r3, #:lower16:g16ElectrodeTouch
+ 334 016e C0F20003 		movt	r3, #:upper16:g16ElectrodeTouch
+ 335 0172 DA80     		strh	r2, [r3, #6]	@ movhi
+  93:../Sources/tsi.c **** 
+  94:../Sources/tsi.c ****   DISABLE_TSI;
+ 336              		.loc 1 94 0
+ 337 0174 4FF4A043 		mov	r3, #20480
+ 338 0178 C4F20403 		movt	r3, 16388
+ 339 017c 4FF4A042 		mov	r2, #20480
+ 340 0180 C4F20402 		movt	r2, 16388
+ 341 0184 1268     		ldr	r2, [r2, #0]
+ 342 0186 22F08002 		bic	r2, r2, #128
+ 343 018a 1A60     		str	r2, [r3, #0]
+  95:../Sources/tsi.c **** 
+  96:../Sources/tsi.c **** }
+ 344              		.loc 1 96 0
+ 345 018c 80BD     		pop	{r7, pc}
+ 346              		.cfi_endproc
+ 347              	.LFE2:
+ 349 018e 00BF     		.section	.text.TSI_isr,"ax",%progbits
+ 350              		.align	2
+ 351              		.global	TSI_isr
+ 352              		.thumb
+ 353              		.thumb_func
+ 355              	TSI_isr:
+ 356              	.LFB3:
+  97:../Sources/tsi.c **** 
+  98:../Sources/tsi.c **** /********************************************************************************
+  99:../Sources/tsi.c ****  *   TSI_isr: TSI interrupt subroutine
+ 100:../Sources/tsi.c ****  * Notes:
+ 101:../Sources/tsi.c ****  *    -
+ 102:../Sources/tsi.c ****  ********************************************************************************/
+ 103:../Sources/tsi.c **** 
+ 104:../Sources/tsi.c **** void TSI_isr(pointer isr)
+ 105:../Sources/tsi.c **** {
+ 357              		.loc 1 105 0
+ 358              		.cfi_startproc
+ 359              		@ args = 0, pretend = 0, frame = 16
+ 360              		@ frame_needed = 1, uses_anonymous_args = 0
+ 361 0000 80B5     		push	{r7, lr}
+ 362              	.LCFI6:
+ 363              		.cfi_def_cfa_offset 8
+ 364              		.cfi_offset 7, -8
+ 365              		.cfi_offset 14, -4
+ 366 0002 84B0     		sub	sp, sp, #16
+ 367              	.LCFI7:
+ 368              		.cfi_def_cfa_offset 24
+ 369 0004 00AF     		add	r7, sp, #0
+ 370              	.LCFI8:
+ 371              		.cfi_def_cfa_register 7
+ 372 0006 7860     		str	r0, [r7, #4]
+ 106:../Sources/tsi.c ****   static uint_16 TouchEvent = 0;
+ 107:../Sources/tsi.c ****   uint_16 lValidTouch = 0;
+ 373              		.loc 1 107 0
+ 374 0008 4FF00003 		mov	r3, #0
+ 375 000c FB81     		strh	r3, [r7, #14]	@ movhi
+ 108:../Sources/tsi.c ****   uint_16 l16Counter;
+ 109:../Sources/tsi.c **** 
+ 110:../Sources/tsi.c ****   TSI0_GENCS |= TSI_GENCS_OUTRGF_MASK;
+ 376              		.loc 1 110 0
+ 377 000e 4FF4A043 		mov	r3, #20480
+ 378 0012 C4F20403 		movt	r3, 16388
+ 379 0016 4FF4A042 		mov	r2, #20480
+ 380 001a C4F20402 		movt	r2, 16388
+ 381 001e 1268     		ldr	r2, [r2, #0]
+ 382 0020 42F48042 		orr	r2, r2, #16384
+ 383 0024 1A60     		str	r2, [r3, #0]
+ 111:../Sources/tsi.c ****   TSI0_GENCS |= TSI_GENCS_EOSF_MASK;
+ 384              		.loc 1 111 0
+ 385 0026 4FF4A043 		mov	r3, #20480
+ 386 002a C4F20403 		movt	r3, 16388
+ 387 002e 4FF4A042 		mov	r2, #20480
+ 388 0032 C4F20402 		movt	r2, 16388
+ 389 0036 1268     		ldr	r2, [r2, #0]
+ 390 0038 42F40042 		orr	r2, r2, #32768
+ 391 003c 1A60     		str	r2, [r3, #0]
+ 112:../Sources/tsi.c **** 
+ 113:../Sources/tsi.c **** 
+ 114:../Sources/tsi.c ****   // Process electrode 0 
+ 115:../Sources/tsi.c ****   l16Counter = ELECTRODE0_COUNT;
+ 392              		.loc 1 115 0
+ 393 003e 4FF4A043 		mov	r3, #20480
+ 394 0042 C4F20403 		movt	r3, 16388
+ 395 0046 D3F80831 		ldr	r3, [r3, #264]
+ 396 004a 4FEA1343 		lsr	r3, r3, #16
+ 397 004e BB81     		strh	r3, [r7, #12]	@ movhi
+ 116:../Sources/tsi.c ****   if(l16Counter>g16ElectrodeTouch[ELECTRODE0]) //See if detected a touch
+ 398              		.loc 1 116 0
+ 399 0050 40F20003 		movw	r3, #:lower16:g16ElectrodeTouch
+ 400 0054 C0F20003 		movt	r3, #:upper16:g16ElectrodeTouch
+ 401 0058 1B88     		ldrh	r3, [r3, #0]
+ 402 005a BA89     		ldrh	r2, [r7, #12]
+ 403 005c 9A42     		cmp	r2, r3
+ 404 005e 31D9     		bls	.L6
+ 117:../Sources/tsi.c ****   {
+ 118:../Sources/tsi.c ****     TouchEvent |= (1<<ELECTRODE0); //Set touch event variable
+ 405              		.loc 1 118 0
+ 406 0060 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 407 0064 C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 408 0068 1B88     		ldrh	r3, [r3, #0]
+ 409 006a 43F00103 		orr	r3, r3, #1
+ 410 006e 9AB2     		uxth	r2, r3
+ 411 0070 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 412 0074 C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 413 0078 1A80     		strh	r2, [r3, #0]	@ movhi
+ 119:../Sources/tsi.c ****     g32DebounceCounter[ELECTRODE0]--; //Decrement debounce counter
+ 414              		.loc 1 119 0
+ 415 007a 40F20003 		movw	r3, #:lower16:g32DebounceCounter
+ 416 007e C0F20003 		movt	r3, #:upper16:g32DebounceCounter
+ 417 0082 1B68     		ldr	r3, [r3, #0]
+ 418 0084 03F1FF32 		add	r2, r3, #-1
+ 419 0088 40F20003 		movw	r3, #:lower16:g32DebounceCounter
+ 420 008c C0F20003 		movt	r3, #:upper16:g32DebounceCounter
+ 421 0090 1A60     		str	r2, [r3, #0]
+ 120:../Sources/tsi.c ****     if(!g32DebounceCounter[ELECTRODE0]) //If debounce counter reaches 0....
+ 422              		.loc 1 120 0
+ 423 0092 40F20003 		movw	r3, #:lower16:g32DebounceCounter
+ 424 0096 C0F20003 		movt	r3, #:upper16:g32DebounceCounter
+ 425 009a 1B68     		ldr	r3, [r3, #0]
+ 426 009c 002B     		cmp	r3, #0
+ 427 009e 25D1     		bne	.L7
+ 121:../Sources/tsi.c ****     {
+ 122:../Sources/tsi.c ****       /*_lwsem_post(&touch_sem);
+ 123:../Sources/tsi.c ****       keypressed |= ((1<<ELECTRODE0)); //Signal that a valid touch has been detected*/
+ 124:../Sources/tsi.c ****       lValidTouch |= ((1<<ELECTRODE0)); //Signal that a valid touch has been detected
+ 428              		.loc 1 124 0
+ 429 00a0 FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 430 00a2 43F00103 		orr	r3, r3, #1
+ 431 00a6 FB81     		strh	r3, [r7, #14]	@ movhi
+ 125:../Sources/tsi.c ****       TouchEvent &= ~(1<<ELECTRODE0);  //Clear touch event variable
+ 432              		.loc 1 125 0
+ 433 00a8 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 434 00ac C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 435 00b0 1B88     		ldrh	r3, [r3, #0]
+ 436 00b2 23F00103 		bic	r3, r3, #1
+ 437 00b6 9AB2     		uxth	r2, r3
+ 438 00b8 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 439 00bc C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 440 00c0 1A80     		strh	r2, [r3, #0]	@ movhi
+ 441 00c2 13E0     		b	.L7
+ 442              	.L6:
+ 126:../Sources/tsi.c ****     }
+ 127:../Sources/tsi.c ****   }
+ 128:../Sources/tsi.c ****   else
+ 129:../Sources/tsi.c ****   {
+ 130:../Sources/tsi.c ****     /*keypressed &= ~((1<<ELECTRODE0)); //Clear valid touch*/
+ 131:../Sources/tsi.c ****     TouchEvent &= ~(1<<ELECTRODE0); //Clear touch event variable
+ 443              		.loc 1 131 0
+ 444 00c4 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 445 00c8 C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 446 00cc 1B88     		ldrh	r3, [r3, #0]
+ 447 00ce 23F00103 		bic	r3, r3, #1
+ 448 00d2 9AB2     		uxth	r2, r3
+ 449 00d4 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 450 00d8 C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 451 00dc 1A80     		strh	r2, [r3, #0]	@ movhi
+ 132:../Sources/tsi.c ****     g32DebounceCounter[ELECTRODE0] = DBOUNCE_COUNTS; //Reset debounce counter
+ 452              		.loc 1 132 0
+ 453 00de 40F20003 		movw	r3, #:lower16:g32DebounceCounter
+ 454 00e2 C0F20003 		movt	r3, #:upper16:g32DebounceCounter
+ 455 00e6 4FF01002 		mov	r2, #16
+ 456 00ea 1A60     		str	r2, [r3, #0]
+ 457              	.L7:
+ 133:../Sources/tsi.c ****   }
+ 134:../Sources/tsi.c ****   /*********************/
+ 135:../Sources/tsi.c **** 
+ 136:../Sources/tsi.c ****    //Process electrode 1 
+ 137:../Sources/tsi.c ****   l16Counter = ELECTRODE1_COUNT;
+ 458              		.loc 1 137 0
+ 459 00ec 4FF4A043 		mov	r3, #20480
+ 460 00f0 C4F20403 		movt	r3, 16388
+ 461 00f4 D3F81031 		ldr	r3, [r3, #272]
+ 462 00f8 BB81     		strh	r3, [r7, #12]	@ movhi
+ 138:../Sources/tsi.c ****   if(l16Counter>g16ElectrodeTouch[ELECTRODE1])
+ 463              		.loc 1 138 0
+ 464 00fa 40F20003 		movw	r3, #:lower16:g16ElectrodeTouch
+ 465 00fe C0F20003 		movt	r3, #:upper16:g16ElectrodeTouch
+ 466 0102 5B88     		ldrh	r3, [r3, #2]
+ 467 0104 BA89     		ldrh	r2, [r7, #12]
+ 468 0106 9A42     		cmp	r2, r3
+ 469 0108 31D9     		bls	.L8
+ 139:../Sources/tsi.c ****   {
+ 140:../Sources/tsi.c ****     TouchEvent |= (1<<ELECTRODE1);
+ 470              		.loc 1 140 0
+ 471 010a 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 472 010e C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 473 0112 1B88     		ldrh	r3, [r3, #0]
+ 474 0114 43F00203 		orr	r3, r3, #2
+ 475 0118 9AB2     		uxth	r2, r3
+ 476 011a 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 477 011e C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 478 0122 1A80     		strh	r2, [r3, #0]	@ movhi
+ 141:../Sources/tsi.c ****     g32DebounceCounter[ELECTRODE1]--;
+ 479              		.loc 1 141 0
+ 480 0124 40F20003 		movw	r3, #:lower16:g32DebounceCounter
+ 481 0128 C0F20003 		movt	r3, #:upper16:g32DebounceCounter
+ 482 012c 5B68     		ldr	r3, [r3, #4]
+ 483 012e 03F1FF32 		add	r2, r3, #-1
+ 484 0132 40F20003 		movw	r3, #:lower16:g32DebounceCounter
+ 485 0136 C0F20003 		movt	r3, #:upper16:g32DebounceCounter
+ 486 013a 5A60     		str	r2, [r3, #4]
+ 142:../Sources/tsi.c ****     if(!g32DebounceCounter[ELECTRODE1])
+ 487              		.loc 1 142 0
+ 488 013c 40F20003 		movw	r3, #:lower16:g32DebounceCounter
+ 489 0140 C0F20003 		movt	r3, #:upper16:g32DebounceCounter
+ 490 0144 5B68     		ldr	r3, [r3, #4]
+ 491 0146 002B     		cmp	r3, #0
+ 492 0148 25D1     		bne	.L9
+ 143:../Sources/tsi.c ****     {
+ 144:../Sources/tsi.c ****       /*_lwsem_post(&touch_sem);
+ 145:../Sources/tsi.c ****       keypressed |= ((1<<ELECTRODE1));*/
+ 146:../Sources/tsi.c ****       lValidTouch |= ((1<<ELECTRODE1));
+ 493              		.loc 1 146 0
+ 494 014a FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 495 014c 43F00203 		orr	r3, r3, #2
+ 496 0150 FB81     		strh	r3, [r7, #14]	@ movhi
+ 147:../Sources/tsi.c ****       TouchEvent &= ~(1<<ELECTRODE1);
+ 497              		.loc 1 147 0
+ 498 0152 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 499 0156 C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 500 015a 1B88     		ldrh	r3, [r3, #0]
+ 501 015c 23F00203 		bic	r3, r3, #2
+ 502 0160 9AB2     		uxth	r2, r3
+ 503 0162 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 504 0166 C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 505 016a 1A80     		strh	r2, [r3, #0]	@ movhi
+ 506 016c 13E0     		b	.L9
+ 507              	.L8:
+ 148:../Sources/tsi.c ****     }
+ 149:../Sources/tsi.c ****   }
+ 150:../Sources/tsi.c ****   else
+ 151:../Sources/tsi.c ****   {
+ 152:../Sources/tsi.c ****     //keypressed&= ~((1<<ELECTRODE1)); //Clear valid touch
+ 153:../Sources/tsi.c ****     TouchEvent &= ~(1<<ELECTRODE1);
+ 508              		.loc 1 153 0
+ 509 016e 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 510 0172 C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 511 0176 1B88     		ldrh	r3, [r3, #0]
+ 512 0178 23F00203 		bic	r3, r3, #2
+ 513 017c 9AB2     		uxth	r2, r3
+ 514 017e 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 515 0182 C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 516 0186 1A80     		strh	r2, [r3, #0]	@ movhi
+ 154:../Sources/tsi.c ****     g32DebounceCounter[ELECTRODE1] = DBOUNCE_COUNTS;
+ 517              		.loc 1 154 0
+ 518 0188 40F20003 		movw	r3, #:lower16:g32DebounceCounter
+ 519 018c C0F20003 		movt	r3, #:upper16:g32DebounceCounter
+ 520 0190 4FF01002 		mov	r2, #16
+ 521 0194 5A60     		str	r2, [r3, #4]
+ 522              	.L9:
+ 155:../Sources/tsi.c ****   }
+ 156:../Sources/tsi.c ****   /*********************/
+ 157:../Sources/tsi.c **** 
+ 158:../Sources/tsi.c ****    //Process electrode 2 
+ 159:../Sources/tsi.c ****   l16Counter = ELECTRODE2_COUNT;
+ 523              		.loc 1 159 0
+ 524 0196 4FF4A043 		mov	r3, #20480
+ 525 019a C4F20403 		movt	r3, 16388
+ 526 019e D3F80C31 		ldr	r3, [r3, #268]
+ 527 01a2 4FEA1343 		lsr	r3, r3, #16
+ 528 01a6 BB81     		strh	r3, [r7, #12]	@ movhi
+ 160:../Sources/tsi.c ****   if(l16Counter>g16ElectrodeTouch[ELECTRODE2])
+ 529              		.loc 1 160 0
+ 530 01a8 40F20003 		movw	r3, #:lower16:g16ElectrodeTouch
+ 531 01ac C0F20003 		movt	r3, #:upper16:g16ElectrodeTouch
+ 532 01b0 9B88     		ldrh	r3, [r3, #4]
+ 533 01b2 BA89     		ldrh	r2, [r7, #12]
+ 534 01b4 9A42     		cmp	r2, r3
+ 535 01b6 31D9     		bls	.L10
+ 161:../Sources/tsi.c ****   {
+ 162:../Sources/tsi.c ****     TouchEvent |= (1<<ELECTRODE2);
+ 536              		.loc 1 162 0
+ 537 01b8 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 538 01bc C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 539 01c0 1B88     		ldrh	r3, [r3, #0]
+ 540 01c2 43F00403 		orr	r3, r3, #4
+ 541 01c6 9AB2     		uxth	r2, r3
+ 542 01c8 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 543 01cc C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 544 01d0 1A80     		strh	r2, [r3, #0]	@ movhi
+ 163:../Sources/tsi.c ****     g32DebounceCounter[ELECTRODE2]--;
+ 545              		.loc 1 163 0
+ 546 01d2 40F20003 		movw	r3, #:lower16:g32DebounceCounter
+ 547 01d6 C0F20003 		movt	r3, #:upper16:g32DebounceCounter
+ 548 01da 9B68     		ldr	r3, [r3, #8]
+ 549 01dc 03F1FF32 		add	r2, r3, #-1
+ 550 01e0 40F20003 		movw	r3, #:lower16:g32DebounceCounter
+ 551 01e4 C0F20003 		movt	r3, #:upper16:g32DebounceCounter
+ 552 01e8 9A60     		str	r2, [r3, #8]
+ 164:../Sources/tsi.c ****     if(!g32DebounceCounter[ELECTRODE2])
+ 553              		.loc 1 164 0
+ 554 01ea 40F20003 		movw	r3, #:lower16:g32DebounceCounter
+ 555 01ee C0F20003 		movt	r3, #:upper16:g32DebounceCounter
+ 556 01f2 9B68     		ldr	r3, [r3, #8]
+ 557 01f4 002B     		cmp	r3, #0
+ 558 01f6 25D1     		bne	.L11
+ 165:../Sources/tsi.c ****     {
+ 166:../Sources/tsi.c ****       /*_lwsem_post(&touch_sem);
+ 167:../Sources/tsi.c ****       keypressed |= ((1<<ELECTRODE2));*/
+ 168:../Sources/tsi.c ****       lValidTouch |= ((1<<ELECTRODE2));
+ 559              		.loc 1 168 0
+ 560 01f8 FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 561 01fa 43F00403 		orr	r3, r3, #4
+ 562 01fe FB81     		strh	r3, [r7, #14]	@ movhi
+ 169:../Sources/tsi.c ****       TouchEvent &= ~(1<<ELECTRODE2);
+ 563              		.loc 1 169 0
+ 564 0200 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 565 0204 C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 566 0208 1B88     		ldrh	r3, [r3, #0]
+ 567 020a 23F00403 		bic	r3, r3, #4
+ 568 020e 9AB2     		uxth	r2, r3
+ 569 0210 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 570 0214 C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 571 0218 1A80     		strh	r2, [r3, #0]	@ movhi
+ 572 021a 13E0     		b	.L11
+ 573              	.L10:
+ 170:../Sources/tsi.c ****     }
+ 171:../Sources/tsi.c ****   }
+ 172:../Sources/tsi.c ****   else
+ 173:../Sources/tsi.c ****   {
+ 174:../Sources/tsi.c ****     //keypressed &= ~((1<<ELECTRODE2)); //Clear valid touch
+ 175:../Sources/tsi.c ****     TouchEvent &= ~(1<<ELECTRODE2);
+ 574              		.loc 1 175 0
+ 575 021c 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 576 0220 C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 577 0224 1B88     		ldrh	r3, [r3, #0]
+ 578 0226 23F00403 		bic	r3, r3, #4
+ 579 022a 9AB2     		uxth	r2, r3
+ 580 022c 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 581 0230 C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 582 0234 1A80     		strh	r2, [r3, #0]	@ movhi
+ 176:../Sources/tsi.c ****     g32DebounceCounter[ELECTRODE2] = DBOUNCE_COUNTS;
+ 583              		.loc 1 176 0
+ 584 0236 40F20003 		movw	r3, #:lower16:g32DebounceCounter
+ 585 023a C0F20003 		movt	r3, #:upper16:g32DebounceCounter
+ 586 023e 4FF01002 		mov	r2, #16
+ 587 0242 9A60     		str	r2, [r3, #8]
+ 588              	.L11:
+ 177:../Sources/tsi.c ****   }
+ 178:../Sources/tsi.c ****   /*********************/
+ 179:../Sources/tsi.c **** 
+ 180:../Sources/tsi.c ****   // Process electrode 3 
+ 181:../Sources/tsi.c ****   l16Counter = ELECTRODE3_COUNT;
+ 589              		.loc 1 181 0
+ 590 0244 4FF4A043 		mov	r3, #20480
+ 591 0248 C4F20403 		movt	r3, 16388
+ 592 024c D3F81031 		ldr	r3, [r3, #272]
+ 593 0250 4FEA1343 		lsr	r3, r3, #16
+ 594 0254 BB81     		strh	r3, [r7, #12]	@ movhi
+ 182:../Sources/tsi.c ****   if(l16Counter>g16ElectrodeTouch[ELECTRODE3])
+ 595              		.loc 1 182 0
+ 596 0256 40F20003 		movw	r3, #:lower16:g16ElectrodeTouch
+ 597 025a C0F20003 		movt	r3, #:upper16:g16ElectrodeTouch
+ 598 025e DB88     		ldrh	r3, [r3, #6]
+ 599 0260 BA89     		ldrh	r2, [r7, #12]
+ 600 0262 9A42     		cmp	r2, r3
+ 601 0264 31D9     		bls	.L12
+ 183:../Sources/tsi.c ****   {
+ 184:../Sources/tsi.c ****     TouchEvent |= (1<<ELECTRODE3);
+ 602              		.loc 1 184 0
+ 603 0266 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 604 026a C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 605 026e 1B88     		ldrh	r3, [r3, #0]
+ 606 0270 43F00803 		orr	r3, r3, #8
+ 607 0274 9AB2     		uxth	r2, r3
+ 608 0276 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 609 027a C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 610 027e 1A80     		strh	r2, [r3, #0]	@ movhi
+ 185:../Sources/tsi.c ****     g32DebounceCounter[ELECTRODE3]--;
+ 611              		.loc 1 185 0
+ 612 0280 40F20003 		movw	r3, #:lower16:g32DebounceCounter
+ 613 0284 C0F20003 		movt	r3, #:upper16:g32DebounceCounter
+ 614 0288 DB68     		ldr	r3, [r3, #12]
+ 615 028a 03F1FF32 		add	r2, r3, #-1
+ 616 028e 40F20003 		movw	r3, #:lower16:g32DebounceCounter
+ 617 0292 C0F20003 		movt	r3, #:upper16:g32DebounceCounter
+ 618 0296 DA60     		str	r2, [r3, #12]
+ 186:../Sources/tsi.c ****     if(!g32DebounceCounter[ELECTRODE3])
+ 619              		.loc 1 186 0
+ 620 0298 40F20003 		movw	r3, #:lower16:g32DebounceCounter
+ 621 029c C0F20003 		movt	r3, #:upper16:g32DebounceCounter
+ 622 02a0 DB68     		ldr	r3, [r3, #12]
+ 623 02a2 002B     		cmp	r3, #0
+ 624 02a4 25D1     		bne	.L13
+ 187:../Sources/tsi.c ****     {
+ 188:../Sources/tsi.c ****       /*_lwsem_post(&touch_sem);
+ 189:../Sources/tsi.c ****       keypressed |= ((1<<ELECTRODE3));*/
+ 190:../Sources/tsi.c ****       lValidTouch |= ((1<<ELECTRODE3));
+ 625              		.loc 1 190 0
+ 626 02a6 FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 627 02a8 43F00803 		orr	r3, r3, #8
+ 628 02ac FB81     		strh	r3, [r7, #14]	@ movhi
+ 191:../Sources/tsi.c ****       TouchEvent &= ~(1<<ELECTRODE3);
+ 629              		.loc 1 191 0
+ 630 02ae 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 631 02b2 C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 632 02b6 1B88     		ldrh	r3, [r3, #0]
+ 633 02b8 23F00803 		bic	r3, r3, #8
+ 634 02bc 9AB2     		uxth	r2, r3
+ 635 02be 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 636 02c2 C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 637 02c6 1A80     		strh	r2, [r3, #0]	@ movhi
+ 638 02c8 13E0     		b	.L13
+ 639              	.L12:
+ 192:../Sources/tsi.c ****     }
+ 193:../Sources/tsi.c ****   }
+ 194:../Sources/tsi.c ****   else
+ 195:../Sources/tsi.c ****   {
+ 196:../Sources/tsi.c ****     //keypressed &= ~((1<<ELECTRODE3)); //Clear valid touch
+ 197:../Sources/tsi.c ****     TouchEvent &= ~(1<<ELECTRODE3);
+ 640              		.loc 1 197 0
+ 641 02ca 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 642 02ce C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 643 02d2 1B88     		ldrh	r3, [r3, #0]
+ 644 02d4 23F00803 		bic	r3, r3, #8
+ 645 02d8 9AB2     		uxth	r2, r3
+ 646 02da 40F20003 		movw	r3, #:lower16:TouchEvent.9255
+ 647 02de C0F20003 		movt	r3, #:upper16:TouchEvent.9255
+ 648 02e2 1A80     		strh	r2, [r3, #0]	@ movhi
+ 198:../Sources/tsi.c ****     g32DebounceCounter[ELECTRODE3] = DBOUNCE_COUNTS;
+ 649              		.loc 1 198 0
+ 650 02e4 40F20003 		movw	r3, #:lower16:g32DebounceCounter
+ 651 02e8 C0F20003 		movt	r3, #:upper16:g32DebounceCounter
+ 652 02ec 4FF01002 		mov	r2, #16
+ 653 02f0 DA60     		str	r2, [r3, #12]
+ 654              	.L13:
+ 199:../Sources/tsi.c ****   }
+ 200:../Sources/tsi.c ****   /**********************/
+ 201:../Sources/tsi.c **** 
+ 202:../Sources/tsi.c ****   if(lValidTouch&((1<<ELECTRODE0))) //If detected a valid touch...
+ 655              		.loc 1 202 0
+ 656 02f2 FB89     		ldrh	r3, [r7, #14]
+ 657 02f4 03F00103 		and	r3, r3, #1
+ 658 02f8 002B     		cmp	r3, #0
+ 659 02fa 0BD0     		beq	.L14
+ 203:../Sources/tsi.c ****   {
+ 204:../Sources/tsi.c **** 	  _lwevent_set(&lwevent_group, TOUCH1_EVENT); //Set event bit
+ 660              		.loc 1 204 0
+ 661 02fc 40F20000 		movw	r0, #:lower16:lwevent_group
+ 662 0300 C0F20000 		movt	r0, #:upper16:lwevent_group
+ 663 0304 4FF00801 		mov	r1, #8
+ 664 0308 FFF7FEFF 		bl	_lwevent_set
+ 205:../Sources/tsi.c **** 	  lValidTouch &= ~((1<<ELECTRODE0)); //Clear valid touch
+ 665              		.loc 1 205 0
+ 666 030c FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 667 030e 23F00103 		bic	r3, r3, #1
+ 668 0312 FB81     		strh	r3, [r7, #14]	@ movhi
+ 669              	.L14:
+ 206:../Sources/tsi.c ****   }
+ 207:../Sources/tsi.c ****   
+ 208:../Sources/tsi.c ****   /* Electrode 1 */
+ 209:../Sources/tsi.c ****   if(lValidTouch&((1<<ELECTRODE1)))
+ 670              		.loc 1 209 0
+ 671 0314 FB89     		ldrh	r3, [r7, #14]
+ 672 0316 03F00203 		and	r3, r3, #2
+ 673 031a 002B     		cmp	r3, #0
+ 674 031c 0BD0     		beq	.L15
+ 210:../Sources/tsi.c ****   {
+ 211:../Sources/tsi.c **** 	  _lwevent_set(&lwevent_group, TOUCH2_EVENT);
+ 675              		.loc 1 211 0
+ 676 031e 40F20000 		movw	r0, #:lower16:lwevent_group
+ 677 0322 C0F20000 		movt	r0, #:upper16:lwevent_group
+ 678 0326 4FF01001 		mov	r1, #16
+ 679 032a FFF7FEFF 		bl	_lwevent_set
+ 212:../Sources/tsi.c **** 	  lValidTouch &= ~((1<<ELECTRODE1));
+ 680              		.loc 1 212 0
+ 681 032e FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 682 0330 23F00203 		bic	r3, r3, #2
+ 683 0334 FB81     		strh	r3, [r7, #14]	@ movhi
+ 684              	.L15:
+ 213:../Sources/tsi.c ****   }
+ 214:../Sources/tsi.c ****   
+ 215:../Sources/tsi.c ****   /* Electrode 2 */
+ 216:../Sources/tsi.c ****   if(lValidTouch&((1<<ELECTRODE2)))
+ 685              		.loc 1 216 0
+ 686 0336 FB89     		ldrh	r3, [r7, #14]
+ 687 0338 03F00403 		and	r3, r3, #4
+ 688 033c 002B     		cmp	r3, #0
+ 689 033e 0BD0     		beq	.L16
+ 217:../Sources/tsi.c ****   {
+ 218:../Sources/tsi.c ****     	_lwevent_set(&lwevent_group, TOUCH3_EVENT);    
+ 690              		.loc 1 218 0
+ 691 0340 40F20000 		movw	r0, #:lower16:lwevent_group
+ 692 0344 C0F20000 		movt	r0, #:upper16:lwevent_group
+ 693 0348 4FF02001 		mov	r1, #32
+ 694 034c FFF7FEFF 		bl	_lwevent_set
+ 219:../Sources/tsi.c ****     lValidTouch &= ~((1<<ELECTRODE2));
+ 695              		.loc 1 219 0
+ 696 0350 FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 697 0352 23F00403 		bic	r3, r3, #4
+ 698 0356 FB81     		strh	r3, [r7, #14]	@ movhi
+ 699              	.L16:
+ 220:../Sources/tsi.c ****   }
+ 221:../Sources/tsi.c ****   
+ 222:../Sources/tsi.c ****   /* Electrode 3 */
+ 223:../Sources/tsi.c ****   if(lValidTouch&((1<<ELECTRODE3)))
+ 700              		.loc 1 223 0
+ 701 0358 FB89     		ldrh	r3, [r7, #14]
+ 702 035a 03F00803 		and	r3, r3, #8
+ 703 035e 002B     		cmp	r3, #0
+ 704 0360 0BD0     		beq	.L17
+ 224:../Sources/tsi.c ****   {
+ 225:../Sources/tsi.c **** 	  _lwevent_set(&lwevent_group, TOUCH4_EVENT);   
+ 705              		.loc 1 225 0
+ 706 0362 40F20000 		movw	r0, #:lower16:lwevent_group
+ 707 0366 C0F20000 		movt	r0, #:upper16:lwevent_group
+ 708 036a 4FF04001 		mov	r1, #64
+ 709 036e FFF7FEFF 		bl	_lwevent_set
+ 226:../Sources/tsi.c ****     lValidTouch &= ~((1<<ELECTRODE3));
+ 710              		.loc 1 226 0
+ 711 0372 FB89     		ldrh	r3, [r7, #14]	@ movhi
+ 712 0374 23F00803 		bic	r3, r3, #8
+ 713 0378 FB81     		strh	r3, [r7, #14]	@ movhi
+ 714              	.L17:
+ 227:../Sources/tsi.c ****   }
+ 228:../Sources/tsi.c **** 
+ 229:../Sources/tsi.c ****   TSI0_STATUS = 0xFFFFFFFF;
+ 715              		.loc 1 229 0
+ 716 037a 4FF4A043 		mov	r3, #20480
+ 717 037e C4F20403 		movt	r3, 16388
+ 718 0382 4FF0FF32 		mov	r2, #-1
+ 719 0386 DA60     		str	r2, [r3, #12]
+ 230:../Sources/tsi.c **** }
+ 720              		.loc 1 230 0
+ 721 0388 07F11007 		add	r7, r7, #16
+ 722 038c BD46     		mov	sp, r7
+ 723 038e 80BD     		pop	{r7, pc}
+ 724              		.cfi_endproc
+ 725              	.LFE3:
+ 727              		.section	.bss.TouchEvent.9255,"aw",%nobits
+ 728              		.align	1
+ 731              	TouchEvent.9255:
+ 732 0000 0000     		.space	2
+ 733              		.text
+ 734              	.Letext0:
+ 735              		.file 2 "C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cstdint"
+ 736              		.file 3 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psptypes.h"
+ 737              		.file 4 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/queue.h"
+ 738              		.file 5 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/MK60DZ10.h"
+ 739              		.file 6 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/lwevent.h"
+ 740              		.file 7 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psptypes_legacy.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 tsi.c
+C:\Users\Angus\AppData\Local\Temp\ccXe1e1s.s:23     .bss.g16ElectrodeTouch:00000000 g16ElectrodeTouch
+C:\Users\Angus\AppData\Local\Temp\ccXe1e1s.s:20     .bss.g16ElectrodeTouch:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\ccXe1e1s.s:30     .bss.g16ElectrodeBaseline:00000000 g16ElectrodeBaseline
+C:\Users\Angus\AppData\Local\Temp\ccXe1e1s.s:27     .bss.g16ElectrodeBaseline:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\ccXe1e1s.s:37     .data.g32DebounceCounter:00000000 g32DebounceCounter
+C:\Users\Angus\AppData\Local\Temp\ccXe1e1s.s:34     .data.g32DebounceCounter:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\ccXe1e1s.s:41     .text.TSI_Start:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccXe1e1s.s:46     .text.TSI_Start:00000000 TSI_Start
+C:\Users\Angus\AppData\Local\Temp\ccXe1e1s.s:100    .text.TSI_Init:00000000 TSI_Init
+C:\Users\Angus\AppData\Local\Temp\ccXe1e1s.s:198    .text.TSI_SelfCalibration:00000000 TSI_SelfCalibration
+C:\Users\Angus\AppData\Local\Temp\ccXe1e1s.s:95     .text.TSI_Init:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccXe1e1s.s:355    .text.TSI_isr:00000000 TSI_isr
+C:\Users\Angus\AppData\Local\Temp\ccXe1e1s.s:193    .text.TSI_SelfCalibration:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccXe1e1s.s:350    .text.TSI_isr:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccXe1e1s.s:731    .bss.TouchEvent.9255:00000000 TouchEvent.9255
+C:\Users\Angus\AppData\Local\Temp\ccXe1e1s.s:728    .bss.TouchEvent.9255:00000000 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+_int_install_isr
+_nvic_int_init
+_time_delay
+lwevent_group
+_lwevent_set

@@ -129,7 +129,8 @@ Sources/TempTask.o: ../Sources/TempTask.c ../Sources/main.h \
  C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/shell/shell.h \
  C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/shell/sh_enet.h \
  C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/message.h \
- C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/klog.h
+ C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/klog.h \
+ C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psptypes_legacy.h
 
 ../Sources/main.h:
 
@@ -394,3 +395,5 @@ C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/shell/sh_enet.h:
 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/message.h:
 
 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/klog.h:
+
+C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psptypes_legacy.h:
