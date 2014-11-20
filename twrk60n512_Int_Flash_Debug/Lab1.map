@@ -1807,7 +1807,7 @@ LOAD c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gc
                 0x00000400                _cfm
                 0x00000410                . = ALIGN (0x4)
 
-.text           0x00000420    0x19b14
+.text           0x00000420    0x19b08
  *(KERNEL)
  KERNEL         0x00000420      0x2ac C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(dispatch.o)
                 0x00000420                _sched_start_internal
@@ -1871,1289 +1871,1289 @@ LOAD c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gc
                 0x000014d4       0x88 ./Sources/HealthTask.o
                 0x000014d4                Health_task
  .text.Display_task
-                0x0000155c      0x2a0 ./Sources/DisplayTask.o
+                0x0000155c      0x2b0 ./Sources/DisplayTask.o
                 0x0000155c                Display_task
  .text.print_accelerometer_data
-                0x000017fc       0x6c ./Sources/DisplayTask.o
-                0x000017fc                print_accelerometer_data
+                0x0000180c       0x6c ./Sources/DisplayTask.o
+                0x0000180c                print_accelerometer_data
  .text.Accel_task
-                0x00001868       0xe4 ./Sources/AccelTask.o
-                0x00001868                Accel_task
+                0x00001878       0xe4 ./Sources/AccelTask.o
+                0x00001878                Accel_task
  .text.InitializeI2C
-                0x0000194c       0x64 ./Sources/AccelTask.o
-                0x0000194c                InitializeI2C
+                0x0000195c       0x64 ./Sources/AccelTask.o
+                0x0000195c                InitializeI2C
  .text.InitializeMMA7660
-                0x000019b0       0x28 ./Sources/AccelTask.o
-                0x000019b0                InitializeMMA7660
+                0x000019c0       0x28 ./Sources/AccelTask.o
+                0x000019c0                InitializeMMA7660
  .text.write_I2C
-                0x000019d8       0x7c ./Sources/AccelTask.o
-                0x000019d8                write_I2C
+                0x000019e8       0x7c ./Sources/AccelTask.o
+                0x000019e8                write_I2C
  .text.read_I2C
-                0x00001a54       0xd8 ./Sources/AccelTask.o
-                0x00001a54                read_I2C
+                0x00001a64       0xd8 ./Sources/AccelTask.o
+                0x00001a64                read_I2C
  .text.convert_accel_data
-                0x00001b2c       0x34 ./Sources/AccelTask.o
-                0x00001b2c                convert_accel_data
+                0x00001b3c       0x34 ./Sources/AccelTask.o
+                0x00001b3c                convert_accel_data
  .text.__init_hardware
-                0x00001b60        0xc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(comp.o)
-                0x00001b60                __init_hardware
+                0x00001b70        0xc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(comp.o)
+                0x00001b70                __init_hardware
  .text.__init_registers
-                0x00001b6c        0xc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(comp.o)
-                0x00001b6c                __init_registers
- .text.malloc   0x00001b78       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(comp.o)
-                0x00001b78                malloc
+                0x00001b7c        0xc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(comp.o)
+                0x00001b7c                __init_registers
+ .text.malloc   0x00001b88       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(comp.o)
+                0x00001b88                malloc
  .text.toolchain_startup
-                0x00001b94        0xc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(comp.o)
-                0x00001b94                toolchain_startup
+                0x00001ba4        0xc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(comp.o)
+                0x00001ba4                toolchain_startup
  .text._nvic_int_init
-                0x00001ba0       0xac C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(nvic.o)
-                0x00001ba0                _nvic_int_init
+                0x00001bb0       0xac C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(nvic.o)
+                0x00001bb0                _nvic_int_init
  .text._nvic_int_enable
-                0x00001c4c       0x54 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(nvic.o)
-                0x00001c4c                _nvic_int_enable
+                0x00001c5c       0x54 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(nvic.o)
+                0x00001c5c                _nvic_int_enable
  .text._nvic_int_disable
-                0x00001ca0       0x58 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(nvic.o)
-                0x00001ca0                _nvic_int_disable
- .text          0x00001cf8       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(boot.o)
-                0x00001cf8                __boot
+                0x00001cb0       0x58 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(nvic.o)
+                0x00001cb0                _nvic_int_disable
+ .text          0x00001d08       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(boot.o)
+                0x00001d08                __boot
  .text._io_write
-                0x00001d3c       0x4c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_write.o)
-                0x00001d3c                _io_write
+                0x00001d4c       0x4c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_write.o)
+                0x00001d4c                _io_write
  .text._io_scanf
-                0x00001d88       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanf.o)
-                0x00001d88                _io_scanf
+                0x00001d98       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanf.o)
+                0x00001d98                _io_scanf
  .text._io_read
-                0x00001df4       0xc4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_read.o)
-                0x00001df4                _io_read
+                0x00001e04       0xc4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_read.o)
+                0x00001e04                _io_read
  .text._io_printf
-                0x00001eb8       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_pntf.o)
-                0x00001eb8                _io_printf
+                0x00001ec8       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_pntf.o)
+                0x00001ec8                _io_printf
  .text._io_ioctl
-                0x00001efc       0x78 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_ioctl.o)
-                0x00001efc                _io_ioctl
+                0x00001f0c       0x78 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_ioctl.o)
+                0x00001f0c                _io_ioctl
  .text._io_fputc
-                0x00001f74       0x64 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fputc.o)
-                0x00001f74                _io_fputc
+                0x00001f84       0x64 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fputc.o)
+                0x00001f84                _io_fputc
  .text._io_fopen
-                0x00001fd8      0x104 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fopen.o)
-                0x00001fd8                _io_fopen
+                0x00001fe8      0x104 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fopen.o)
+                0x00001fe8                _io_fopen
  .text._io_fgetline
-                0x000020dc      0x13c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fgetl.o)
-                0x000020dc                _io_fgetline
+                0x000020ec      0x13c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fgetl.o)
+                0x000020ec                _io_fgetline
  .text._io_fgetc
-                0x00002218       0x74 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fgetc.o)
-                0x00002218                _io_fgetc
+                0x00002228       0x74 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fgetc.o)
+                0x00002228                _io_fgetc
  .text._io_fflush
-                0x0000228c       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fflsh.o)
-                0x0000228c                _io_fflush
+                0x0000229c       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fflsh.o)
+                0x0000229c                _io_fflush
  .text._io_mputc
-                0x000022e8       0x60 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
+                0x000022f8       0x60 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
  .text._io_putstr
-                0x00002348       0x8c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
- *fill*         0x000023d4        0x4 00
+                0x00002358       0x8c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
+ *fill*         0x000023e4        0x4 00
  .text._io_doprint
-                0x000023d8     0x1030 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
-                0x000023d8                _io_doprint
+                0x000023e8     0x1030 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
+                0x000023e8                _io_doprint
  .text._io_doprint_prt
-                0x00003408      0x154 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
-                0x00003408                _io_doprint_prt
+                0x00003418      0x154 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
+                0x00003418                _io_doprint_prt
  .text._io_doprint_prt64
-                0x0000355c      0x188 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
-                0x0000355c                _io_doprint_prt64
+                0x0000356c      0x188 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
+                0x0000356c                _io_doprint_prt64
  .text._io_get_handle
-                0x000036e4       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_ghand.o)
-                0x000036e4                _io_get_handle
+                0x000036f4       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_ghand.o)
+                0x000036f4                _io_get_handle
  .text._time_delay
-                0x00003750       0xf8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
-                0x00003750                _time_delay
+                0x00003760       0xf8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
+                0x00003760                _time_delay
  .text._time_delay_for
-                0x00003848       0xcc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
-                0x00003848                _time_delay_for
+                0x00003858       0xcc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
+                0x00003858                _time_delay_for
  .text._time_delay_internal
-                0x00003914       0xc8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
-                0x00003914                _time_delay_internal
+                0x00003924       0xc8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
+                0x00003924                _time_delay_internal
  .text._time_delay_until
-                0x000039dc       0xc8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
-                0x000039dc                _time_delay_until
+                0x000039ec       0xc8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
+                0x000039ec                _time_delay_until
  .text._time_diff_ticks
-                0x00003aa4       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
-                0x00003aa4                _time_diff_ticks
+                0x00003ab4       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
+                0x00003ab4                _time_diff_ticks
  .text._time_diff_milliseconds
-                0x00003ae0       0x34 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
-                0x00003ae0                _time_diff_milliseconds
+                0x00003af0       0x34 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
+                0x00003af0                _time_diff_milliseconds
  .text._time_get_hwticks
-                0x00003b14       0x40 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
-                0x00003b14                _time_get_hwticks
+                0x00003b24       0x40 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
+                0x00003b24                _time_get_hwticks
  .text._time_get_ticks
-                0x00003b54       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
-                0x00003b54                _time_get_ticks
+                0x00003b64       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
+                0x00003b64                _time_get_ticks
  .text._time_notify_kernel
-                0x00003bb0      0x140 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
-                0x00003bb0                _time_notify_kernel
+                0x00003bc0      0x140 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
+                0x00003bc0                _time_notify_kernel
  .text._time_set_ticks_per_sec
-                0x00003cf0       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
-                0x00003cf0                _time_set_ticks_per_sec
+                0x00003d00       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
+                0x00003d00                _time_set_ticks_per_sec
  .text._time_set_hwtick_function
-                0x00003d14       0x2c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
-                0x00003d14                _time_set_hwtick_function
+                0x00003d24       0x2c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
+                0x00003d24                _time_set_hwtick_function
  .text._time_set_hwticks_per_tick
-                0x00003d40       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
-                0x00003d40                _time_set_hwticks_per_tick
+                0x00003d50       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
+                0x00003d50                _time_set_hwticks_per_tick
  .text._task_abort_internal
-                0x00003d64      0x244 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
-                0x00003d64                _task_abort_internal
+                0x00003d74      0x244 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x00003d74                _task_abort_internal
  .text._task_abort
-                0x00003fa8       0x20 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
-                0x00003fa8                _task_abort
+                0x00003fb8       0x20 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x00003fb8                _task_abort
  .text._task_destroy_internal
-                0x00003fc8      0x48c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
-                0x00003fc8                _task_destroy_internal
+                0x00003fd8      0x48c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x00003fd8                _task_destroy_internal
  .text._task_destroy
-                0x00004454       0x20 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
-                0x00004454                _task_destroy
+                0x00004464       0x20 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x00004464                _task_destroy
  .text._task_ready
-                0x00004474      0x160 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
-                0x00004474                _task_ready
+                0x00004484      0x160 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x00004484                _task_ready
  .text._task_restart_func
-                0x000045d4      0x490 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x000045e4      0x490 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
  .text._task_restart
-                0x00004a64       0x2c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
-                0x00004a64                _task_restart
+                0x00004a74       0x2c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x00004a74                _task_restart
  .text._task_stop_preemption
-                0x00004a90       0x84 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
-                0x00004a90                _task_stop_preemption
+                0x00004aa0       0x84 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x00004aa0                _task_stop_preemption
  .text._task_get_id
-                0x00004b14       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
-                0x00004b14                _task_get_id
+                0x00004b24       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x00004b24                _task_get_id
  .text._task_get_td
-                0x00004b30       0x94 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
-                0x00004b30                _task_get_td
+                0x00004b40       0x94 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x00004b40                _task_get_td
  .text._task_set_error
-                0x00004bc4       0x9c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
-                0x00004bc4                _task_set_error
+                0x00004bd4       0x9c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x00004bd4                _task_set_error
  .text._task_exit_function_internal
-                0x00004c60       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
-                0x00004c60                _task_exit_function_internal
+                0x00004c70       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x00004c70                _task_exit_function_internal
  .text._task_init_internal
-                0x00004ccc      0x224 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
-                0x00004ccc                _task_init_internal
+                0x00004cdc      0x224 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x00004cdc                _task_init_internal
  .text._task_fill_stack_internal
-                0x00004ef0       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
-                0x00004ef0                _task_fill_stack_internal
+                0x00004f00       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x00004f00                _task_fill_stack_internal
  .text._task_ready_internal
-                0x00004f34       0xa0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
-                0x00004f34                _task_ready_internal
+                0x00004f44       0xa0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x00004f44                _task_ready_internal
  .text._task_alloc_td_internal
-                0x00004fd4      0x158 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
-                0x00004fd4                _task_alloc_td_internal
+                0x00004fe4      0x158 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x00004fe4                _task_alloc_td_internal
  .text._task_set_error_td_internal
-                0x0000512c       0x90 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
-                0x0000512c                _task_set_error_td_internal
+                0x0000513c       0x90 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+                0x0000513c                _task_set_error_td_internal
  .text._sched_yield
-                0x000051bc       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(sched.o)
-                0x000051bc                _sched_yield
+                0x000051cc       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(sched.o)
+                0x000051cc                _sched_yield
  .text._queue_init
-                0x00005218       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(queue.o)
-                0x00005218                _queue_init
+                0x00005228       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(queue.o)
+                0x00005228                _queue_init
  .text._queue_enqueue
-                0x00005248       0x70 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(queue.o)
-                0x00005248                _queue_enqueue
+                0x00005258       0x70 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(queue.o)
+                0x00005258                _queue_enqueue
  .text._queue_dequeue
-                0x000052b8       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(queue.o)
-                0x000052b8                _queue_dequeue
+                0x000052c8       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(queue.o)
+                0x000052c8                _queue_dequeue
  .text._queue_insert
-                0x00005314       0x78 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(queue.o)
-                0x00005314                _queue_insert
+                0x00005324       0x78 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(queue.o)
+                0x00005324                _queue_insert
  .text._msgq_get_id
-                0x0000538c       0x54 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
-                0x0000538c                _msgq_get_id
+                0x0000539c       0x54 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
+                0x0000539c                _msgq_get_id
  .text._msgq_open
-                0x000053e0       0x98 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
-                0x000053e0                _msgq_open
+                0x000053f0       0x98 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
+                0x000053f0                _msgq_open
  .text._msgq_open_internal
-                0x00005478      0x178 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
-                0x00005478                _msgq_open_internal
+                0x00005488      0x178 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
+                0x00005488                _msgq_open_internal
  .text._msgq_receive
-                0x000055f0      0x154 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
-                0x000055f0                _msgq_receive
+                0x00005600      0x154 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
+                0x00005600                _msgq_receive
  .text._msgq_receive_internal
-                0x00005744      0x354 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
-                0x00005744                _msgq_receive_internal
+                0x00005754      0x354 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
+                0x00005754                _msgq_receive_internal
  .text._msgq_send
-                0x00005a98       0x90 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
-                0x00005a98                _msgq_send
+                0x00005aa8       0x90 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
+                0x00005aa8                _msgq_send
  .text._msgq_send_internal
-                0x00005b28      0x334 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
-                0x00005b28                _msgq_send_internal
+                0x00005b38      0x334 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
+                0x00005b38                _msgq_send_internal
  .text._msgq_insert_message_internal
-                0x00005e5c       0xd8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
-                0x00005e5c                _msgq_insert_message_internal
+                0x00005e6c       0xd8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
+                0x00005e6c                _msgq_insert_message_internal
  .text._msgpool_create_internal
-                0x00005f34      0x1b0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgpool.o)
-                0x00005f34                _msgpool_create_internal
+                0x00005f44      0x1b0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgpool.o)
+                0x00005f44                _msgpool_create_internal
  .text._msgpool_add_internal
-                0x000060e4      0x120 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgpool.o)
-                0x000060e4                _msgpool_add_internal
+                0x000060f4      0x120 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgpool.o)
+                0x000060f4                _msgpool_add_internal
  .text._msgpool_create_system
-                0x00006204       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgpool.o)
-                0x00006204                _msgpool_create_system
+                0x00006214       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgpool.o)
+                0x00006214                _msgpool_create_system
  .text._msg_create_component
-                0x000062a8      0x2ec C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msg.o)
-                0x000062a8                _msg_create_component
+                0x000062b8      0x2ec C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msg.o)
+                0x000062b8                _msg_create_component
  .text._msg_free
-                0x00006594      0x158 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msg.o)
-                0x00006594                _msg_free
+                0x000065a4      0x158 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msg.o)
+                0x000065a4                _msg_free
  .text._msg_cleanup
-                0x000066ec      0x16c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msg.o)
-                0x000066ec                _msg_cleanup
+                0x000066fc      0x16c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msg.o)
+                0x000066fc                _msg_cleanup
  .text._msg_alloc_system
-                0x00006858      0x1a0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msg.o)
-                0x00006858                _msg_alloc_system
- .text._mqx     0x000069f8      0x248 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
-                0x000069f8                _mqx
+                0x00006868      0x1a0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msg.o)
+                0x00006868                _msg_alloc_system
+ .text._mqx     0x00006a08      0x248 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
+                0x00006a08                _mqx
  .text._mqx_exit
-                0x00006c40       0x4c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
-                0x00006c40                _mqx_exit
+                0x00006c50       0x4c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
+                0x00006c50                _mqx_exit
  .text._mqx_set_cpu_type
-                0x00006c8c       0x28 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
-                0x00006c8c                _mqx_set_cpu_type
+                0x00006c9c       0x28 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
+                0x00006c9c                _mqx_set_cpu_type
  .text._mqx_init_kernel_data_internal
-                0x00006cb4      0x1b4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
-                0x00006cb4                _mqx_init_kernel_data_internal
+                0x00006cc4      0x1b4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
+                0x00006cc4                _mqx_init_kernel_data_internal
  .text._lwtimer_create_periodic_queue
-                0x00006e68       0xf4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwtimer.o)
-                0x00006e68                _lwtimer_create_periodic_queue
+                0x00006e78       0xf4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwtimer.o)
+                0x00006e78                _lwtimer_create_periodic_queue
  .text._lwtimer_add_timer_to_queue
-                0x00006f5c      0x174 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwtimer.o)
-                0x00006f5c                _lwtimer_add_timer_to_queue
+                0x00006f6c      0x174 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwtimer.o)
+                0x00006f6c                _lwtimer_add_timer_to_queue
  .text._lwtimer_isr_internal
-                0x000070d0       0xb4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwtimer.o)
-                0x000070d0                _lwtimer_isr_internal
+                0x000070e0       0xb4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwtimer.o)
+                0x000070e0                _lwtimer_isr_internal
  .text._lwsem_create_internal
-                0x00007184      0x12c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwsem.o)
-                0x00007184                _lwsem_create_internal
+                0x00007194      0x12c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwsem.o)
+                0x00007194                _lwsem_create_internal
  .text._lwsem_create
-                0x000072b0       0x28 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwsem.o)
-                0x000072b0                _lwsem_create
+                0x000072c0       0x28 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwsem.o)
+                0x000072c0                _lwsem_create
  .text._lwsem_post
-                0x000072d8      0x168 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwsem.o)
-                0x000072d8                _lwsem_post
+                0x000072e8      0x168 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwsem.o)
+                0x000072e8                _lwsem_post
  .text._lwsem_wait
-                0x00007440      0x1b8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwsem.o)
-                0x00007440                _lwsem_wait
+                0x00007450      0x1b8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwsem.o)
+                0x00007450                _lwsem_wait
  .text._lwmem_alloc_internal
-                0x000075f8      0x1b4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
-                0x000075f8                _lwmem_alloc_internal
+                0x00007608      0x1b4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+                0x00007608                _lwmem_alloc_internal
  .text._lwmem_alloc_at_internal
-                0x000077ac      0x1d8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
-                0x000077ac                _lwmem_alloc_at_internal
+                0x000077bc      0x1d8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+                0x000077bc                _lwmem_alloc_at_internal
  .text._lwmem_alloc_align_internal
-                0x00007984      0x24c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
-                0x00007984                _lwmem_alloc_align_internal
+                0x00007994      0x24c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+                0x00007994                _lwmem_alloc_align_internal
  .text._lwmem_alloc
-                0x00007bd0       0x90 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
-                0x00007bd0                _lwmem_alloc
+                0x00007be0       0x90 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+                0x00007be0                _lwmem_alloc
  .text._lwmem_alloc_at
-                0x00007c60       0x94 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
-                0x00007c60                _lwmem_alloc_at
+                0x00007c70       0x94 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+                0x00007c70                _lwmem_alloc_at
  .text._lwmem_alloc_zero
-                0x00007cf4       0x90 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
-                0x00007cf4                _lwmem_alloc_zero
+                0x00007d04       0x90 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+                0x00007d04                _lwmem_alloc_zero
  .text._lwmem_create_pool
-                0x00007d84      0x11c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
-                0x00007d84                _lwmem_create_pool
+                0x00007d94      0x11c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+                0x00007d94                _lwmem_create_pool
  .text._lwmem_free
-                0x00007ea0      0x294 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
-                0x00007ea0                _lwmem_free
+                0x00007eb0      0x294 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+                0x00007eb0                _lwmem_free
  .text._lwmem_alloc_system
-                0x00008134       0x94 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
-                0x00008134                _lwmem_alloc_system
+                0x00008144       0x94 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+                0x00008144                _lwmem_alloc_system
  .text._lwmem_alloc_system_align
-                0x000081c8       0x94 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
-                0x000081c8                _lwmem_alloc_system_align
+                0x000081d8       0x94 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+                0x000081d8                _lwmem_alloc_system_align
  .text._lwmem_init_internal
-                0x0000825c       0x54 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
-                0x0000825c                _lwmem_init_internal
+                0x0000826c       0x54 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+                0x0000826c                _lwmem_init_internal
  .text._lwmem_get_next_block_internal
-                0x000082b0       0xcc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
-                0x000082b0                _lwmem_get_next_block_internal
+                0x000082c0       0xcc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+                0x000082c0                _lwmem_get_next_block_internal
  .text._lwmem_set_type
-                0x0000837c       0x38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
-                0x0000837c                _lwmem_set_type
+                0x0000838c       0x38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+                0x0000838c                _lwmem_set_type
  .text._lwmem_transfer_internal
-                0x000083b4       0x28 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
-                0x000083b4                _lwmem_transfer_internal
+                0x000083c4       0x28 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+                0x000083c4                _lwmem_transfer_internal
  .text._lwmem_transfer_td_internal
-                0x000083dc       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
-                0x000083dc                _lwmem_transfer_td_internal
+                0x000083ec       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+                0x000083ec                _lwmem_transfer_td_internal
  .text._lwmem_alloc_system_zero
-                0x0000840c       0x94 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
-                0x0000840c                _lwmem_alloc_system_zero
+                0x0000841c       0x94 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+                0x0000841c                _lwmem_alloc_system_zero
  .text._lwevent_create_internal
-                0x000084a0      0x154 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
-                0x000084a0                _lwevent_create_internal
+                0x000084b0      0x154 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
+                0x000084b0                _lwevent_create_internal
  .text._lwevent_create
-                0x000085f4       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
-                0x000085f4                _lwevent_create
+                0x00008604       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
+                0x00008604                _lwevent_create
  .text._lwevent_destroy_internal
-                0x00008618      0x1b0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
-                0x00008618                _lwevent_destroy_internal
+                0x00008628      0x1b0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
+                0x00008628                _lwevent_destroy_internal
  .text._lwevent_destroy
-                0x000087c8       0x20 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
-                0x000087c8                _lwevent_destroy
+                0x000087d8       0x20 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
+                0x000087d8                _lwevent_destroy
  .text._lwevent_clear
-                0x000087e8       0xd8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
-                0x000087e8                _lwevent_clear
+                0x000087f8       0xd8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
+                0x000087f8                _lwevent_clear
  .text._lwevent_get_signalled
-                0x000088c0       0x80 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
-                0x000088c0                _lwevent_get_signalled
+                0x000088d0       0x80 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
+                0x000088d0                _lwevent_get_signalled
  .text._lwevent_set
-                0x00008940      0x1f8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
-                0x00008940                _lwevent_set
+                0x00008950      0x1f8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
+                0x00008950                _lwevent_set
  .text._lwevent_wait_internal
-                0x00008b38      0x14c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
-                0x00008b38                _lwevent_wait_internal
+                0x00008b48      0x14c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
+                0x00008b48                _lwevent_wait_internal
  .text._lwevent_wait_ticks
-                0x00008c84       0xe0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
-                0x00008c84                _lwevent_wait_ticks
+                0x00008c94       0xe0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
+                0x00008c94                _lwevent_wait_ticks
  .text._klog_control
-                0x00008d64       0x4c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
-                0x00008d64                _klog_control
+                0x00008d74       0x4c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
+                0x00008d74                _klog_control
  .text._klog_create
-                0x00008db0       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
-                0x00008db0                _klog_create
+                0x00008dc0       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
+                0x00008dc0                _klog_create
  .text._klog_enable_logging_task
-                0x00008dec       0x34 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
-                0x00008dec                _klog_enable_logging_task
+                0x00008dfc       0x34 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
+                0x00008dfc                _klog_enable_logging_task
  .text._klog_log
-                0x00008e20       0xbc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
-                0x00008e20                _klog_log
+                0x00008e30       0xbc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
+                0x00008e30                _klog_log
  .text._klog_block_internal
-                0x00008edc       0x8c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
-                0x00008edc                _klog_block_internal
+                0x00008eec       0x8c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
+                0x00008eec                _klog_block_internal
  .text._klog_yield_internal
-                0x00008f68       0x8c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
-                0x00008f68                _klog_yield_internal
+                0x00008f78       0x8c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
+                0x00008f78                _klog_yield_internal
  .text._klog_context_switch_internal
-                0x00008ff4       0x94 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
-                0x00008ff4                _klog_context_switch_internal
+                0x00009004       0x94 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
+                0x00009004                _klog_context_switch_internal
  .text._klog_isr_start_internal
-                0x00009088       0x84 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
-                0x00009088                _klog_isr_start_internal
+                0x00009098       0x84 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
+                0x00009098                _klog_isr_start_internal
  .text._klog_isr_end_internal
-                0x0000910c       0x78 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
-                0x0000910c                _klog_isr_end_internal
+                0x0000911c       0x78 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
+                0x0000911c                _klog_isr_end_internal
  .text._int_default_isr
-                0x00009184       0x8c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
-                0x00009184                _int_default_isr
+                0x00009194       0x8c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
+                0x00009194                _int_default_isr
  .text._int_disable
-                0x00009210       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
-                0x00009210                _int_disable
+                0x00009220       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
+                0x00009220                _int_disable
  .text._int_enable
-                0x0000924c       0x54 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
-                0x0000924c                _int_enable
+                0x0000925c       0x54 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
+                0x0000925c                _int_enable
  .text._int_get_default_isr
-                0x000092a0       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
-                0x000092a0                _int_get_default_isr
+                0x000092b0       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
+                0x000092b0                _int_get_default_isr
  .text._int_get_isr
-                0x000092c4       0xa8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
-                0x000092c4                _int_get_isr
+                0x000092d4       0xa8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
+                0x000092d4                _int_get_isr
  .text._int_get_isr_data
-                0x0000936c       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
-                0x0000936c                _int_get_isr_data
+                0x0000937c       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
+                0x0000937c                _int_get_isr_data
  .text._int_install_isr
-                0x00009410      0x1d0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
-                0x00009410                _int_install_isr
+                0x00009420      0x1d0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
+                0x00009420                _int_install_isr
  .text._int_init
-                0x000095e0       0xd4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
-                0x000095e0                _int_init
+                0x000095f0       0xd4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
+                0x000095f0                _int_init
  .text._bsp_post_init
-                0x000096b4       0x10 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(inittask.o)
-                0x000096b4                _bsp_post_init
+                0x000096c4       0x10 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(inittask.o)
+                0x000096c4                _bsp_post_init
  .text._mqx_init_task
-                0x000096c4       0xa0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(inittask.o)
-                0x000096c4                _mqx_init_task
+                0x000096d4       0xa0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(inittask.o)
+                0x000096d4                _mqx_init_task
  .text._mqx_idle_task
-                0x00009764       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(idletask.o)
-                0x00009764                _mqx_idle_task
+                0x00009774       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(idletask.o)
+                0x00009774                _mqx_idle_task
  .text._psp_get_stack_start
-                0x000097d0       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(stack_st.o)
-                0x000097d0                _psp_get_stack_start
+                0x000097e0       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(stack_st.o)
+                0x000097e0                _psp_get_stack_start
  .text._psp_destroy_stack_frame
-                0x000097ec       0x14 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(stack_de.o)
-                0x000097ec                _psp_destroy_stack_frame
+                0x000097fc       0x14 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(stack_de.o)
+                0x000097fc                _psp_destroy_stack_frame
  .text._psp_build_stack_frame
-                0x00009800       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(stack_bu.o)
-                0x00009800                _psp_build_stack_frame
+                0x00009810       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(stack_bu.o)
+                0x00009810                _psp_build_stack_frame
  .text._psp_set_kernel_disable_level
-                0x000098a4       0xc4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(sc_irdyq.o)
-                0x000098a4                _psp_set_kernel_disable_level
+                0x000098b4       0xc4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(sc_irdyq.o)
+                0x000098b4                _psp_set_kernel_disable_level
  .text._psp_init_readyqs
-                0x00009968       0xe0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(sc_irdyq.o)
-                0x00009968                _psp_init_readyqs
+                0x00009978       0xe0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(sc_irdyq.o)
+                0x00009978                _psp_init_readyqs
  .text._psp_subtract_ticks
-                0x00009a48       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tisu.o)
-                0x00009a48                _psp_subtract_ticks
+                0x00009a58       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tisu.o)
+                0x00009a58                _psp_subtract_ticks
  .text._psp_normalize_ticks
-                0x00009ab4       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tinm.o)
-                0x00009ab4                _psp_normalize_ticks
+                0x00009ac4       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tinm.o)
+                0x00009ac4                _psp_normalize_ticks
  .text.__psp_ticks_to_milliseconds
-                0x00009b10      0x104 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tims.o)
+                0x00009b20      0x104 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tims.o)
  .text._psp_ticks_to_milliseconds
-                0x00009c14       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tims.o)
-                0x00009c14                _psp_ticks_to_milliseconds
+                0x00009c24       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tims.o)
+                0x00009c24                _psp_ticks_to_milliseconds
  .text._psp_add_ticks
-                0x00009c38       0x74 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tiad.o)
-                0x00009c38                _psp_add_ticks
+                0x00009c48       0x74 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tiad.o)
+                0x00009c48                _psp_add_ticks
  .text._psp_msecs_to_ticks_quick
-                0x00009cac       0xf8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_mstiq.o)
-                0x00009cac                _psp_msecs_to_ticks_quick
+                0x00009cbc       0xf8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_mstiq.o)
+                0x00009cbc                _psp_msecs_to_ticks_quick
  .text._psp_add_element_to_array
-                0x00009da4       0x70 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_mat3.o)
-                0x00009da4                _psp_add_element_to_array
+                0x00009db4       0x70 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_mat3.o)
+                0x00009db4                _psp_add_element_to_array
  .text._psp_div_128_by_32
-                0x00009e14      0x148 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_mat2.o)
-                0x00009e14                _psp_div_128_by_32
+                0x00009e24      0x148 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_mat2.o)
+                0x00009e24                _psp_div_128_by_32
  .text._psp_mul_128_by_32
-                0x00009f5c      0x190 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_mat1.o)
-                0x00009f5c                _psp_mul_128_by_32
+                0x00009f6c      0x190 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_mat1.o)
+                0x00009f6c                _psp_mul_128_by_32
  .text._io_scanline
-                0x0000a0ec      0x870 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanl.o)
-                0x0000a0ec                _io_scanline
+                0x0000a0fc      0x870 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanl.o)
+                0x0000a0fc                _io_scanline
  .text._io_scanline_ignore_white_space
-                0x0000a95c       0x58 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanl.o)
-                0x0000a95c                _io_scanline_ignore_white_space
+                0x0000a96c       0x58 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanl.o)
+                0x0000a96c                _io_scanline_ignore_white_space
  .text._io_scanline_format_ignore_white_space
-                0x0000a9b4       0x4c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanl.o)
-                0x0000a9b4                _io_scanline_format_ignore_white_space
+                0x0000a9c4       0x4c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanl.o)
+                0x0000a9c4                _io_scanline_format_ignore_white_space
  .text._io_scanline_base_convert
-                0x0000aa00       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanl.o)
-                0x0000aa00                _io_scanline_base_convert
+                0x0000aa10       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanl.o)
+                0x0000aa10                _io_scanline_base_convert
  .text._io_scanline_is_octal_digit
-                0x0000aa5c       0x2c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanl.o)
-                0x0000aa5c                _io_scanline_is_octal_digit
+                0x0000aa6c       0x2c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanl.o)
+                0x0000aa6c                _io_scanline_is_octal_digit
  .text._io_scanline_is_hex_digit
-                0x0000aa88       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanl.o)
-                0x0000aa88                _io_scanline_is_hex_digit
+                0x0000aa98       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanl.o)
+                0x0000aa98                _io_scanline_is_hex_digit
  .text._io_fungetc
-                0x0000aacc       0x54 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fung.o)
-                0x0000aacc                _io_fungetc
+                0x0000aadc       0x54 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fung.o)
+                0x0000aadc                _io_fungetc
  .text._io_fseek
-                0x0000ab20      0x100 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fseek.o)
-                0x0000ab20                _io_fseek
+                0x0000ab30      0x100 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fseek.o)
+                0x0000ab30                _io_fseek
  .text._lwlog_create_component
-                0x0000ac20       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwlog.o)
-                0x0000ac20                _lwlog_create_component
+                0x0000ac30       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwlog.o)
+                0x0000ac30                _lwlog_create_component
  .text._lwlog_create_internal
-                0x0000acc4      0x13c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwlog.o)
-                0x0000acc4                _lwlog_create_internal
+                0x0000acd4      0x13c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwlog.o)
+                0x0000acd4                _lwlog_create_internal
  .text._lwlog_create
-                0x0000ae00       0x78 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwlog.o)
-                0x0000ae00                _lwlog_create
+                0x0000ae10       0x78 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwlog.o)
+                0x0000ae10                _lwlog_create
  .text._lwlog_write_internal
-                0x0000ae78      0x170 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwlog.o)
-                0x0000ae78                _lwlog_write_internal
+                0x0000ae88      0x170 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwlog.o)
+                0x0000ae88                _lwlog_write_internal
  .text._lwlog_write
-                0x0000afe8       0x68 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwlog.o)
-                0x0000afe8                _lwlog_write
- .text.main     0x0000b050       0x18 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(mqx_main.o)
-                0x0000b050                main
+                0x0000aff8       0x68 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwlog.o)
+                0x0000aff8                _lwlog_write
+ .text.main     0x0000b060       0x18 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(mqx_main.o)
+                0x0000b060                main
  .text._bsp_watchdog_disable
-                0x0000b068       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_hw.o)
-                0x0000b068                _bsp_watchdog_disable
+                0x0000b078       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_hw.o)
+                0x0000b078                _bsp_watchdog_disable
  .text._bsp_flexbus_setup
-                0x0000b0a4      0x184 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_hw.o)
+                0x0000b0b4      0x184 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_hw.o)
  .text._bsp_flexbus_mram_setup
-                0x0000b228       0x38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_hw.o)
+                0x0000b238       0x38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_hw.o)
  .text.init_hardware
-                0x0000b260       0x70 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_hw.o)
-                0x0000b260                init_hardware
+                0x0000b270       0x70 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_hw.o)
+                0x0000b270                init_hardware
  .text._bsp_serial_io_init
-                0x0000b2d0      0x3bc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
-                0x0000b2d0                _bsp_serial_io_init
+                0x0000b2e0      0x3bc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
+                0x0000b2e0                _bsp_serial_io_init
  .text._bsp_adc_io_init
-                0x0000b68c       0x70 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
-                0x0000b68c                _bsp_adc_io_init
+                0x0000b69c       0x70 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
+                0x0000b69c                _bsp_adc_io_init
  .text._bsp_adc_channel_io_init
-                0x0000b6fc      0x168 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
-                0x0000b6fc                _bsp_adc_channel_io_init
+                0x0000b70c      0x168 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
+                0x0000b70c                _bsp_adc_channel_io_init
  .text._bsp_rtc_io_init
-                0x0000b864       0x38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
-                0x0000b864                _bsp_rtc_io_init
+                0x0000b874       0x38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
+                0x0000b874                _bsp_rtc_io_init
  .text._bsp_esdhc_io_init
-                0x0000b89c       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
-                0x0000b89c                _bsp_esdhc_io_init
+                0x0000b8ac       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
+                0x0000b8ac                _bsp_esdhc_io_init
  .text._bsp_i2c_io_init
-                0x0000b940       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
-                0x0000b940                _bsp_i2c_io_init
+                0x0000b950       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
+                0x0000b950                _bsp_i2c_io_init
  .text._bsp_gpio_io_init
-                0x0000b9e4       0x38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
-                0x0000b9e4                _bsp_gpio_io_init
+                0x0000b9f4       0x38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
+                0x0000b9f4                _bsp_gpio_io_init
  .text._bsp_serial_rts_init
-                0x0000ba1c       0x50 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
-                0x0000ba1c                _bsp_serial_rts_init
+                0x0000ba2c       0x50 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
+                0x0000ba2c                _bsp_serial_rts_init
  .text._bsp_serial_irda_tx_init
-                0x0000ba6c       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
-                0x0000ba6c                _bsp_serial_irda_tx_init
+                0x0000ba7c       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
+                0x0000ba7c                _bsp_serial_irda_tx_init
  .text._bsp_serial_irda_rx_init
-                0x0000bad8      0x1a4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
-                0x0000bad8                _bsp_serial_irda_rx_init
+                0x0000bae8      0x1a4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
+                0x0000bae8                _bsp_serial_irda_rx_init
  .text._bsp_pre_init
-                0x0000bc7c      0x190 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_bsp.o)
-                0x0000bc7c                _bsp_pre_init
+                0x0000bc8c      0x190 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_bsp.o)
+                0x0000bc8c                _bsp_pre_init
  .text._bsp_init
-                0x0000be0c       0xf0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_bsp.o)
-                0x0000be0c                _bsp_init
+                0x0000be1c       0xf0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_bsp.o)
+                0x0000be1c                _bsp_init
  .text._bsp_systimer_callback
-                0x0000befc       0x14 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_bsp.o)
-                0x0000befc                _bsp_systimer_callback
+                0x0000bf0c       0x14 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_bsp.o)
+                0x0000bf0c                _bsp_systimer_callback
  .text._bsp_get_hwticks
-                0x0000bf10       0x28 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_bsp.o)
-                0x0000bf10                _bsp_get_hwticks
+                0x0000bf20       0x28 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_bsp.o)
+                0x0000bf20                _bsp_get_hwticks
  .text.LDD_SetClockConfiguration
-                0x0000bf38       0x14 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
-                0x0000bf38                LDD_SetClockConfiguration
+                0x0000bf48       0x14 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000bf48                LDD_SetClockConfiguration
  .text.Cpu_MCGAutoTrim
-                0x0000bf4c       0xc4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
-                0x0000bf4c                Cpu_MCGAutoTrim
+                0x0000bf5c       0xc4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000bf5c                Cpu_MCGAutoTrim
  .text.Cpu_SetMCGModePEE
-                0x0000c010       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000c020       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
  .text.Cpu_SetMCGModePBE
-                0x0000c0b4      0x15c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000c0c4      0x15c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
  .text.Cpu_SetMCGModeFBE
-                0x0000c210      0x194 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000c220      0x194 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
  .text.Cpu_SetMCGModeBLPI
-                0x0000c3a4       0x74 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000c3b4       0x74 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
  .text.Cpu_SetMCGModeFBI
-                0x0000c418      0x194 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000c428      0x194 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
  .text.Cpu_SetMCG
-                0x0000c5ac       0xb8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000c5bc       0xb8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
  .text.Cpu_GetCurrentMCGMode
-                0x0000c664       0x74 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000c674       0x74 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
  .text.Cpu_SetClockConfiguration
-                0x0000c6d8      0x2ec C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
-                0x0000c6d8                Cpu_SetClockConfiguration
+                0x0000c6e8      0x2ec C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000c6e8                Cpu_SetClockConfiguration
  .text.Cpu_GetClockConfiguration
-                0x0000c9c4       0x18 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
-                0x0000c9c4                Cpu_GetClockConfiguration
+                0x0000c9d4       0x18 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000c9d4                Cpu_GetClockConfiguration
  .text.__pe_initialize_hardware
-                0x0000c9dc      0x310 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
-                0x0000c9dc                __pe_initialize_hardware
+                0x0000c9ec      0x310 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000c9ec                __pe_initialize_hardware
  .text.PE_low_level_init
-                0x0000ccec      0x134 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
-                0x0000ccec                PE_low_level_init
+                0x0000ccfc      0x134 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000ccfc                PE_low_level_init
  .text._bsp_set_clock_configuration
-                0x0000ce20       0x58 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
-                0x0000ce20                _bsp_set_clock_configuration
+                0x0000ce30       0x58 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000ce30                _bsp_set_clock_configuration
  .text._bsp_get_clock_configuration
-                0x0000ce78       0x10 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
-                0x0000ce78                _bsp_get_clock_configuration
+                0x0000ce88       0x10 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000ce88                _bsp_get_clock_configuration
  .text._bsp_get_clock
-                0x0000ce88       0x60 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
-                0x0000ce88                _bsp_get_clock
+                0x0000ce98       0x60 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000ce98                _bsp_get_clock
  .text._bsp_osc_autotrim
-                0x0000cee8       0x48 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
-                0x0000cee8                _bsp_osc_autotrim
+                0x0000cef8       0x48 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000cef8                _bsp_osc_autotrim
  .text._bsp_low_level_init
-                0x0000cf30        0xc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
-                0x0000cf30                _bsp_low_level_init
+                0x0000cf40        0xc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000cf40                _bsp_low_level_init
  .text._bsp_initialize_hardware
-                0x0000cf3c        0xc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
-                0x0000cf3c                _bsp_initialize_hardware
+                0x0000cf4c        0xc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x0000cf4c                _bsp_initialize_hardware
  .text._io_adc_install
-                0x0000cf48       0xac C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc.o)
-                0x0000cf48                _io_adc_install
+                0x0000cf58       0xac C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc.o)
+                0x0000cf58                _io_adc_install
  .text._adc_open
-                0x0000cff4      0x5d4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc.o)
-                0x0000cff4                _adc_open
+                0x0000d004      0x5d4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc.o)
+                0x0000d004                _adc_open
  .text._adc_close
-                0x0000d5c8      0x170 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc.o)
-                0x0000d5c8                _adc_close
+                0x0000d5d8      0x170 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc.o)
+                0x0000d5d8                _adc_close
  .text._adc_read
-                0x0000d738       0xcc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc.o)
-                0x0000d738                _adc_read
+                0x0000d748       0xcc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc.o)
+                0x0000d748                _adc_read
  .text._adc_write
-                0x0000d804       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc.o)
-                0x0000d804                _adc_write
+                0x0000d814       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc.o)
+                0x0000d814                _adc_write
  .text._adc_ioctl
-                0x0000d820      0x178 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc.o)
-                0x0000d820                _adc_ioctl
+                0x0000d830      0x178 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc.o)
+                0x0000d830                _adc_ioctl
  .text._adt_hw_ioctl
-                0x0000d998      0x39c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
-                0x0000d998                _adt_hw_ioctl
+                0x0000d9a8      0x39c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
+                0x0000d9a8                _adt_hw_ioctl
  .text._adt_hw_install
-                0x0000dd34       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
-                0x0000dd34                _adt_hw_install
+                0x0000dd44       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
+                0x0000dd44                _adt_hw_install
  .text._adt_hw_init
-                0x0000dd50      0x220 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
-                0x0000dd50                _adt_hw_init
+                0x0000dd60      0x220 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
+                0x0000dd60                _adt_hw_init
  .text._adt_hw_deinit
-                0x0000df70       0x28 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
-                0x0000df70                _adt_hw_deinit
+                0x0000df80       0x28 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
+                0x0000df80                _adt_hw_deinit
  .text.adt_period_prescaler
-                0x0000df98      0x30c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
+                0x0000dfa8      0x30c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
  .text._adt_hw_channel_init
-                0x0000e2a4      0x270 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
-                0x0000e2a4                _adt_hw_channel_init
+                0x0000e2b4      0x270 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
+                0x0000e2b4                _adt_hw_channel_init
  .text._adt_hw_channel_deinit
-                0x0000e514      0x1e0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
-                0x0000e514                _adt_hw_channel_deinit
+                0x0000e524      0x1e0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
+                0x0000e524                _adt_hw_channel_deinit
  .text._adt_trigger
-                0x0000e6f4      0x1cc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
-                0x0000e6f4                _adt_trigger
+                0x0000e704      0x1cc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
+                0x0000e704                _adt_trigger
  .text._adt_pause
-                0x0000e8c0      0x1a0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
-                0x0000e8c0                _adt_pause
+                0x0000e8d0      0x1a0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
+                0x0000e8d0                _adt_pause
  .text._adt_resume
-                0x0000ea60      0x1ac C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
-                0x0000ea60                _adt_resume
+                0x0000ea70      0x1ac C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
+                0x0000ea70                _adt_resume
  .text._adt_stop
-                0x0000ec0c      0x17c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
-                0x0000ec0c                _adt_stop
+                0x0000ec1c      0x17c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
+                0x0000ec1c                _adt_stop
  .text._adt_process_data
-                0x0000ed88      0x178 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
-                0x0000ed88                _adt_process_data
+                0x0000ed98      0x178 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
+                0x0000ed98                _adt_process_data
  .text.adt_idelay_isr
-                0x0000ef00       0x8c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
+                0x0000ef10       0x8c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
  .text._adc_hw_ioctl
-                0x0000ef8c      0x618 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
-                0x0000ef8c                _adc_hw_ioctl
+                0x0000ef9c      0x618 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
+                0x0000ef9c                _adc_hw_ioctl
  .text._adc_hw_install
-                0x0000f5a4       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
-                0x0000f5a4                _adc_hw_install
+                0x0000f5b4       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
+                0x0000f5b4                _adc_hw_install
  .text._adc_hw_init
-                0x0000f5c8      0x3f8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
-                0x0000f5c8                _adc_hw_init
+                0x0000f5d8      0x3f8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
+                0x0000f5d8                _adc_hw_init
  .text._adc_hw_deinit
-                0x0000f9c0       0x38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
-                0x0000f9c0                _adc_hw_deinit
+                0x0000f9d0       0x38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
+                0x0000f9d0                _adc_hw_deinit
  .text._adc_hw_channel_init
-                0x0000f9f8      0x1d0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
-                0x0000f9f8                _adc_hw_channel_init
+                0x0000fa08      0x1d0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
+                0x0000fa08                _adc_hw_channel_init
  .text._adc_hw_channel_deinit
-                0x0000fbc8       0xc0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
-                0x0000fbc8                _adc_hw_channel_deinit
+                0x0000fbd8       0xc0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
+                0x0000fbd8                _adc_hw_channel_deinit
  .text.adc_process_data
-                0x0000fc88      0x128 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
+                0x0000fc98      0x128 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
  .text.adc_process_all_data
-                0x0000fdb0       0x64 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
-                0x0000fdb0                adc_process_all_data
+                0x0000fdc0       0x64 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
+                0x0000fdc0                adc_process_all_data
  .text.adc_complete_isr
-                0x0000fe14       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
+                0x0000fe24       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
  .text.adc_calibrate
-                0x0000fe58      0x164 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
+                0x0000fe68      0x164 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
  .text.adc_get_calibration_data
-                0x0000ffbc       0xec C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
+                0x0000ffcc       0xec C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
  .text.adc_set_calibration_data
-                0x000100a8      0x110 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
+                0x000100b8      0x110 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
  .text.dma_init
-                0x000101b8       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(dma.o)
-                0x000101b8                dma_init
+                0x000101c8       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(dma.o)
+                0x000101c8                dma_init
  .text.dma_deinit
-                0x0001025c       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(dma.o)
-                0x0001025c                dma_deinit
+                0x0001026c       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(dma.o)
+                0x0001026c                dma_deinit
  .text._esdhc_set_baudrate_low
-                0x00010300       0xf8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+                0x00010310       0xf8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
  .text._esdhc_set_baudrate
-                0x000103f8       0x70 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+                0x00010408       0x70 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
  .text._esdhc_get_baudrate_low
-                0x00010468       0x48 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+                0x00010478       0x48 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
  .text._esdhc_get_baudrate
-                0x000104b0       0x2c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+                0x000104c0       0x2c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
  .text._esdhc_is_running
-                0x000104dc       0x28 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+                0x000104ec       0x28 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
  .text._esdhc_init
-                0x00010504      0x12c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+                0x00010514      0x12c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
  .text._esdhc_send_command
-                0x00010630      0x3e8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+                0x00010640      0x3e8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
  .text._esdhc_get_card_type
-                0x00010a18      0x418 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+                0x00010a28      0x418 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
  .text._esdhc_install
-                0x00010e30      0x14c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
-                0x00010e30                _esdhc_install
+                0x00010e40      0x14c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+                0x00010e40                _esdhc_install
  .text._esdhc_uninstall
-                0x00010f7c       0x7c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
-                0x00010f7c                _esdhc_uninstall
+                0x00010f8c       0x7c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+                0x00010f8c                _esdhc_uninstall
  .text._esdhc_open
-                0x00010ff8       0x68 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
-                0x00010ff8                _esdhc_open
+                0x00011008       0x68 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+                0x00011008                _esdhc_open
  .text._esdhc_close
-                0x00011060       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
-                0x00011060                _esdhc_close
+                0x00011070       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+                0x00011070                _esdhc_close
  .text._esdhc_ioctl
-                0x000110bc      0x4fc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
-                0x000110bc                _esdhc_ioctl
+                0x000110cc      0x4fc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+                0x000110cc                _esdhc_ioctl
  .text._esdhc_read
-                0x000115b8      0x18c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
-                0x000115b8                _esdhc_read
+                0x000115c8      0x18c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+                0x000115c8                _esdhc_read
  .text._esdhc_write
-                0x00011744      0x168 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
-                0x00011744                _esdhc_write
+                0x00011754      0x168 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+                0x00011754                _esdhc_write
  .text._esdhc_isr
-                0x000118ac      0x21c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+                0x000118bc      0x21c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
  .text._io_gpio_install
-                0x00011ac8       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio.o)
-                0x00011ac8                _io_gpio_install
+                0x00011ad8       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio.o)
+                0x00011ad8                _io_gpio_install
  .text._io_gpio_open
-                0x00011b24      0x328 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio.o)
-                0x00011b24                _io_gpio_open
+                0x00011b34      0x328 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio.o)
+                0x00011b34                _io_gpio_open
  .text._io_gpio_close
-                0x00011e4c       0xd4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio.o)
-                0x00011e4c                _io_gpio_close
+                0x00011e5c       0xd4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio.o)
+                0x00011e5c                _io_gpio_close
  .text._io_gpio_read
-                0x00011f20       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio.o)
-                0x00011f20                _io_gpio_read
+                0x00011f30       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio.o)
+                0x00011f30                _io_gpio_read
  .text._io_gpio_write
-                0x00011f3c       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio.o)
-                0x00011f3c                _io_gpio_write
+                0x00011f4c       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio.o)
+                0x00011f4c                _io_gpio_write
  .text.get_irq_mask
-                0x00011f58       0x58 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
+                0x00011f68       0x58 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
  .text.gpio_cpu_configure
-                0x00011fb0      0x290 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
-                0x00011fb0                gpio_cpu_configure
+                0x00011fc0      0x290 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
+                0x00011fc0                gpio_cpu_configure
  .text.gpio_cpu_init
-                0x00012240       0x10 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
-                0x00012240                gpio_cpu_init
+                0x00012250       0x10 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
+                0x00012250                gpio_cpu_init
  .text.install_isr
-                0x00012250      0x114 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
+                0x00012260      0x114 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
  .text.gpio_cpu_open
-                0x00012364      0x264 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
-                0x00012364                gpio_cpu_open
+                0x00012374      0x264 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
+                0x00012374                gpio_cpu_open
  .text.gpio_cpu_ioctl
-                0x000125c8      0xb1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
-                0x000125c8                gpio_cpu_ioctl
+                0x000125d8      0xb1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
+                0x000125d8                gpio_cpu_ioctl
  .text.gpio_eport_irq
-                0x000130e4       0xe0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
+                0x000130f4       0xe0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
  .text.hwtimer_systick_isr
-                0x000131c4       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
+                0x000131d4       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
  .text.hwtimer_systick_init
-                0x00013230       0xa8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
+                0x00013240       0xa8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
  .text.hwtimer_systick_deinit
-                0x000132d8       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
+                0x000132e8       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
  .text.hwtimer_systick_set_div
-                0x00013314       0x54 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
+                0x00013324       0x54 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
  .text.hwtimer_systick_start
-                0x00013368       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
+                0x00013378       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
  .text.hwtimer_systick_stop
-                0x00013398       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
+                0x000133a8       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
  .text.hwtimer_systick_get_time
-                0x000133c8       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
+                0x000133d8       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
  .text.systick_get_vector
-                0x00013434       0x10 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_kinetis.o)
-                0x00013434                systick_get_vector
+                0x00013444       0x10 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_kinetis.o)
+                0x00013444                systick_get_vector
  .text.hwtimer_init
-                0x00013444       0x94 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer.o)
-                0x00013444                hwtimer_init
+                0x00013454       0x94 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer.o)
+                0x00013454                hwtimer_init
  .text.hwtimer_deinit
-                0x000134d8       0xb4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer.o)
-                0x000134d8                hwtimer_deinit
+                0x000134e8       0xb4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer.o)
+                0x000134e8                hwtimer_deinit
  .text.hwtimer_set_freq
-                0x0001358c       0x80 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer.o)
-                0x0001358c                hwtimer_set_freq
+                0x0001359c       0x80 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer.o)
+                0x0001359c                hwtimer_set_freq
  .text.hwtimer_start
-                0x0001360c       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer.o)
-                0x0001360c                hwtimer_start
+                0x0001361c       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer.o)
+                0x0001361c                hwtimer_start
  .text.hwtimer_get_modulo
-                0x00013650       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer.o)
-                0x00013650                hwtimer_get_modulo
+                0x00013660       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer.o)
+                0x00013660                hwtimer_get_modulo
  .text.hwtimer_get_time
-                0x00013674       0x4c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer.o)
-                0x00013674                hwtimer_get_time
+                0x00013684       0x4c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer.o)
+                0x00013684                hwtimer_get_time
  .text.hwtimer_callback_reg
-                0x000136c0       0x48 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer.o)
-                0x000136c0                hwtimer_callback_reg
+                0x000136d0       0x48 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer.o)
+                0x000136d0                hwtimer_callback_reg
  .text._ki2c_set_baudrate
-                0x00013708       0xbc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
+                0x00013718       0xbc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
  .text._ki2c_polled_install
-                0x000137c4       0x4c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
-                0x000137c4                _ki2c_polled_install
+                0x000137d4       0x4c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
+                0x000137d4                _ki2c_polled_install
  .text._ki2c_polled_init
-                0x00013810      0x16c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
-                0x00013810                _ki2c_polled_init
+                0x00013820      0x16c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
+                0x00013820                _ki2c_polled_init
  .text._ki2c_polled_deinit
-                0x0001397c       0x70 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
-                0x0001397c                _ki2c_polled_deinit
+                0x0001398c       0x70 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
+                0x0001398c                _ki2c_polled_deinit
  .text._ki2c_polled_ioctl
-                0x000139ec      0x540 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
-                0x000139ec                _ki2c_polled_ioctl
+                0x000139fc      0x540 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
+                0x000139fc                _ki2c_polled_ioctl
  .text._ki2c_polled_rx
-                0x00013f2c      0x100 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
-                0x00013f2c                _ki2c_polled_rx
+                0x00013f3c      0x100 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
+                0x00013f3c                _ki2c_polled_rx
  .text._ki2c_polled_tx
-                0x0001402c       0xf8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
-                0x0001402c                _ki2c_polled_tx
+                0x0001403c       0xf8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
+                0x0001403c                _ki2c_polled_tx
  .text._ki2c_polled_rx_tx
-                0x00014124      0x5a4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
+                0x00014134      0x5a4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
  .text._bsp_get_i2c_base_address
-                0x000146c8       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_mk60.o)
-                0x000146c8                _bsp_get_i2c_base_address
+                0x000146d8       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_mk60.o)
+                0x000146d8                _bsp_get_i2c_base_address
  .text._bsp_get_i2c_vector
-                0x0001470c       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_mk60.o)
-                0x0001470c                _bsp_get_i2c_vector
+                0x0001471c       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_mk60.o)
+                0x0001471c                _bsp_get_i2c_vector
  .text._ki2c_int_install
-                0x00014748       0x4c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int_ki2c.o)
-                0x00014748                _ki2c_int_install
+                0x00014758       0x4c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int_ki2c.o)
+                0x00014758                _ki2c_int_install
  .text._ki2c_int_init
-                0x00014794      0x118 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int_ki2c.o)
-                0x00014794                _ki2c_int_init
+                0x000147a4      0x118 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int_ki2c.o)
+                0x000147a4                _ki2c_int_init
  .text._ki2c_int_deinit
-                0x000148ac       0xa8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int_ki2c.o)
-                0x000148ac                _ki2c_int_deinit
+                0x000148bc       0xa8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int_ki2c.o)
+                0x000148bc                _ki2c_int_deinit
  .text._ki2c_int_rx
-                0x00014954      0x1bc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int_ki2c.o)
-                0x00014954                _ki2c_int_rx
+                0x00014964      0x1bc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int_ki2c.o)
+                0x00014964                _ki2c_int_rx
  .text._ki2c_int_tx
-                0x00014b10      0x1b0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int_ki2c.o)
-                0x00014b10                _ki2c_int_tx
+                0x00014b20      0x1b0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int_ki2c.o)
+                0x00014b20                _ki2c_int_tx
  .text._ki2c_isr
-                0x00014cc0      0x638 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int_ki2c.o)
+                0x00014cd0      0x638 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int_ki2c.o)
  .text._io_i2c_int_install
-                0x000152f8       0xa0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int.o)
-                0x000152f8                _io_i2c_int_install
+                0x00015308       0xa0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int.o)
+                0x00015308                _io_i2c_int_install
  .text._io_i2c_int_uninstall
-                0x00015398       0x50 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int.o)
-                0x00015398                _io_i2c_int_uninstall
+                0x000153a8       0x50 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int.o)
+                0x000153a8                _io_i2c_int_uninstall
  .text._io_i2c_int_open
-                0x000153e8       0x74 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int.o)
-                0x000153e8                _io_i2c_int_open
+                0x000153f8       0x74 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int.o)
+                0x000153f8                _io_i2c_int_open
  .text._io_i2c_int_close
-                0x0001545c       0x70 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int.o)
-                0x0001545c                _io_i2c_int_close
+                0x0001546c       0x70 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int.o)
+                0x0001546c                _io_i2c_int_close
  .text._io_i2c_int_read
-                0x000154cc       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int.o)
-                0x000154cc                _io_i2c_int_read
+                0x000154dc       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int.o)
+                0x000154dc                _io_i2c_int_read
  .text._io_i2c_int_write
-                0x000154fc       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int.o)
-                0x000154fc                _io_i2c_int_write
+                0x0001550c       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int.o)
+                0x0001550c                _io_i2c_int_write
  .text._io_i2c_int_ioctl
-                0x0001552c       0x78 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int.o)
-                0x0001552c                _io_i2c_int_ioctl
+                0x0001553c       0x78 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int.o)
+                0x0001553c                _io_i2c_int_ioctl
  .text._io_i2c_polled_install
-                0x000155a4       0xa0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol.o)
-                0x000155a4                _io_i2c_polled_install
+                0x000155b4       0xa0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol.o)
+                0x000155b4                _io_i2c_polled_install
  .text._io_i2c_polled_uninstall
-                0x00015644       0x54 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol.o)
-                0x00015644                _io_i2c_polled_uninstall
+                0x00015654       0x54 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol.o)
+                0x00015654                _io_i2c_polled_uninstall
  .text._io_i2c_polled_open
-                0x00015698       0x80 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol.o)
-                0x00015698                _io_i2c_polled_open
+                0x000156a8       0x80 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol.o)
+                0x000156a8                _io_i2c_polled_open
  .text._io_i2c_polled_close
-                0x00015718       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol.o)
-                0x00015718                _io_i2c_polled_close
+                0x00015728       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol.o)
+                0x00015728                _io_i2c_polled_close
  .text._io_i2c_polled_read
-                0x00015774       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol.o)
-                0x00015774                _io_i2c_polled_read
+                0x00015784       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol.o)
+                0x00015784                _io_i2c_polled_read
  .text._io_i2c_polled_write
-                0x000157a4       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol.o)
-                0x000157a4                _io_i2c_polled_write
+                0x000157b4       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol.o)
+                0x000157b4                _io_i2c_polled_write
  .text._io_i2c_polled_ioctl
-                0x000157d4       0x78 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol.o)
-                0x000157d4                _io_i2c_polled_ioctl
+                0x000157e4       0x78 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol.o)
+                0x000157e4                _io_i2c_polled_ioctl
  .text._lwadc_restart
-                0x0001584c       0x34 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_kadc.o)
+                0x0001585c       0x34 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_kadc.o)
  .text._lwadc_init
-                0x00015880      0x470 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_kadc.o)
-                0x00015880                _lwadc_init
+                0x00015890      0x470 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_kadc.o)
+                0x00015890                _lwadc_init
  .text._lwadc_init_input
-                0x00015cf0      0x118 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_kadc.o)
-                0x00015cf0                _lwadc_init_input
+                0x00015d00      0x118 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_kadc.o)
+                0x00015d00                _lwadc_init_input
  .text._lwadc_read_raw
-                0x00015e08       0x74 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_kadc.o)
-                0x00015e08                _lwadc_read_raw
+                0x00015e18       0x74 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_kadc.o)
+                0x00015e18                _lwadc_read_raw
  .text._lwadc_read
-                0x00015e7c       0x68 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_kadc.o)
-                0x00015e7c                _lwadc_read
+                0x00015e8c       0x68 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_kadc.o)
+                0x00015e8c                _lwadc_read
  .text._lwadc_set_attribute
-                0x00015ee4       0xe4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_kadc.o)
-                0x00015ee4                _lwadc_set_attribute
+                0x00015ef4       0xe4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_kadc.o)
+                0x00015ef4                _lwadc_set_attribute
  .text._bsp_get_adc_base_address
-                0x00015fc8       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_k60.o)
-                0x00015fc8                _bsp_get_adc_base_address
+                0x00015fd8       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_k60.o)
+                0x00015fd8                _bsp_get_adc_base_address
  .text.lwgpio_init
-                0x00015ff8       0x94 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
-                0x00015ff8                lwgpio_init
+                0x00016008       0x94 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
+                0x00016008                lwgpio_init
  .text.lwgpio_set_attribute
-                0x0001608c      0x1d8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
-                0x0001608c                lwgpio_set_attribute
+                0x0001609c      0x1d8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
+                0x0001609c                lwgpio_set_attribute
  .text.lwgpio_set_functionality
-                0x00016264       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
-                0x00016264                lwgpio_set_functionality
+                0x00016274       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
+                0x00016274                lwgpio_set_functionality
  .text.lwgpio_set_direction
-                0x000162a0       0x64 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
-                0x000162a0                lwgpio_set_direction
+                0x000162b0       0x64 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
+                0x000162b0                lwgpio_set_direction
  .text.lwgpio_set_value
-                0x00016304       0x38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
-                0x00016304                lwgpio_set_value
+                0x00016314       0x38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
+                0x00016314                lwgpio_set_value
  .text.lwgpio_toggle_value
-                0x0001633c       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
-                0x0001633c                lwgpio_toggle_value
+                0x0001634c       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
+                0x0001634c                lwgpio_toggle_value
  .text.lwgpio_int_init
-                0x00016358       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
-                0x00016358                lwgpio_int_init
+                0x00016368       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
+                0x00016368                lwgpio_int_init
  .text.lwgpio_int_enable
-                0x000163b4       0x54 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
-                0x000163b4                lwgpio_int_enable
+                0x000163c4       0x54 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
+                0x000163c4                lwgpio_int_enable
  .text.lwgpio_int_clear_flag
-                0x00016408       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
-                0x00016408                lwgpio_int_clear_flag
+                0x00016418       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
+                0x00016418                lwgpio_int_clear_flag
  .text.lwgpio_int_get_vector
-                0x0001642c       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
-                0x0001642c                lwgpio_int_get_vector
+                0x0001643c       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
+                0x0001643c                lwgpio_int_get_vector
  .text._rtc_init
-                0x00016450       0xb4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(krtc.o)
-                0x00016450                _rtc_init
+                0x00016460       0xb4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(krtc.o)
+                0x00016460                _rtc_init
  .text._kuart_change_baudrate
-                0x00016504       0xd4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
-                0x00016504                _kuart_change_baudrate
+                0x00016514       0xd4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
+                0x00016514                _kuart_change_baudrate
  .text._kuart_polled_peripheral_enable
-                0x000165d8       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
+                0x000165e8       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
  .text._kuart_polled_peripheral_disable
-                0x000165fc       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
+                0x0001660c       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
  .text._kuart_polled_install
-                0x00016620       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
-                0x00016620                _kuart_polled_install
+                0x00016630       0x5c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
+                0x00016630                _kuart_polled_install
  .text._kuart_polled_init
-                0x0001667c      0x198 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
-                0x0001667c                _kuart_polled_init
+                0x0001668c      0x198 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
+                0x0001668c                _kuart_polled_init
  .text._kuart_polled_deinit
-                0x00016814       0x58 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
-                0x00016814                _kuart_polled_deinit
+                0x00016824       0x58 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
+                0x00016824                _kuart_polled_deinit
  .text._kuart_polled_getc
-                0x0001686c       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
-                0x0001686c                _kuart_polled_getc
+                0x0001687c       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
+                0x0001687c                _kuart_polled_getc
  .text._kuart_polled_putc
-                0x000168a8       0x40 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
-                0x000168a8                _kuart_polled_putc
+                0x000168b8       0x40 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
+                0x000168b8                _kuart_polled_putc
  .text._kuart_polled_status
-                0x000168e8       0xd4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
-                0x000168e8                _kuart_polled_status
+                0x000168f8       0xd4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
+                0x000168f8                _kuart_polled_status
  .text._kuart_polled_ioctl
-                0x000169bc      0x770 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
-                0x000169bc                _kuart_polled_ioctl
+                0x000169cc      0x770 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
+                0x000169cc                _kuart_polled_ioctl
  .text._io_serial_polled_install
-                0x0001712c       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol.o)
-                0x0001712c                _io_serial_polled_install
+                0x0001713c       0xa4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol.o)
+                0x0001713c                _io_serial_polled_install
  .text._io_serial_polled_open
-                0x000171d0      0x144 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol.o)
-                0x000171d0                _io_serial_polled_open
+                0x000171e0      0x144 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol.o)
+                0x000171e0                _io_serial_polled_open
  .text._io_serial_polled_close
-                0x00017314       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol.o)
-                0x00017314                _io_serial_polled_close
+                0x00017324       0x6c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol.o)
+                0x00017324                _io_serial_polled_close
  .text._io_serial_polled_read
-                0x00017380      0x2b4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol.o)
-                0x00017380                _io_serial_polled_read
+                0x00017390      0x2b4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol.o)
+                0x00017390                _io_serial_polled_read
  .text._io_serial_polled_write
-                0x00017634      0x1bc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol.o)
-                0x00017634                _io_serial_polled_write
+                0x00017644      0x1bc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol.o)
+                0x00017644                _io_serial_polled_write
  .text._io_serial_polled_ioctl
-                0x000177f0      0x108 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol.o)
-                0x000177f0                _io_serial_polled_ioctl
+                0x00017800      0x108 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol.o)
+                0x00017800                _io_serial_polled_ioctl
  .text._bsp_get_serial_base_address
-                0x000178f8       0x8c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_mk60.o)
-                0x000178f8                _bsp_get_serial_base_address
+                0x00017908       0x8c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_mk60.o)
+                0x00017908                _bsp_get_serial_base_address
  .text._io_serial_default_init
-                0x00017984       0x58 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_sinit.o)
-                0x00017984                _io_serial_default_init
+                0x00017994       0x58 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_sinit.o)
+                0x00017994                _io_serial_default_init
  .text.edma_channel_sgaidx
-                0x000179dc       0x70 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x000179ec       0x70 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_done_isr
-                0x00017a4c      0x1d4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x00017a5c      0x1d4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_err_isr
-                0x00017c20       0xb4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x00017c30       0xb4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_reset_module
-                0x00017cd4       0xec C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x00017ce4       0xec C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_install_isrs
-                0x00017dc0      0x10c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x00017dd0      0x10c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_uninstall_isrs
-                0x00017ecc       0xfc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x00017edc       0xfc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_init
-                0x00017fc8       0x34 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x00017fd8       0x34 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_deinit
-                0x00017ffc       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x0001800c       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_channel_claim
-                0x00018040      0x118 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x00018050      0x118 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_channel_release
-                0x00018158       0x64 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x00018168       0x64 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_channel_reset
-                0x000181bc       0xdc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x000181cc       0xdc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_channel_setup
-                0x00018298       0xa0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x000182a8       0xa0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_channel_status
-                0x00018338      0x194 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x00018348      0x194 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_tcd_prepare
-                0x000184cc      0x280 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x000184dc      0x280 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_hwtcd_push
-                0x0001874c       0x74 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x0001875c       0x74 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_transfer_submit
-                0x000187c0      0x228 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x000187d0      0x228 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_request_source
-                0x000189e8       0x64 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x000189f8       0x64 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_request_enable
-                0x00018a4c       0x80 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x00018a5c       0x80 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text.edma_request_disable
-                0x00018acc       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+                0x00018adc       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
  .text._bsp_get_esdhc_base_address
-                0x00018b10       0x34 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc_mk60.o)
-                0x00018b10                _bsp_get_esdhc_base_address
+                0x00018b20       0x34 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc_mk60.o)
+                0x00018b20                _bsp_get_esdhc_base_address
  .text._bsp_get_esdhc_vector
-                0x00018b44       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc_mk60.o)
-                0x00018b44                _bsp_get_esdhc_vector
+                0x00018b54       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc_mk60.o)
+                0x00018b54                _bsp_get_esdhc_vector
  .text._bsp_get_edma_done_vectors
-                0x00018b74       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma_kinetis.o)
-                0x00018b74                _bsp_get_edma_done_vectors
+                0x00018b84       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma_kinetis.o)
+                0x00018b84                _bsp_get_edma_done_vectors
  .text._bsp_get_edma_error_vectors
-                0x00018bb0       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma_kinetis.o)
-                0x00018bb0                _bsp_get_edma_error_vectors
+                0x00018bc0       0x3c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma_kinetis.o)
+                0x00018bc0                _bsp_get_edma_error_vectors
  .text._bsp_edma_enable
-                0x00018bec       0x60 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma_kinetis.o)
-                0x00018bec                _bsp_edma_enable
- .text          0x00018c4c       0x38 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_aeabi_ldivmod.o)
-                0x00018c4c                __aeabi_ldivmod
- .text          0x00018c84       0x2c c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_aeabi_uldivmod.o)
-                0x00018c84                __aeabi_uldivmod
- .text          0x00018cb0       0x58 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(bpabi.o)
-                0x00018cb0                __gnu_ldivmod_helper
-                0x00018cdc                __gnu_uldivmod_helper
- .text          0x00018d08        0x4 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_dvmd_tls.o)
-                0x00018d08                __aeabi_idiv0
-                0x00018d08                __aeabi_ldiv0
- .text          0x00018d0c      0x2bc c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_divdi3.o)
-                0x00018d0c                __divdi3
- .text          0x00018fc8      0x288 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_udivdi3.o)
-                0x00018fc8                __udivdi3
- .text.exit     0x00019250       0x38 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(exit.o)
-                0x00019250                exit
- .text.memset   0x00019288        0xc C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(memset.o)
-                0x00019288                memset
- .text.strcmp   0x00019294       0x1a C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(strcmp.o)
-                0x00019294                strcmp
- .text.strlen   0x000192ae       0x10 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(strlen.o)
-                0x000192ae                strlen
- .text.strncmp  0x000192be       0x22 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(strncmp.o)
-                0x000192be                strncmp
+                0x00018bfc       0x60 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma_kinetis.o)
+                0x00018bfc                _bsp_edma_enable
+ .text          0x00018c5c       0x38 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_aeabi_ldivmod.o)
+                0x00018c5c                __aeabi_ldivmod
+ .text          0x00018c94       0x2c c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_aeabi_uldivmod.o)
+                0x00018c94                __aeabi_uldivmod
+ .text          0x00018cc0       0x58 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(bpabi.o)
+                0x00018cc0                __gnu_ldivmod_helper
+                0x00018cec                __gnu_uldivmod_helper
+ .text          0x00018d18        0x4 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_dvmd_tls.o)
+                0x00018d18                __aeabi_idiv0
+                0x00018d18                __aeabi_ldiv0
+ .text          0x00018d1c      0x2bc c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_divdi3.o)
+                0x00018d1c                __divdi3
+ .text          0x00018fd8      0x288 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_udivdi3.o)
+                0x00018fd8                __udivdi3
+ .text.exit     0x00019260       0x38 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(exit.o)
+                0x00019260                exit
+ .text.memset   0x00019298        0xc C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(memset.o)
+                0x00019298                memset
+ .text.strcmp   0x000192a4       0x1a C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(strcmp.o)
+                0x000192a4                strcmp
+ .text.strlen   0x000192be       0x10 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(strlen.o)
+                0x000192be                strlen
+ .text.strncmp  0x000192ce       0x22 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(strncmp.o)
+                0x000192ce                strncmp
  .text.__fill_mem
-                0x000192e0       0x76 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(__filll_mem.o)
-                0x000192e0                __fill_mem
- *fill*         0x00019356        0x2 00
+                0x000192f0       0x76 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(__filll_mem.o)
+                0x000192f0                __fill_mem
+ *fill*         0x00019366        0x2 00
  .text.__init_cpp
-                0x00019358       0x4c C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(gcc_ctor_dtor.o)
-                0x00019358                __init_cpp
+                0x00019368       0x4c C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(gcc_ctor_dtor.o)
+                0x00019368                __init_cpp
  .text.__fini_cpp
-                0x000193a4       0x34 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(gcc_ctor_dtor.o)
-                0x000193a4                __fini_cpp
+                0x000193b4       0x34 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(gcc_ctor_dtor.o)
+                0x000193b4                __fini_cpp
  .text.__destroy_global_chain
-                0x000193d8       0x18 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(__arm_eabi_init.o)
-                0x000193d8                __destroy_global_chain
+                0x000193e8       0x18 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(__arm_eabi_init.o)
+                0x000193e8                __destroy_global_chain
  .text.__init_user
-                0x000193f0        0x4 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(__arm_eabi_init.o)
-                0x000193f0                __init_user
+                0x00019400        0x4 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(__arm_eabi_init.o)
+                0x00019400                __init_user
  .text.__thumb_startup
-                0x000193f4       0x3c C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m/__arm_start.o
-                0x000193f4                __thumb_startup
+                0x00019404       0x3c C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m/__arm_start.o
+                0x00019404                __thumb_startup
  .text._ExitProcess
-                0x00019430        0x2 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m/__arm_end.o
-                0x00019430                _ExitProcess
- *fill*         0x00019432        0x2 00
+                0x00019440        0x2 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m/__arm_end.o
+                0x00019440                _ExitProcess
+ *fill*         0x00019442        0x2 00
  .text._psp_int_init
-                0x00019434       0x2c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_iinit.o)
-                0x00019434                _psp_int_init
+                0x00019444       0x2c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_iinit.o)
+                0x00019444                _psp_int_init
  .text._kinetis_mpu_disable
-                0x00019460       0x28 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(kinetis_mpu.o)
-                0x00019460                _kinetis_mpu_disable
+                0x00019470       0x28 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(kinetis_mpu.o)
+                0x00019470                _kinetis_mpu_disable
  .text._int_set_vector_table
-                0x00019488       0x38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int_vtab.o)
-                0x00019488                _int_set_vector_table
+                0x00019498       0x38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int_vtab.o)
+                0x00019498                _int_set_vector_table
  .text._psp_int_install
-                0x000194c0       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int_inst.o)
-                0x000194c0                _psp_int_install
+                0x000194d0       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int_inst.o)
+                0x000194d0                _psp_int_install
  .text._io_dev_install_ext
-                0x000194e4      0x158 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_instx.o)
-                0x000194e4                _io_dev_install_ext
+                0x000194f4      0x158 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_instx.o)
+                0x000194f4                _io_dev_install_ext
  .text._io_dev_install
-                0x0001963c       0x38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_inst.o)
-                0x0001963c                _io_dev_install
+                0x0001964c       0x38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_inst.o)
+                0x0001964c                _io_dev_install
  .text._io_init
-                0x00019674       0x40 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_init.o)
-                0x00019674                _io_init
+                0x00019684       0x40 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_init.o)
+                0x00019684                _io_init
  .text.__copy_rom_section
-                0x000196b4       0x44 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(ROMCopy.o)
-                0x000196b4                __copy_rom_section
+                0x000196c4       0x44 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(ROMCopy.o)
+                0x000196c4                __copy_rom_section
  .text.__copy_rom_sections_to_ram
-                0x000196f8       0x30 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(ROMCopy.o)
-                0x000196f8                __copy_rom_sections_to_ram
+                0x00019708       0x30 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(ROMCopy.o)
+                0x00019708                __copy_rom_sections_to_ram
  *(.eh_frame)
- .eh_frame      0x00019728        0x0 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crtbegin.o
+ .eh_frame      0x00019738        0x0 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crtbegin.o
  *(.init)
- .init          0x00019728        0x4 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crti.o
-                0x00019728                _init
- .init          0x0001972c        0x8 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crtn.o
+ .init          0x00019738        0x4 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crti.o
+                0x00019738                _init
+ .init          0x0001973c        0x8 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crtn.o
  *(.fini)
- .fini          0x00019734        0x4 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crti.o
-                0x00019734                _fini
- .fini          0x00019738        0x8 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crtn.o
-                0x00019740                . = ALIGN (0x4)
+ .fini          0x00019744        0x4 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crti.o
+                0x00019744                _fini
+ .fini          0x00019748        0x8 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crtn.o
+                0x00019750                . = ALIGN (0x4)
  *(.rodata*)
- .rodata        0x00019740       0x54 ./Sources/main.o
- .rodata        0x00019794      0x174 ./Sources/UiTask.o
- .rodata        0x00019908       0x38 ./Sources/TheftTask.o
- .rodata        0x00019940       0x18 ./Sources/TempTask.o
- .rodata        0x00019958       0x18 ./Sources/InputTask.o
- .rodata        0x00019970       0x18 ./Sources/HealthTask.o
- .rodata        0x00019988       0x7c ./Sources/DisplayTask.o
- .rodata        0x00019a04       0x28 ./Sources/AccelTask.o
- .rodata        0x00019a2c        0x8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
+ .rodata        0x00019750       0x54 ./Sources/main.o
+ .rodata        0x000197a4      0x174 ./Sources/UiTask.o
+ .rodata        0x00019918       0x38 ./Sources/TheftTask.o
+ .rodata        0x00019950       0x18 ./Sources/TempTask.o
+ .rodata        0x00019968       0x18 ./Sources/InputTask.o
+ .rodata        0x00019980       0x18 ./Sources/HealthTask.o
+ .rodata        0x00019998       0x60 ./Sources/DisplayTask.o
+ .rodata        0x000199f8       0x28 ./Sources/AccelTask.o
+ .rodata        0x00019a20        0x8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
  .rodata.upper_hex_string
-                0x00019a34       0x14 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
+                0x00019a28       0x14 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
  .rodata.lower_hex_string
-                0x00019a48       0x14 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
+                0x00019a3c       0x14 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
  .rodata._mqx_zero_tick_struct
-                0x00019a5c        0xc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
-                0x00019a5c                _mqx_zero_tick_struct
+                0x00019a50        0xc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
+                0x00019a50                _mqx_zero_tick_struct
  .rodata._mqx_version_number
-                0x00019a68        0x4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
-                0x00019a68                _mqx_version_number
- .rodata        0x00019a6c       0x98 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
+                0x00019a5c        0x4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
+                0x00019a5c                _mqx_version_number
+ .rodata        0x00019a60       0x98 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
  .rodata._mqx_vendor
-                0x00019b04        0x4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
-                0x00019b04                _mqx_vendor
- .rodata        0x00019b08        0x8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(mqx_init.o)
+                0x00019af8        0x4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
+                0x00019af8                _mqx_vendor
+ .rodata        0x00019afc        0x8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(mqx_init.o)
  .rodata.MQX_init_struct
-                0x00019b10       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(mqx_init.o)
-                0x00019b10                MQX_init_struct
+                0x00019b04       0x30 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(mqx_init.o)
+                0x00019b04                MQX_init_struct
  .rodata.lwadc1_init
-                0x00019b40       0x18 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_lwadc.o)
-                0x00019b40                lwadc1_init
+                0x00019b34       0x18 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_lwadc.o)
+                0x00019b34                lwadc1_init
  .rodata.adc0_conv_table.8936
-                0x00019b58       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
+                0x00019b4c       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
  .rodata.adc1_conv_tableB.8937
-                0x00019b74       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
+                0x00019b68       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
  .rodata.adc1_conv_tableA.8938
-                0x00019b90        0x4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
- .rodata        0x00019b94       0x40 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_bsp.o)
+                0x00019b84        0x4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
+ .rodata        0x00019b88       0x40 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_bsp.o)
  .rodata._bsp_pdb_init
-                0x00019bd4       0x10 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_adc.o)
-                0x00019bd4                _bsp_pdb_init
+                0x00019bc8       0x10 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_adc.o)
+                0x00019bc8                _bsp_pdb_init
  .rodata._bsp_adc1_init
-                0x00019be4       0x18 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_adc.o)
-                0x00019be4                _bsp_adc1_init
+                0x00019bd8       0x18 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_adc.o)
+                0x00019bd8                _bsp_adc1_init
  .rodata.MCGTransitionMatrix
-                0x00019bfc       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x00019bf0       0x1c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
  .rodata.PE_CpuClockConfigurations
-                0x00019c18       0x78 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
-                0x00019c18                PE_CpuClockConfigurations
+                0x00019c0c       0x78 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+                0x00019c0c                PE_CpuClockConfigurations
  .rodata.adc_max_frq_table.9156
-                0x00019c90       0x20 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
+                0x00019c84       0x20 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
  .rodata.pctl_ptr_arr
-                0x00019cb0       0x14 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
+                0x00019ca4       0x14 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
  .rodata._port_int_prio
-                0x00019cc4        0x8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
- .rodata        0x00019ccc       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
+                0x00019cb8        0x8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
+ .rodata        0x00019cc0       0x44 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
  .rodata.gpio_irq_mask_table.8968
-                0x00019d10        0x8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
+                0x00019d04        0x8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
  .rodata.systick_devif
-                0x00019d18       0x18 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
-                0x00019d18                systick_devif
+                0x00019d0c       0x18 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
+                0x00019d0c                systick_devif
  .rodata.BAUDRATE_MULT
-                0x00019d30        0xc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
+                0x00019d24        0xc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
  .rodata.BAUDRATE_ICR
-                0x00019d3c      0x100 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
+                0x00019d30      0x100 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
  .rodata.adc_max_frq_table.8927
-                0x00019e3c       0x20 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_kadc.o)
+                0x00019e30       0x20 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_kadc.o)
  .rodata.gpio_ptr_arr
-                0x00019e5c       0x14 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
+                0x00019e50       0x14 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
  .rodata._bsp_sci3_init
-                0x00019e70       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_sci.o)
-                0x00019e70                _bsp_sci3_init
+                0x00019e64       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_sci.o)
+                0x00019e64                _bsp_sci3_init
  .rodata._bsp_sci5_init
-                0x00019e94       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_sci.o)
-                0x00019e94                _bsp_sci5_init
+                0x00019e88       0x24 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_sci.o)
+                0x00019e88                _bsp_sci5_init
  .rodata._bsp_i2c0_init
-                0x00019eb8       0x14 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_i2c.o)
-                0x00019eb8                _bsp_i2c0_init
+                0x00019eac       0x14 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_i2c.o)
+                0x00019eac                _bsp_i2c0_init
  .rodata._bsp_esdhc0_init
-                0x00019ecc        0xc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_esdhc.o)
-                0x00019ecc                _bsp_esdhc0_init
+                0x00019ec0        0xc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_esdhc.o)
+                0x00019ec0                _bsp_esdhc0_init
  .rodata._bsp_dma_devif_list
-                0x00019ed8       0x18 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_dma.o)
-                0x00019ed8                _bsp_dma_devif_list
+                0x00019ecc       0x18 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_dma.o)
+                0x00019ecc                _bsp_dma_devif_list
  .rodata.edma_done_vectors
-                0x00019ef0       0x40 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma_kinetis.o)
+                0x00019ee4       0x40 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma_kinetis.o)
  .rodata.edma_error_vectors
-                0x00019f30        0x4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma_kinetis.o)
-                0x00019f34                . = ALIGN (0x4)
+                0x00019f24        0x4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma_kinetis.o)
+                0x00019f28                . = ALIGN (0x4)
  *(.rdata*)
-                0x00019f34                . = ALIGN (0x4)
+                0x00019f28                . = ALIGN (0x4)
  *(.exception)
-                0x00019f34                . = ALIGN (0x4)
-                0x00019f34                __exception_table_start__ = .
-                0x00019f34                __exception_table_end__ = .
-                0x00019f34                __sinit__ = .
+                0x00019f28                . = ALIGN (0x4)
+                0x00019f28                __exception_table_start__ = .
+                0x00019f28                __exception_table_end__ = .
+                0x00019f28                __sinit__ = .
 
-.glue_7         0x00019f34        0x0
+.glue_7         0x00019f28        0x0
  .glue_7        0x00000000        0x0 linker stubs
 
-.glue_7t        0x00019f34        0x0
+.glue_7t        0x00019f28        0x0
  .glue_7t       0x00000000        0x0 linker stubs
 
-.vfp11_veneer   0x00019f34        0x0
+.vfp11_veneer   0x00019f28        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x00019f34        0x0
+.v4_bx          0x00019f28        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x00019f34        0x0
+.iplt           0x00019f28        0x0
  .iplt          0x00000000        0x0 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x00019f34        0x8
-                0x00019f34                __exidx_start = .
+.ARM            0x00019f28        0x8
+                0x00019f28                __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x00019f34        0x8 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_divdi3.o)
- .ARM.exidx     0x00019f3c        0x0 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_udivdi3.o)
+ .ARM.exidx     0x00019f28        0x8 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_divdi3.o)
+ .ARM.exidx     0x00019f30        0x0 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m\libgcc.a(_udivdi3.o)
                                   0x8 (size before relaxing)
-                0x00019f3c                __exidx_end = .
+                0x00019f30                __exidx_end = .
 
-.rel.dyn        0x00019f3c        0x0
+.rel.dyn        0x00019f30        0x0
  .rel.iplt      0x00000000        0x0 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crtbegin.o
 
-.ctors          0x00019f3c        0x0
-                0x00019f3c                __CTOR_LIST__ = .
+.ctors          0x00019f30        0x0
+                0x00019f30                __CTOR_LIST__ = .
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *(.ctors)
-                0x00019f3c                __CTOR_END__ = .
+                0x00019f30                __CTOR_END__ = .
 
-.dtors          0x00019f3c        0x0
-                0x00019f3c                __DTOR_LIST__ = .
+.dtors          0x00019f30        0x0
+                0x00019f30                __DTOR_LIST__ = .
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *(.dtors)
-                0x00019f3c                __DTOR_END__ = .
+                0x00019f30                __DTOR_END__ = .
 
-.preinit_array  0x00019f3c        0x0
-                0x00019f3c                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x00019f30        0x0
+                0x00019f30                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x00019f3c                PROVIDE (__preinit_array_end, .)
+                0x00019f30                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x00019f3c        0x4
-                0x00019f3c                PROVIDE (__init_array_start, .)
+.init_array     0x00019f30        0x4
+                0x00019f30                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  *(.init_array*)
- .init_array    0x00019f3c        0x4 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crtbegin.o
-                0x00019f40                PROVIDE (__init_array_end, .)
+ .init_array    0x00019f30        0x4 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crtbegin.o
+                0x00019f34                PROVIDE (__init_array_end, .)
 
-.fini_array     0x00019f40        0x4
-                0x00019f40                PROVIDE (__fini_array_start, .)
+.fini_array     0x00019f34        0x4
+                0x00019f34                PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x00019f40        0x4 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crtbegin.o
-                0x00019f44                PROVIDE (__fini_array_end, .)
+ .fini_array    0x00019f34        0x4 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crtbegin.o
+                0x00019f38                PROVIDE (__fini_array_end, .)
 
-.data           0x1fff0000      0x1a0 load address 0x00019f44
+.data           0x1fff0000      0x1a0 load address 0x00019f38
                 0x1fff0000                . = ALIGN (0x80)
                 0x1fff0000                _sdata = .
                 0x1fff0000                __VECTOR_TABLE_RAM_START = .
@@ -3204,23 +3204,23 @@ LOAD c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gc
  *fill*         0x1fff0198        0x8 00
                 0x1fff01a0                _edata = .
 
-.jcr            0x1fff01a0        0x0 load address 0x0001a0e4
+.jcr            0x1fff01a0        0x0 load address 0x0001a0d8
  .jcr           0x1fff01a0        0x0 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crtbegin.o
 
-.igot.plt       0x1fff01a0        0x0 load address 0x0001a0e4
+.igot.plt       0x1fff01a0        0x0 load address 0x0001a0d8
  .igot.plt      0x00000000        0x0 c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gcc/arm-none-eabi/4.7.3/armv7e-m/crtbegin.o
 
-.romp           0x0001a0e4       0x18
-                0x0001a0e4                __S_romp = .
-                0x0001a0e4        0x4 LONG 0x19f44 LOADADDR (.data)
-                0x0001a0e8        0x4 LONG 0x1fff0000 _sdata
-                0x0001a0ec        0x4 LONG 0x1a0 (_edata - _sdata)
-                0x0001a0f0        0x4 LONG 0x0
-                0x0001a0f4        0x4 LONG 0x0
-                0x0001a0f8        0x4 LONG 0x0
+.romp           0x0001a0d8       0x18
+                0x0001a0d8                __S_romp = .
+                0x0001a0d8        0x4 LONG 0x19f38 LOADADDR (.data)
+                0x0001a0dc        0x4 LONG 0x1fff0000 _sdata
+                0x0001a0e0        0x4 LONG 0x1a0 (_edata - _sdata)
+                0x0001a0e4        0x4 LONG 0x0
+                0x0001a0e8        0x4 LONG 0x0
+                0x0001a0ec        0x4 LONG 0x0
 
-.rom_end_data   0x0001a0fc        0x0
-                0x0001a0fc                _rom_data_end = .
+.rom_end_data   0x0001a0f0        0x0
+                0x0001a0f0                _rom_data_end = .
 
 .bss            0x1fff01a0      0x1f0
                 0x1fff01a0                . = ALIGN (0x10)
@@ -3322,7 +3322,7 @@ LOAD c:/freescale/cw mcu v10.6/cross_tools/arm-none-eabi-gcc-4_7_3/bin/../lib/gc
                 0x2000fc00                _estack = _stack_addr
                 0x2000fc00                __SP_INIT = _stack_addr
                 0x2000fc00                __BOOT_STACK_ADDRESS = .
-                0x0001a0fc                _flashx_start = _rom_data_end
+                0x0001a0f0                _flashx_start = _rom_data_end
                 0x0001a800                __FLASHX_START_ADDR = ((((_flashx_start + __FLASHX_SECT_SIZE) - 0x1) / __FLASHX_SECT_SIZE) * __FLASHX_SECT_SIZE)
                 0x00080000                __FLASHX_END_ADDR = (__INTERNAL_FLASH_BASE + __INTERNAL_FLASH_SIZE)
                 0x2000fc00                _end = .
@@ -4461,7 +4461,7 @@ OUTPUT(Lab1.elf elf32-littlearm)
  .debug_macinfo
                 0x02fe4046    0x76eb3 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_init.o)
 
-.debug_line     0x00000000    0x3f685
+.debug_line     0x00000000    0x3f686
  .debug_line    0x00000000      0x968 ./Sources/tsi.o
  .debug_line    0x00000968      0x8c6 ./Sources/main.o
  .debug_line    0x0000122e      0x91c ./Sources/UiTask.o
@@ -4469,113 +4469,113 @@ OUTPUT(Lab1.elf elf32-littlearm)
  .debug_line    0x00002429      0x8e9 ./Sources/TempTask.o
  .debug_line    0x00002d12      0x96c ./Sources/InputTask.o
  .debug_line    0x0000367e      0x8e6 ./Sources/HealthTask.o
- .debug_line    0x00003f64      0x953 ./Sources/DisplayTask.o
- .debug_line    0x000048b7      0x963 ./Sources/AccelTask.o
- .debug_line    0x0000521a      0x491 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(comp.o)
- .debug_line    0x000056ab      0x550 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(nvic.o)
- .debug_line    0x00005bfb      0x1a5 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(dispatch.o)
- .debug_line    0x00005da0       0x8c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(boot.o)
- .debug_line    0x00005e2c      0x567 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_write.o)
- .debug_line    0x00006393      0x4e2 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanf.o)
- .debug_line    0x00006875      0x57b C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_read.o)
- .debug_line    0x00006df0      0x4de C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_pntf.o)
- .debug_line    0x000072ce      0x570 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_ioctl.o)
- .debug_line    0x0000783e      0x4d7 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fputc.o)
- .debug_line    0x00007d15      0x586 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fopen.o)
- .debug_line    0x0000829b      0x4ff C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fgetl.o)
- .debug_line    0x0000879a      0x4da C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fgetc.o)
- .debug_line    0x00008c74      0x4d6 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fflsh.o)
- .debug_line    0x0000914a      0x750 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
- .debug_line    0x0000989a      0x550 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_ghand.o)
- .debug_line    0x00009dea      0xba8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
- .debug_line    0x0000a992      0xc3e C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
- .debug_line    0x0000b5d0      0x64f C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(sched.o)
- .debug_line    0x0000bc1f      0x634 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(queue.o)
- .debug_line    0x0000c253      0xb62 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
- .debug_line    0x0000cdb5      0x6bb C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgpool.o)
- .debug_line    0x0000d470      0x734 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msg.o)
- .debug_line    0x0000dba4      0x792 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
- .debug_line    0x0000e336      0x68a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwtimer.o)
- .debug_line    0x0000e9c0      0x7b1 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwsem.o)
- .debug_line    0x0000f171      0xa41 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
- .debug_line    0x0000fbb2      0x77a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
- .debug_line    0x0001032c      0x885 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
- .debug_line    0x00010bb1      0x735 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
- .debug_line    0x000112e6      0x571 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(inittask.o)
- .debug_line    0x00011857      0x556 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(idletask.o)
- .debug_line    0x00011dad      0x51a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(stack_st.o)
- .debug_line    0x000122c7      0x519 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(stack_de.o)
- .debug_line    0x000127e0      0x52b C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(stack_bu.o)
- .debug_line    0x00012d0b      0x55b C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(sc_irdyq.o)
- .debug_line    0x00013266      0x545 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tisu.o)
- .debug_line    0x000137ab      0x51f C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tinm.o)
- .debug_line    0x00013cca      0x552 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tims.o)
- .debug_line    0x0001421c      0x521 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tiad.o)
- .debug_line    0x0001473d      0x52a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_mstiq.o)
- .debug_line    0x00014c67      0x529 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_mat3.o)
- .debug_line    0x00015190      0x535 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_mat2.o)
- .debug_line    0x000156c5      0x539 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_mat1.o)
- .debug_line    0x00015bfe      0x6ff C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanl.o)
- .debug_line    0x000162fd      0x4d5 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fung.o)
- .debug_line    0x000167d2      0x4f1 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fseek.o)
- .debug_line    0x00016cc3      0x74f C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwlog.o)
- .debug_line    0x00017412      0xf93 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(vectors.o)
- .debug_line    0x000183a5      0xf38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(mqx_main.o)
- .debug_line    0x000192dd      0xf26 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(mqx_init.o)
- .debug_line    0x0001a203      0xf35 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_lwadc.o)
- .debug_line    0x0001b138      0xfd9 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_hw.o)
- .debug_line    0x0001c111     0x119e C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
- .debug_line    0x0001d2af     0x103c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_bsp.o)
- .debug_line    0x0001e2eb      0xf26 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_adc.o)
- .debug_line    0x0001f211     0x1218 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
- .debug_line    0x00020429     0x10a6 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc.o)
- .debug_line    0x000214cf     0x11e4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
- .debug_line    0x000226b3     0x1218 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
- .debug_line    0x000238cb      0x61b C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(dma.o)
- .debug_line    0x00023ee6     0x136a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
- .debug_line    0x00025250     0x101c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio.o)
- .debug_line    0x0002626c     0x11ee C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
- .debug_line    0x0002745a      0xfe1 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
- .debug_line    0x0002843b      0xfd3 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_kinetis.o)
- .debug_line    0x0002940e     0x10b0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer.o)
- .debug_line    0x0002a4be     0x11ff C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
- .debug_line    0x0002b6bd      0xf57 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_mk60.o)
- .debug_line    0x0002c614     0x113e C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int_ki2c.o)
- .debug_line    0x0002d752      0x65a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int.o)
- .debug_line    0x0002ddac      0x65a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol.o)
- .debug_line    0x0002e406     0x1105 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_kadc.o)
- .debug_line    0x0002f50b      0xf3a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_k60.o)
- .debug_line    0x00030445     0x1089 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
- .debug_line    0x000314ce      0xfdc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(krtc.o)
- .debug_line    0x000324aa     0x1196 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
- .debug_line    0x00033640     0x1180 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol.o)
- .debug_line    0x000347c0      0xfaa C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_mk60.o)
- .debug_line    0x0003576a      0x579 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_sinit.o)
- .debug_line    0x00035ce3      0xf26 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_sci.o)
- .debug_line    0x00036c09      0xf26 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_i2c.o)
- .debug_line    0x00037b2f      0xf28 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_esdhc.o)
- .debug_line    0x00038a57      0xf3d C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_dma.o)
- .debug_line    0x00039994     0x126a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
- .debug_line    0x0003abfe      0xf55 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc_mk60.o)
- .debug_line    0x0003bb53      0xf73 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma_kinetis.o)
- .debug_line    0x0003cac6       0x94 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(exit.o)
- .debug_line    0x0003cb5a       0x8f C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(memset.o)
- .debug_line    0x0003cbe9       0x82 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(strcmp.o)
- .debug_line    0x0003cc6b       0x83 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(strlen.o)
- .debug_line    0x0003ccee       0x8e C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(strncmp.o)
- .debug_line    0x0003cd7c       0xcd C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(__filll_mem.o)
- .debug_line    0x0003ce49       0x67 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(gcc_ctor_dtor.o)
- .debug_line    0x0003ceb0      0x111 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(__arm_eabi_init.o)
- .debug_line    0x0003cfc1       0x67 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m/__arm_start.o
- .debug_line    0x0003d028       0x44 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m/__arm_end.o
- .debug_line    0x0003d06c      0x51e C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_iinit.o)
- .debug_line    0x0003d58a      0x5b5 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(kinetis_mpu.o)
- .debug_line    0x0003db3f      0x530 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int_vtab.o)
- .debug_line    0x0003e06f      0x51d C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int_inst.o)
- .debug_line    0x0003e58c      0x58f C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_instx.o)
- .debug_line    0x0003eb1b      0x560 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_inst.o)
- .debug_line    0x0003f07b      0x561 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_init.o)
- .debug_line    0x0003f5dc       0xa9 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(ROMCopy.o)
+ .debug_line    0x00003f64      0x954 ./Sources/DisplayTask.o
+ .debug_line    0x000048b8      0x963 ./Sources/AccelTask.o
+ .debug_line    0x0000521b      0x491 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(comp.o)
+ .debug_line    0x000056ac      0x550 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(nvic.o)
+ .debug_line    0x00005bfc      0x1a5 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(dispatch.o)
+ .debug_line    0x00005da1       0x8c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(boot.o)
+ .debug_line    0x00005e2d      0x567 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_write.o)
+ .debug_line    0x00006394      0x4e2 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanf.o)
+ .debug_line    0x00006876      0x57b C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_read.o)
+ .debug_line    0x00006df1      0x4de C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_pntf.o)
+ .debug_line    0x000072cf      0x570 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_ioctl.o)
+ .debug_line    0x0000783f      0x4d7 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fputc.o)
+ .debug_line    0x00007d16      0x586 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fopen.o)
+ .debug_line    0x0000829c      0x4ff C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fgetl.o)
+ .debug_line    0x0000879b      0x4da C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fgetc.o)
+ .debug_line    0x00008c75      0x4d6 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fflsh.o)
+ .debug_line    0x0000914b      0x750 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_dopr.o)
+ .debug_line    0x0000989b      0x550 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_ghand.o)
+ .debug_line    0x00009deb      0xba8 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(time.o)
+ .debug_line    0x0000a993      0xc3e C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(task.o)
+ .debug_line    0x0000b5d1      0x64f C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(sched.o)
+ .debug_line    0x0000bc20      0x634 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(queue.o)
+ .debug_line    0x0000c254      0xb62 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgq.o)
+ .debug_line    0x0000cdb6      0x6bb C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msgpool.o)
+ .debug_line    0x0000d471      0x734 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(msg.o)
+ .debug_line    0x0000dba5      0x792 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(mqx.o)
+ .debug_line    0x0000e337      0x68a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwtimer.o)
+ .debug_line    0x0000e9c1      0x7b1 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwsem.o)
+ .debug_line    0x0000f172      0xa41 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwmem.o)
+ .debug_line    0x0000fbb3      0x77a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwevent.o)
+ .debug_line    0x0001032d      0x885 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(klog.o)
+ .debug_line    0x00010bb2      0x735 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int.o)
+ .debug_line    0x000112e7      0x571 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(inittask.o)
+ .debug_line    0x00011858      0x556 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(idletask.o)
+ .debug_line    0x00011dae      0x51a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(stack_st.o)
+ .debug_line    0x000122c8      0x519 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(stack_de.o)
+ .debug_line    0x000127e1      0x52b C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(stack_bu.o)
+ .debug_line    0x00012d0c      0x55b C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(sc_irdyq.o)
+ .debug_line    0x00013267      0x545 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tisu.o)
+ .debug_line    0x000137ac      0x51f C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tinm.o)
+ .debug_line    0x00013ccb      0x552 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tims.o)
+ .debug_line    0x0001421d      0x521 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_tiad.o)
+ .debug_line    0x0001473e      0x52a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_mstiq.o)
+ .debug_line    0x00014c68      0x529 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_mat3.o)
+ .debug_line    0x00015191      0x535 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_mat2.o)
+ .debug_line    0x000156c6      0x539 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_mat1.o)
+ .debug_line    0x00015bff      0x6ff C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_scanl.o)
+ .debug_line    0x000162fe      0x4d5 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fung.o)
+ .debug_line    0x000167d3      0x4f1 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_fseek.o)
+ .debug_line    0x00016cc4      0x74f C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(lwlog.o)
+ .debug_line    0x00017413      0xf93 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(vectors.o)
+ .debug_line    0x000183a6      0xf38 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(mqx_main.o)
+ .debug_line    0x000192de      0xf26 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(mqx_init.o)
+ .debug_line    0x0001a204      0xf35 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_lwadc.o)
+ .debug_line    0x0001b139      0xfd9 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_hw.o)
+ .debug_line    0x0001c112     0x119e C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_gpio.o)
+ .debug_line    0x0001d2b0     0x103c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_bsp.o)
+ .debug_line    0x0001e2ec      0xf26 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_adc.o)
+ .debug_line    0x0001f212     0x1218 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(bsp_cm.o)
+ .debug_line    0x0002042a     0x10a6 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc.o)
+ .debug_line    0x000214d0     0x11e4 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adt_kpdb.o)
+ .debug_line    0x000226b4     0x1218 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(adc_kadc.o)
+ .debug_line    0x000238cc      0x61b C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(dma.o)
+ .debug_line    0x00023ee7     0x136a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc.o)
+ .debug_line    0x00025251     0x101c C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio.o)
+ .debug_line    0x0002626d     0x11ee C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_gpio_kgpio.o)
+ .debug_line    0x0002745b      0xfe1 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_systick.o)
+ .debug_line    0x0002843c      0xfd3 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer_kinetis.o)
+ .debug_line    0x0002940f     0x10b0 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(hwtimer.o)
+ .debug_line    0x0002a4bf     0x11ff C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol_ki2c.o)
+ .debug_line    0x0002b6be      0xf57 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_mk60.o)
+ .debug_line    0x0002c615     0x113e C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int_ki2c.o)
+ .debug_line    0x0002d753      0x65a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_int.o)
+ .debug_line    0x0002ddad      0x65a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(i2c_pol.o)
+ .debug_line    0x0002e407     0x1105 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_kadc.o)
+ .debug_line    0x0002f50c      0xf3a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwadc_k60.o)
+ .debug_line    0x00030446     0x1089 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(lwgpio_kgpio.o)
+ .debug_line    0x000314cf      0xfdc C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(krtc.o)
+ .debug_line    0x000324ab     0x1196 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol_kuart.o)
+ .debug_line    0x00033641     0x1180 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_pol.o)
+ .debug_line    0x000347c1      0xfaa C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(serl_mk60.o)
+ .debug_line    0x0003576b      0x579 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(io_sinit.o)
+ .debug_line    0x00035ce4      0xf26 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_sci.o)
+ .debug_line    0x00036c0a      0xf26 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_i2c.o)
+ .debug_line    0x00037b30      0xf28 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_esdhc.o)
+ .debug_line    0x00038a58      0xf3d C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(init_dma.o)
+ .debug_line    0x00039995     0x126a C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma.o)
+ .debug_line    0x0003abff      0xf55 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(esdhc_mk60.o)
+ .debug_line    0x0003bb54      0xf73 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/bsp.a(edma_kinetis.o)
+ .debug_line    0x0003cac7       0x94 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(exit.o)
+ .debug_line    0x0003cb5b       0x8f C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(memset.o)
+ .debug_line    0x0003cbea       0x82 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(strcmp.o)
+ .debug_line    0x0003cc6c       0x83 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(strlen.o)
+ .debug_line    0x0003ccef       0x8e C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(strncmp.o)
+ .debug_line    0x0003cd7d       0xcd C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\libc.a(__filll_mem.o)
+ .debug_line    0x0003ce4a       0x67 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(gcc_ctor_dtor.o)
+ .debug_line    0x0003ceb1      0x111 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(__arm_eabi_init.o)
+ .debug_line    0x0003cfc2       0x67 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m/__arm_start.o
+ .debug_line    0x0003d029       0x44 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m/__arm_end.o
+ .debug_line    0x0003d06d      0x51e C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(psp_iinit.o)
+ .debug_line    0x0003d58b      0x5b5 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(kinetis_mpu.o)
+ .debug_line    0x0003db40      0x530 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int_vtab.o)
+ .debug_line    0x0003e070      0x51d C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(int_inst.o)
+ .debug_line    0x0003e58d      0x58f C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_instx.o)
+ .debug_line    0x0003eb1c      0x560 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_inst.o)
+ .debug_line    0x0003f07c      0x561 C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/psp.a(io_init.o)
+ .debug_line    0x0003f5dd       0xa9 C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/lib/armv7e-m\librt.a(ROMCopy.o)
 
 .debug_str      0x00000000     0xa601
  .debug_str     0x00000000      0x9c0 ./Sources/tsi.o
