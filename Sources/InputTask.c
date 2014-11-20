@@ -84,7 +84,7 @@ void Input_task(uint32_t initial_data)
 	_lwevent_create(&lwevent_group,LWEVENT_AUTO_CLEAR);
 	
 	/* Lab 8 - init */
-	_lwtimer_create_periodic_queue(&period, BSP_ALARM_FREQUENCY/10,0);
+	_lwtimer_create_periodic_queue(&period, BSP_ALARM_FREQUENCY/8,0);
 	//period = 10Hz, 1/10th of a second expiry
 	 	
 	/* call adc_timer_isr with no parameters when timer expires */

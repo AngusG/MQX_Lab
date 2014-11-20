@@ -124,31 +124,30 @@
   81 006a BB81     		strh	r3, [r7, #12]	@ movhi
   82              	.L2:
   41:../Sources/HealthTask.c **** 	
-  42:../Sources/HealthTask.c **** 	//printf("\n Health: Hello World\n"); 
-  43:../Sources/HealthTask.c **** 	while(1){		
-  44:../Sources/HealthTask.c **** 		msg = _msgq_receive(my_qid, 0);		
-  83              		.loc 1 44 0
+  42:../Sources/HealthTask.c **** 	while(1){		
+  43:../Sources/HealthTask.c **** 		msg = _msgq_receive(my_qid, 0);		
+  83              		.loc 1 43 0
   84 006c FB89     		ldrh	r3, [r7, #14]
   85 006e 1846     		mov	r0, r3
   86 0070 4FF00001 		mov	r1, #0
   87 0074 FFF7FEFF 		bl	_msgq_receive
   88 0078 B860     		str	r0, [r7, #8]
-  45:../Sources/HealthTask.c **** 		//printf("Health task received a message\n");
-  46:../Sources/HealthTask.c **** 		msg->HEADER.TARGET_QID = display_qid;
-  89              		.loc 1 46 0
+  44:../Sources/HealthTask.c **** 		//printf("Health task received a message\n");
+  45:../Sources/HealthTask.c **** 		msg->HEADER.TARGET_QID = display_qid;
+  89              		.loc 1 45 0
   90 007a BB68     		ldr	r3, [r7, #8]
   91 007c BA89     		ldrh	r2, [r7, #12]	@ movhi
   92 007e 5A80     		strh	r2, [r3, #2]	@ movhi
-  47:../Sources/HealthTask.c **** 		
-  48:../Sources/HealthTask.c **** 		_msgq_send(msg);
-  93              		.loc 1 48 0
+  46:../Sources/HealthTask.c **** 		
+  47:../Sources/HealthTask.c **** 		_msgq_send(msg);
+  93              		.loc 1 47 0
   94 0080 B868     		ldr	r0, [r7, #8]
   95 0082 FFF7FEFF 		bl	_msgq_send
-  49:../Sources/HealthTask.c **** 		
-  50:../Sources/HealthTask.c **** 		//_time_delay(1000);
-  51:../Sources/HealthTask.c **** 		//_sched_yield(); // Task puts itself at the end of the ready-to-run queue (for its priority)
-  52:../Sources/HealthTask.c **** 	}
-  96              		.loc 1 52 0
+  48:../Sources/HealthTask.c **** 		
+  49:../Sources/HealthTask.c **** 		//_time_delay(1000);
+  50:../Sources/HealthTask.c **** 		//_sched_yield(); // Task puts itself at the end of the ready-to-run queue (for its priority)
+  51:../Sources/HealthTask.c **** 	}
+  96              		.loc 1 51 0
   97 0086 F1E7     		b	.L2
   98              		.cfi_endproc
   99              	.LFE0:
@@ -159,10 +158,10 @@
  105              		.file 4 "../Sources/main.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 HealthTask.c
-C:\Users\Angus\AppData\Local\Temp\ccGe7PbL.s:19     .rodata:00000000 $d
-C:\Users\Angus\AppData\Local\Temp\ccGe7PbL.s:20     .rodata:00000000 .LC0
-C:\Users\Angus\AppData\Local\Temp\ccGe7PbL.s:23     .text.Health_task:00000000 $t
-C:\Users\Angus\AppData\Local\Temp\ccGe7PbL.s:28     .text.Health_task:00000000 Health_task
+C:\Users\Angus\AppData\Local\Temp\cc3WSLKa.s:19     .rodata:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\cc3WSLKa.s:20     .rodata:00000000 .LC0
+C:\Users\Angus\AppData\Local\Temp\cc3WSLKa.s:23     .text.Health_task:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\cc3WSLKa.s:28     .text.Health_task:00000000 Health_task
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

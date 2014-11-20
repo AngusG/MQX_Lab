@@ -25,6 +25,8 @@ void Ui_task(uint32_t initial_data)
 	
 	while(1){	
 		
+		_task_block();
+		
 		printf("\n>");
 		c = fgetc(stdin);
 		

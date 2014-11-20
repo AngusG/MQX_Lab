@@ -17,7 +17,7 @@ unsigned char recv_buffer[I2C_DATA_SIZE];
 
 void write_I2C(int i2c_device, unsigned char reg, unsigned char value);
 void read_I2C(int i2c_device, int sensor, int length);
-void print_accelerometer_data();
+//void print_accelerometer_data();
 signed char convert_accel_data(signed char input);
 void InitializeI2C();
 void InitializeMMA7660();
@@ -36,14 +36,7 @@ SENSOR_DATA Sensor;
 *    IRQ     -> PTD10 = PTD10    
 *
 *END*-----------------------------------------------------*/
-void print_accelerometer_data()
-{
-   //MMA7660 Sensor
 
-   printf("Accel: X = %03d, ", Sensor.mma7660_x );
-   printf("Y = %03d, ", Sensor.mma7660_y );
-   printf("Z = %03d\r\n", Sensor.mma7660_z );
-}
 
 void Accel_task(uint32_t initial_data)
 {
@@ -62,16 +55,16 @@ void Accel_task(uint32_t initial_data)
 	//_task_block(); // Per Lab 5 requirements	
 	health_qid = _msgq_get_id(0, HEALTH_QUEUE);		
 	while(1){		
-		/* read first five registers on MMA7660 */
-		      read_I2C( I2C_ACCELEROMETER_ADDRESS, 0x00, 5 );
-		      
-		      Sensor.mma7660_x = convert_accel_data( (uint8_t)recv_buffer[0] );
-		      Sensor.mma7660_y = convert_accel_data( (uint8_t)recv_buffer[1] );
-		      Sensor.mma7660_z = convert_accel_data( (uint8_t)recv_buffer[2] );
-		      Sensor.mma7660_status = recv_buffer[3];
-		      
-		      print_accelerometer_data();   
+		
 		_time_delay(500);
+		/* read first five registers on MMA7660 */
+		read_I2C( I2C_ACCELEROMETER_ADDRESS, 0x00, 5 );
+		      
+		Sensor.mma7660_x = convert_accel_data( (uint8_t)recv_buffer[0] );
+		Sensor.mma7660_y = convert_accel_data( (uint8_t)recv_buffer[1] );
+		Sensor.mma7660_z = convert_accel_data( (uint8_t)recv_buffer[2] );
+		Sensor.mma7660_status = recv_buffer[3];		      
+		//print_accelerometer_data();   	
 		
 		msg = _msg_alloc_system(sizeof(*msg));
 		if( msg != NULL){
@@ -80,7 +73,6 @@ void Accel_task(uint32_t initial_data)
 			msg->DATA = 0;			
 			_msgq_send(msg);
 		}		
-		//_sched_yield();
 	}   
 }
 void InitializeI2C()

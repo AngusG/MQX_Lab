@@ -178,11 +178,11 @@
   91 008e FFF7FEFF 		bl	_lwevent_create
   85:../Sources/InputTask.c **** 	
   86:../Sources/InputTask.c **** 	/* Lab 8 - init */
-  87:../Sources/InputTask.c **** 	_lwtimer_create_periodic_queue(&period, BSP_ALARM_FREQUENCY/10,0);
+  87:../Sources/InputTask.c **** 	_lwtimer_create_periodic_queue(&period, BSP_ALARM_FREQUENCY/8,0);
   92              		.loc 1 87 0
   93 0092 07F13C03 		add	r3, r7, #60
   94 0096 1846     		mov	r0, r3
-  95 0098 4FF01401 		mov	r1, #20
+  95 0098 4FF01901 		mov	r1, #25
   96 009c 4FF00002 		mov	r2, #0
   97 00a0 FFF7FEFF 		bl	_lwtimer_create_periodic_queue
   88:../Sources/InputTask.c **** 	//period = 10Hz, 1/10th of a second expiry
@@ -644,18 +644,8 @@
  439 0016 C0F20000 		movt	r0, #:upper16:lwevent_group
  440 001a 4FF00101 		mov	r1, #1
  441 001e FFF7FEFF 		bl	_lwevent_set
- 209:../Sources/InputTask.c **** 	
- 210:../Sources/InputTask.c **** 
- 211:../Sources/InputTask.c **** 	/*
- 212:../Sources/InputTask.c **** 	msg = _msg_alloc_system(sizeof(*msg));	
- 213:../Sources/InputTask.c **** 	if (msg != NULL ) {
- 214:../Sources/InputTask.c **** 		msg->HEADER.TARGET_QID =_msgq_get_id(0, HEALTH_QUEUE);
- 215:../Sources/InputTask.c **** 		msg->MESSAGE_TYPE = SW1_Message;
- 216:../Sources/InputTask.c **** 		msg->DATA = 0;
- 217:../Sources/InputTask.c **** 		_msgq_send(msg);
- 218:../Sources/InputTask.c **** 	}*/
- 219:../Sources/InputTask.c **** }
- 442              		.loc 1 219 0
+ 209:../Sources/InputTask.c **** }
+ 442              		.loc 1 209 0
  443 0022 07F11007 		add	r7, r7, #16
  444 0026 BD46     		mov	sp, r7
  445 0028 80BD     		pop	{r7, pc}
@@ -668,9 +658,9 @@
  453              		.thumb_func
  455              	sw2_isr:
  456              	.LFB4:
- 220:../Sources/InputTask.c **** 
- 221:../Sources/InputTask.c **** void sw2_isr(void * param) {
- 457              		.loc 1 221 0
+ 210:../Sources/InputTask.c **** 
+ 211:../Sources/InputTask.c **** void sw2_isr(void * param) {
+ 457              		.loc 1 211 0
  458              		.cfi_startproc
  459              		@ args = 0, pretend = 0, frame = 16
  460              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -686,24 +676,24 @@
  470              	.LCFI13:
  471              		.cfi_def_cfa_register 7
  472 0006 7860     		str	r0, [r7, #4]
- 222:../Sources/InputTask.c **** 
- 223:../Sources/InputTask.c **** 	LWGPIO_STRUCT_PTR sw = (LWGPIO_STRUCT_PTR) param;
- 473              		.loc 1 223 0
+ 212:../Sources/InputTask.c **** 
+ 213:../Sources/InputTask.c **** 	LWGPIO_STRUCT_PTR sw = (LWGPIO_STRUCT_PTR) param;
+ 473              		.loc 1 213 0
  474 0008 7B68     		ldr	r3, [r7, #4]
  475 000a FB60     		str	r3, [r7, #12]
- 224:../Sources/InputTask.c **** 
- 225:../Sources/InputTask.c **** 	lwgpio_int_clear_flag(sw);
- 476              		.loc 1 225 0
+ 214:../Sources/InputTask.c **** 
+ 215:../Sources/InputTask.c **** 	lwgpio_int_clear_flag(sw);
+ 476              		.loc 1 215 0
  477 000c F868     		ldr	r0, [r7, #12]
  478 000e FFF7FEFF 		bl	lwgpio_int_clear_flag
- 226:../Sources/InputTask.c **** 	_lwevent_set(&lwevent_group, SW2_EVENT);	
- 479              		.loc 1 226 0
+ 216:../Sources/InputTask.c **** 	_lwevent_set(&lwevent_group, SW2_EVENT);	
+ 479              		.loc 1 216 0
  480 0012 40F20000 		movw	r0, #:lower16:lwevent_group
  481 0016 C0F20000 		movt	r0, #:upper16:lwevent_group
  482 001a 4FF00201 		mov	r1, #2
  483 001e FFF7FEFF 		bl	_lwevent_set
- 227:../Sources/InputTask.c **** }
- 484              		.loc 1 227 0
+ 217:../Sources/InputTask.c **** }
+ 484              		.loc 1 217 0
  485 0022 07F11007 		add	r7, r7, #16
  486 0026 BD46     		mov	sp, r7
  487 0028 80BD     		pop	{r7, pc}
@@ -726,18 +716,18 @@
 DEFINED SYMBOLS
                             *ABS*:00000000 InputTask.c
                             *COM*:00000024 lwevent_group
-C:\Users\Angus\AppData\Local\Temp\ccOgz2LJ.s:20     .rodata:00000000 $d
-C:\Users\Angus\AppData\Local\Temp\ccOgz2LJ.s:21     .rodata:00000000 .LC0
-C:\Users\Angus\AppData\Local\Temp\ccOgz2LJ.s:24     .text.Input_task:00000000 $t
-C:\Users\Angus\AppData\Local\Temp\ccOgz2LJ.s:29     .text.Input_task:00000000 Input_task
-C:\Users\Angus\AppData\Local\Temp\ccOgz2LJ.s:413    .text.sw1_isr:00000000 sw1_isr
-C:\Users\Angus\AppData\Local\Temp\ccOgz2LJ.s:340    .text.init_switch:00000000 init_switch
-C:\Users\Angus\AppData\Local\Temp\ccOgz2LJ.s:455    .text.sw2_isr:00000000 sw2_isr
-C:\Users\Angus\AppData\Local\Temp\ccOgz2LJ.s:310    .text.adc_timer_isr:00000000 adc_timer_isr
-C:\Users\Angus\AppData\Local\Temp\ccOgz2LJ.s:305    .text.adc_timer_isr:00000000 $t
-C:\Users\Angus\AppData\Local\Temp\ccOgz2LJ.s:335    .text.init_switch:00000000 $t
-C:\Users\Angus\AppData\Local\Temp\ccOgz2LJ.s:408    .text.sw1_isr:00000000 $t
-C:\Users\Angus\AppData\Local\Temp\ccOgz2LJ.s:450    .text.sw2_isr:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccRsPkY1.s:20     .rodata:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\ccRsPkY1.s:21     .rodata:00000000 .LC0
+C:\Users\Angus\AppData\Local\Temp\ccRsPkY1.s:24     .text.Input_task:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccRsPkY1.s:29     .text.Input_task:00000000 Input_task
+C:\Users\Angus\AppData\Local\Temp\ccRsPkY1.s:413    .text.sw1_isr:00000000 sw1_isr
+C:\Users\Angus\AppData\Local\Temp\ccRsPkY1.s:340    .text.init_switch:00000000 init_switch
+C:\Users\Angus\AppData\Local\Temp\ccRsPkY1.s:455    .text.sw2_isr:00000000 sw2_isr
+C:\Users\Angus\AppData\Local\Temp\ccRsPkY1.s:310    .text.adc_timer_isr:00000000 adc_timer_isr
+C:\Users\Angus\AppData\Local\Temp\ccRsPkY1.s:305    .text.adc_timer_isr:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccRsPkY1.s:335    .text.init_switch:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccRsPkY1.s:408    .text.sw1_isr:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccRsPkY1.s:450    .text.sw2_isr:00000000 $t
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

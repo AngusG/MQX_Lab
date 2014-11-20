@@ -30,18 +30,18 @@
   25      00
   26 0019 000000   		.align	2
   27              	.LC2:
-  28 001c 41636365 		.ascii	"Accel_task\000"
-  28      6C5F7461 
-  28      736B00
-  29 0027 00       		.align	2
+  28 001c 54656D70 		.ascii	"Temp_task\000"
+  28      5F746173 
+  28      6B00
+  29 0026 0000     		.align	2
   30              	.LC3:
-  31 0028 54656D70 		.ascii	"Temp_task\000"
-  31      5F746173 
-  31      6B00
-  32 0032 0000     		.align	2
+  31 0028 496E7075 		.ascii	"Input_task\000"
+  31      745F7461 
+  31      736B00
+  32 0033 00       		.align	2
   33              	.LC4:
-  34 0034 496E7075 		.ascii	"Input_task\000"
-  34      745F7461 
+  34 0034 41636365 		.ascii	"Accel_task\000"
+  34      6C5F7461 
   34      736B00
   35 003f 00       		.align	2
   36              	.LC5:
@@ -71,24 +71,24 @@
   58 0034 01000000 		.word	1
   59 0038 00000000 		.space	8
   59      00000000 
-  60 0040 03000000 		.word	3
-  61 0044 00000000 		.word	Accel_task
+  60 0040 04000000 		.word	4
+  61 0044 00000000 		.word	Temp_task
   62 0048 DC050000 		.word	1500
   63 004c 0A000000 		.word	10
   64 0050 1C000000 		.word	.LC2
   65 0054 01000000 		.word	1
   66 0058 00000000 		.space	8
   66      00000000 
-  67 0060 04000000 		.word	4
-  68 0064 00000000 		.word	Temp_task
+  67 0060 05000000 		.word	5
+  68 0064 00000000 		.word	Input_task
   69 0068 DC050000 		.word	1500
   70 006c 0A000000 		.word	10
   71 0070 28000000 		.word	.LC3
   72 0074 01000000 		.word	1
   73 0078 00000000 		.space	8
   73      00000000 
-  74 0080 05000000 		.word	5
-  75 0084 00000000 		.word	Input_task
+  74 0080 03000000 		.word	3
+  75 0084 00000000 		.word	Accel_task
   76 0088 DC050000 		.word	1500
   77 008c 0A000000 		.word	10
   78 0090 34000000 		.word	.LC4
@@ -128,15 +128,15 @@
  108              		.file 5 "../Sources/main.c"
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\Angus\AppData\Local\Temp\cc7dezNT.s:45     .data.MQX_template_list:00000000 MQX_template_list
-C:\Users\Angus\AppData\Local\Temp\cc7dezNT.s:20     .rodata:00000000 $d
-C:\Users\Angus\AppData\Local\Temp\cc7dezNT.s:42     .data.MQX_template_list:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\cceaes4j.s:45     .data.MQX_template_list:00000000 MQX_template_list
+C:\Users\Angus\AppData\Local\Temp\cceaes4j.s:20     .rodata:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\cceaes4j.s:42     .data.MQX_template_list:00000000 $d
 
 UNDEFINED SYMBOLS
 Health_task
 Display_task
-Accel_task
 Temp_task
 Input_task
+Accel_task
 Ui_task
 Theft_task

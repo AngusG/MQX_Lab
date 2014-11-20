@@ -31,10 +31,10 @@ TASK_TEMPLATE_STRUCT MQX_template_list[] =
 { 
 /*  Task number, 	Entry point, 	Stack, Pri, String, 		Auto? */
    {HEALTH_TASK,   	Health_task,   	1500,  9,   "Health_task", 	MQX_AUTO_START_TASK},
-   {DISPLAY_TASK,   Display_task,   1500,  11,   "Display_task", MQX_AUTO_START_TASK},
-   {ACCEL_TASK,   	Accel_task,   	1500,  10,   "Accel_task", 	MQX_AUTO_START_TASK},
+   {DISPLAY_TASK,   Display_task,   1500,  11,   "Display_task", MQX_AUTO_START_TASK},   
    {TEMP_TASK,   	Temp_task,   	1500,  10,   "Temp_task", 	MQX_AUTO_START_TASK},
    {INPUT_TASK,   	Input_task,   	1500,  10,   "Input_task", 	MQX_AUTO_START_TASK},
+   {ACCEL_TASK,   	Accel_task,   	1500,  10,   "Accel_task", 	MQX_AUTO_START_TASK},
    //{CAN_TASK,   	Can_task,   	1500,  10,   "Can_task", 	0},
    {UI_TASK,   		Ui_task,   		1500,  12,   "Ui_task", 	MQX_AUTO_START_TASK},
    {THEFT_TASK,   	Theft_task,   	1500,  10,   "Theft_task", 	MQX_AUTO_START_TASK},
