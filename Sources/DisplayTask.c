@@ -26,6 +26,7 @@ void Display_task(uint32_t initial_data)
 	int gotAccel = 0;
 	int gotTouch = 0;
 	int gotPot = 0;
+	char * touch;
 	
 	/* Lab 5 variables */
 	LWGPIO_STRUCT leds[4];
@@ -37,6 +38,8 @@ void Display_task(uint32_t initial_data)
 	
 	LWGPIO_PIN_ID pins[4] = { BSP_LED1, BSP_LED2, BSP_LED3, BSP_LED4 };
 	
+	touch = malloc(sizeof(char)*6);
+	
 	printf("\n Display task started\n"); 
 	
 	my_qid = _msgq_open(DISPLAY_QUEUE, 0);	
@@ -46,7 +49,6 @@ void Display_task(uint32_t initial_data)
 		lwgpio_init( &leds[i], pins[i], LWGPIO_DIR_OUTPUT, LWGPIO_VALUE_HIGH);
 		lwgpio_set_functionality( &leds[i], func[i]);
 	}	
-	
 	
 	while(1){
 		
@@ -72,7 +74,8 @@ void Display_task(uint32_t initial_data)
 							
 				if(gotAccel){
 					gotPot = 1;	
-					printf("P %d;",msg->DATA); /*	TODO: output ADC potentiometer data directly to serial	*/					
+					printf("P %d;",msg->DATA); /* output ADC potentiometer data directly to serial	*/	
+					printf("%s",touch);					
 				}								
 				break;
 				
@@ -87,42 +90,49 @@ void Display_task(uint32_t initial_data)
 				
 				gotTouch = 1;			
 				
-				if(1 == msg->DATA){
-					if(gotPot){
-						lwgpio_toggle_value(&leds[0]); //toggle orange LED
-						printf("T 1\n");
+				if(1 == msg->DATA){					
+					
+					lwgpio_toggle_value(&leds[0]); //toggle orange LED
+					strcpy(touch,"T 1\n");
+					
+					/*if(gotPot){
+						//printf("T 1\n");
 						gotPot = 0;		//We can now reset the pot since we finished the string
 						gotAccel = 0;   //We can reset the accel since we finished the string
-					}
+					}*/
 				}
 				else if(2 == msg->DATA){
-					if(gotPot){
+					
 						lwgpio_toggle_value(&leds[1]); //toggle yellow LED
-						printf("T 2\n");
+						strcpy(touch,"T 2\n"); //printf("T 2\n");
+						/*
+						if(gotPot){
 						gotPot = 0;		//We can now reset the pot since we finished the string
 						gotAccel = 0;   //We can reset the accel since we finished the string
-					}
+					}*/
 				}
 				else if(3 == msg->DATA){
-					if(gotPot){
+					
 						lwgpio_toggle_value(&leds[2]); //toggle green LED
-						printf("T 3\n");
+						strcpy(touch,"T 3\n"); //printf("T 3\n");
+						/*if(gotPot){
 						gotPot = 0;		//We can now reset the pot since we finished the string
 						gotAccel = 0;   //We can reset the accel since we finished the string
-					}
+					}*/
 				}
 				else if(4 == msg->DATA){
-					if(gotPot){
+					
 						lwgpio_toggle_value(&leds[3]); //toggle blue LED
-						printf("T 4\n");
+						strcpy(touch,"T 4\n"); //printf("T 4\n");
+					/*if(gotPot){
 						gotPot = 0;		//We can now reset the pot since we finished the string
 						gotAccel = 0;   //We can reset the accel since we finished the string
-					}
+					}*/
 				}				
 				break;			
 			}
 			if((!gotTouch) && (gotPot == 1) && (gotAccel == 1)){	/* If there was no touch, and we are ready to put the touch msg in the string */
-				printf("T 0\n");
+				strcpy(touch,"T 0\n");//printf("T 0\n");
 				gotPot = 0;		//We can now reset the pot since we finished the string
 				gotAccel = 0;   //We can reset the accel since we finished the string
 			}
