@@ -126,9 +126,9 @@ void Display_task(uint32_t initial_data)
 }
 void print_accelerometer_data()
 {
-   //MMA7660 Sensor
+   //MMA8541 Sensor
 
-   printf("%04d;", Sensor.mma7660_x*5 );
-   printf("%04d;", Sensor.mma7660_y*5 );
-   printf("%04d;", Sensor.mma7660_z*5 );
+   printf("%04d;", Sensor.mma8541_x*5 );
+   printf("%04d;", Sensor.mma8541_y*5 );
+   printf("%04d;", Sensor.mma8541_z*5 );
 }
