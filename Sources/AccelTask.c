@@ -1,8 +1,5 @@
 /*
  * AccelTask.c
- *
- *  Created on: Feb 6, 2014
- *      Author: Embedded Access Inc
  */
 
 #include "main.h"

@@ -34,37 +34,39 @@
   30 0020 257300   		.ascii	"%s\000"
   31 0023 00       		.align	2
   32              	.LC6:
-  33 0024 310A00   		.ascii	"1\012\000"
-  34 0027 00       		.align	2
+  33 0024 31570A00 		.ascii	"1W\012\000"
+  34              		.align	2
   35              	.LC7:
-  36 0028 320A00   		.ascii	"2\012\000"
-  37 002b 00       		.align	2
+  36 0028 32570A00 		.ascii	"2W\012\000"
+  37              		.align	2
   38              	.LC8:
-  39 002c 5420330A 		.ascii	"T 3\012\000"
-  39      00
-  40 0031 000000   		.align	2
+  39 002c 33570A00 		.ascii	"3W\012\000"
+  40              		.align	2
   41              	.LC9:
-  42 0034 340A00   		.ascii	"4\012\000"
-  43 0037 00       		.align	2
-  44              	.LC0:
-  45 0038 01000000 		.word	1
-  46 003c 01000000 		.word	1
-  47 0040 01000000 		.word	1
-  48 0044 01000000 		.word	1
-  49              		.align	2
-  50              	.LC1:
-  51 0048 0B000080 		.word	-2147483637
-  52 004c 1C000080 		.word	-2147483620
-  53 0050 1D000080 		.word	-2147483619
-  54 0054 0A000080 		.word	-2147483638
-  55              		.section	.text.Display_task,"ax",%progbits
-  56              		.align	2
-  57              		.global	Display_task
-  58              		.thumb
-  59              		.thumb_func
-  61              	Display_task:
-  62              	.LFB0:
-  63              		.file 1 "../Sources/DisplayTask.c"
+  42 0030 34570A00 		.ascii	"4W\012\000"
+  43              		.align	2
+  44              	.LC10:
+  45 0034 30570A00 		.ascii	"0W\012\000"
+  46              		.align	2
+  47              	.LC0:
+  48 0038 01000000 		.word	1
+  49 003c 01000000 		.word	1
+  50 0040 01000000 		.word	1
+  51 0044 01000000 		.word	1
+  52              		.align	2
+  53              	.LC1:
+  54 0048 0B000080 		.word	-2147483637
+  55 004c 1C000080 		.word	-2147483620
+  56 0050 1D000080 		.word	-2147483619
+  57 0054 0A000080 		.word	-2147483638
+  58              		.section	.text.Display_task,"ax",%progbits
+  59              		.align	2
+  60              		.global	Display_task
+  61              		.thumb
+  62              		.thumb_func
+  64              	Display_task:
+  65              	.LFB0:
+  66              		.file 1 "../Sources/DisplayTask.c"
    1:../Sources/DisplayTask.c **** /*
    2:../Sources/DisplayTask.c ****  * DisplayTask.c
    3:../Sources/DisplayTask.c ****  *
@@ -88,290 +90,288 @@
   21:../Sources/DisplayTask.c **** 
   22:../Sources/DisplayTask.c **** void Display_task(uint32_t initial_data)
   23:../Sources/DisplayTask.c **** {
-  64              		.loc 1 23 0
-  65              		.cfi_startproc
-  66              		@ args = 0, pretend = 0, frame = 136
-  67              		@ frame_needed = 1, uses_anonymous_args = 0
-  68 0000 90B5     		push	{r4, r7, lr}
-  69              	.LCFI0:
-  70              		.cfi_def_cfa_offset 12
-  71              		.cfi_offset 4, -12
-  72              		.cfi_offset 7, -8
-  73              		.cfi_offset 14, -4
-  74 0002 A3B0     		sub	sp, sp, #140
-  75              	.LCFI1:
-  76              		.cfi_def_cfa_offset 152
-  77 0004 00AF     		add	r7, sp, #0
-  78              	.LCFI2:
-  79              		.cfi_def_cfa_register 7
-  80 0006 7860     		str	r0, [r7, #4]
+  67              		.loc 1 23 0
+  68              		.cfi_startproc
+  69              		@ args = 0, pretend = 0, frame = 136
+  70              		@ frame_needed = 1, uses_anonymous_args = 0
+  71 0000 90B5     		push	{r4, r7, lr}
+  72              	.LCFI0:
+  73              		.cfi_def_cfa_offset 12
+  74              		.cfi_offset 4, -12
+  75              		.cfi_offset 7, -8
+  76              		.cfi_offset 14, -4
+  77 0002 A3B0     		sub	sp, sp, #140
+  78              	.LCFI1:
+  79              		.cfi_def_cfa_offset 152
+  80 0004 00AF     		add	r7, sp, #0
+  81              	.LCFI2:
+  82              		.cfi_def_cfa_register 7
+  83 0006 7860     		str	r0, [r7, #4]
   24:../Sources/DisplayTask.c **** 	_queue_id my_qid;
   25:../Sources/DisplayTask.c **** 	APPLICATION_MESSAGE *msg;
   26:../Sources/DisplayTask.c **** 	int gotAccel = 0;
-  81              		.loc 1 26 0
-  82 0008 4FF00003 		mov	r3, #0
-  83 000c C7F88430 		str	r3, [r7, #132]
+  84              		.loc 1 26 0
+  85 0008 4FF00003 		mov	r3, #0
+  86 000c C7F88430 		str	r3, [r7, #132]
   27:../Sources/DisplayTask.c **** 	int gotTouch = 0;
-  84              		.loc 1 27 0
-  85 0010 4FF00003 		mov	r3, #0
-  86 0014 C7F88030 		str	r3, [r7, #128]
+  87              		.loc 1 27 0
+  88 0010 4FF00003 		mov	r3, #0
+  89 0014 C7F88030 		str	r3, [r7, #128]
   28:../Sources/DisplayTask.c **** 	int gotPot = 0;
-  87              		.loc 1 28 0
-  88 0018 4FF00003 		mov	r3, #0
-  89 001c FB67     		str	r3, [r7, #124]
+  90              		.loc 1 28 0
+  91 0018 4FF00003 		mov	r3, #0
+  92 001c FB67     		str	r3, [r7, #124]
   29:../Sources/DisplayTask.c **** 	char * touch;
   30:../Sources/DisplayTask.c **** 	
   31:../Sources/DisplayTask.c **** 	/* Lab 5 variables */
   32:../Sources/DisplayTask.c **** 	LWGPIO_STRUCT leds[4];
   33:../Sources/DisplayTask.c **** 	uint32_t i;
   34:../Sources/DisplayTask.c **** 	uint32_t func[4] = { BSP_LED1_MUX_GPIO, 
-  90              		.loc 1 34 0
-  91 001e 40F20003 		movw	r3, #:lower16:.LC0
-  92 0022 C0F20003 		movt	r3, #:upper16:.LC0
-  93 0026 07F11C04 		add	r4, r7, #28
-  94 002a 0FCB     		ldmia	r3, {r0, r1, r2, r3}
-  95 002c 84E80F00 		stmia	r4, {r0, r1, r2, r3}
+  93              		.loc 1 34 0
+  94 001e 40F20003 		movw	r3, #:lower16:.LC0
+  95 0022 C0F20003 		movt	r3, #:upper16:.LC0
+  96 0026 07F11C04 		add	r4, r7, #28
+  97 002a 0FCB     		ldmia	r3, {r0, r1, r2, r3}
+  98 002c 84E80F00 		stmia	r4, {r0, r1, r2, r3}
   35:../Sources/DisplayTask.c **** 						 BSP_LED2_MUX_GPIO,
   36:../Sources/DisplayTask.c **** 						 BSP_LED3_MUX_GPIO, 
   37:../Sources/DisplayTask.c **** 						 BSP_LED4_MUX_GPIO };
   38:../Sources/DisplayTask.c **** 	
   39:../Sources/DisplayTask.c **** 	LWGPIO_PIN_ID pins[4] = { BSP_LED1, BSP_LED2, BSP_LED3, BSP_LED4 };
-  96              		.loc 1 39 0
-  97 0030 40F20003 		movw	r3, #:lower16:.LC1
-  98 0034 C0F20003 		movt	r3, #:upper16:.LC1
-  99 0038 07F10C04 		add	r4, r7, #12
- 100 003c 0FCB     		ldmia	r3, {r0, r1, r2, r3}
- 101 003e 84E80F00 		stmia	r4, {r0, r1, r2, r3}
+  99              		.loc 1 39 0
+ 100 0030 40F20003 		movw	r3, #:lower16:.LC1
+ 101 0034 C0F20003 		movt	r3, #:upper16:.LC1
+ 102 0038 07F10C04 		add	r4, r7, #12
+ 103 003c 0FCB     		ldmia	r3, {r0, r1, r2, r3}
+ 104 003e 84E80F00 		stmia	r4, {r0, r1, r2, r3}
   40:../Sources/DisplayTask.c **** 	
   41:../Sources/DisplayTask.c **** 	touch = malloc(sizeof(char)*6);
- 102              		.loc 1 41 0
- 103 0042 4FF00600 		mov	r0, #6
- 104 0046 FFF7FEFF 		bl	malloc
- 105 004a 0346     		mov	r3, r0
- 106 004c 7B67     		str	r3, [r7, #116]
+ 105              		.loc 1 41 0
+ 106 0042 4FF00600 		mov	r0, #6
+ 107 0046 FFF7FEFF 		bl	malloc
+ 108 004a 0346     		mov	r3, r0
+ 109 004c 7B67     		str	r3, [r7, #116]
   42:../Sources/DisplayTask.c **** 	strcpy(touch,"0\n");
- 107              		.loc 1 42 0
- 108 004e 7A6F     		ldr	r2, [r7, #116]
- 109 0050 40F20003 		movw	r3, #:lower16:.LC2
- 110 0054 C0F20003 		movt	r3, #:upper16:.LC2
- 111 0058 1988     		ldrh	r1, [r3, #0]	@ unaligned
- 112 005a 9B78     		ldrb	r3, [r3, #2]
- 113 005c 1180     		strh	r1, [r2, #0]	@ unaligned
- 114 005e 9370     		strb	r3, [r2, #2]
+ 110              		.loc 1 42 0
+ 111 004e 7A6F     		ldr	r2, [r7, #116]
+ 112 0050 40F20003 		movw	r3, #:lower16:.LC2
+ 113 0054 C0F20003 		movt	r3, #:upper16:.LC2
+ 114 0058 1988     		ldrh	r1, [r3, #0]	@ unaligned
+ 115 005a 9B78     		ldrb	r3, [r3, #2]
+ 116 005c 1180     		strh	r1, [r2, #0]	@ unaligned
+ 117 005e 9370     		strb	r3, [r2, #2]
   43:../Sources/DisplayTask.c **** 	
   44:../Sources/DisplayTask.c **** 	printf("\n Display task started\n"); 
- 115              		.loc 1 44 0
- 116 0060 40F20000 		movw	r0, #:lower16:.LC3
- 117 0064 C0F20000 		movt	r0, #:upper16:.LC3
- 118 0068 FFF7FEFF 		bl	_io_printf
+ 118              		.loc 1 44 0
+ 119 0060 40F20000 		movw	r0, #:lower16:.LC3
+ 120 0064 C0F20000 		movt	r0, #:upper16:.LC3
+ 121 0068 FFF7FEFF 		bl	_io_printf
   45:../Sources/DisplayTask.c **** 	
   46:../Sources/DisplayTask.c **** 	my_qid = _msgq_open(DISPLAY_QUEUE, 0);	
- 119              		.loc 1 46 0
- 120 006c 4FF00200 		mov	r0, #2
- 121 0070 4FF00001 		mov	r1, #0
- 122 0074 FFF7FEFF 		bl	_msgq_open
- 123 0078 0346     		mov	r3, r0
- 124 007a A7F87230 		strh	r3, [r7, #114]	@ movhi
+ 122              		.loc 1 46 0
+ 123 006c 4FF00200 		mov	r0, #2
+ 124 0070 4FF00001 		mov	r1, #0
+ 125 0074 FFF7FEFF 		bl	_msgq_open
+ 126 0078 0346     		mov	r3, r0
+ 127 007a A7F87230 		strh	r3, [r7, #114]	@ movhi
   47:../Sources/DisplayTask.c **** 	
   48:../Sources/DisplayTask.c **** 	/* Initialize leds*/
   49:../Sources/DisplayTask.c **** 	for(i=0;i<4;i++){
- 125              		.loc 1 49 0
- 126 007e 4FF00003 		mov	r3, #0
- 127 0082 BB67     		str	r3, [r7, #120]
- 128 0084 2BE0     		b	.L2
- 129              	.L3:
+ 128              		.loc 1 49 0
+ 129 007e 4FF00003 		mov	r3, #0
+ 130 0082 BB67     		str	r3, [r7, #120]
+ 131 0084 2BE0     		b	.L2
+ 132              	.L3:
   50:../Sources/DisplayTask.c **** 		lwgpio_init( &leds[i], pins[i], LWGPIO_DIR_OUTPUT, LWGPIO_VALUE_HIGH);
- 130              		.loc 1 50 0
- 131 0086 07F12C02 		add	r2, r7, #44
- 132 008a BB6F     		ldr	r3, [r7, #120]
- 133 008c 4FEA0313 		lsl	r3, r3, #4
- 134 0090 D218     		adds	r2, r2, r3
- 135 0092 BB6F     		ldr	r3, [r7, #120]
- 136 0094 4FEA8303 		lsl	r3, r3, #2
- 137 0098 07F18801 		add	r1, r7, #136
- 138 009c CB18     		adds	r3, r1, r3
- 139 009e 53F87C3C 		ldr	r3, [r3, #-124]
- 140 00a2 1046     		mov	r0, r2
- 141 00a4 1946     		mov	r1, r3
- 142 00a6 4FF00102 		mov	r2, #1
- 143 00aa 4FF00103 		mov	r3, #1
- 144 00ae FFF7FEFF 		bl	lwgpio_init
+ 133              		.loc 1 50 0
+ 134 0086 07F12C02 		add	r2, r7, #44
+ 135 008a BB6F     		ldr	r3, [r7, #120]
+ 136 008c 4FEA0313 		lsl	r3, r3, #4
+ 137 0090 D218     		adds	r2, r2, r3
+ 138 0092 BB6F     		ldr	r3, [r7, #120]
+ 139 0094 4FEA8303 		lsl	r3, r3, #2
+ 140 0098 07F18801 		add	r1, r7, #136
+ 141 009c CB18     		adds	r3, r1, r3
+ 142 009e 53F87C3C 		ldr	r3, [r3, #-124]
+ 143 00a2 1046     		mov	r0, r2
+ 144 00a4 1946     		mov	r1, r3
+ 145 00a6 4FF00102 		mov	r2, #1
+ 146 00aa 4FF00103 		mov	r3, #1
+ 147 00ae FFF7FEFF 		bl	lwgpio_init
   51:../Sources/DisplayTask.c **** 		lwgpio_set_functionality( &leds[i], func[i]);
- 145              		.loc 1 51 0
- 146 00b2 07F12C02 		add	r2, r7, #44
- 147 00b6 BB6F     		ldr	r3, [r7, #120]
- 148 00b8 4FEA0313 		lsl	r3, r3, #4
- 149 00bc D218     		adds	r2, r2, r3
- 150 00be BB6F     		ldr	r3, [r7, #120]
- 151 00c0 4FEA8303 		lsl	r3, r3, #2
- 152 00c4 07F18801 		add	r1, r7, #136
- 153 00c8 CB18     		adds	r3, r1, r3
- 154 00ca 53F86C3C 		ldr	r3, [r3, #-108]
- 155 00ce 1046     		mov	r0, r2
- 156 00d0 1946     		mov	r1, r3
- 157 00d2 FFF7FEFF 		bl	lwgpio_set_functionality
+ 148              		.loc 1 51 0
+ 149 00b2 07F12C02 		add	r2, r7, #44
+ 150 00b6 BB6F     		ldr	r3, [r7, #120]
+ 151 00b8 4FEA0313 		lsl	r3, r3, #4
+ 152 00bc D218     		adds	r2, r2, r3
+ 153 00be BB6F     		ldr	r3, [r7, #120]
+ 154 00c0 4FEA8303 		lsl	r3, r3, #2
+ 155 00c4 07F18801 		add	r1, r7, #136
+ 156 00c8 CB18     		adds	r3, r1, r3
+ 157 00ca 53F86C3C 		ldr	r3, [r3, #-108]
+ 158 00ce 1046     		mov	r0, r2
+ 159 00d0 1946     		mov	r1, r3
+ 160 00d2 FFF7FEFF 		bl	lwgpio_set_functionality
   49:../Sources/DisplayTask.c **** 	for(i=0;i<4;i++){
- 158              		.loc 1 49 0
- 159 00d6 BB6F     		ldr	r3, [r7, #120]
- 160 00d8 03F10103 		add	r3, r3, #1
- 161 00dc BB67     		str	r3, [r7, #120]
- 162              	.L2:
+ 161              		.loc 1 49 0
+ 162 00d6 BB6F     		ldr	r3, [r7, #120]
+ 163 00d8 03F10103 		add	r3, r3, #1
+ 164 00dc BB67     		str	r3, [r7, #120]
+ 165              	.L2:
   49:../Sources/DisplayTask.c **** 	for(i=0;i<4;i++){
- 163              		.loc 1 49 0 is_stmt 0
- 164 00de BB6F     		ldr	r3, [r7, #120]
- 165 00e0 032B     		cmp	r3, #3
- 166 00e2 D0D9     		bls	.L3
- 167              	.L19:
+ 166              		.loc 1 49 0 is_stmt 0
+ 167 00de BB6F     		ldr	r3, [r7, #120]
+ 168 00e0 032B     		cmp	r3, #3
+ 169 00e2 D0D9     		bls	.L3
+ 170              	.L19:
   52:../Sources/DisplayTask.c **** 	}	
   53:../Sources/DisplayTask.c **** 	
   54:../Sources/DisplayTask.c **** 	while(1){
   55:../Sources/DisplayTask.c **** 		
   56:../Sources/DisplayTask.c **** 		msg = _msgq_receive(my_qid, 1000); // returns null if no message after 1000ms
- 168              		.loc 1 56 0 is_stmt 1
- 169 00e4 B7F87230 		ldrh	r3, [r7, #114]
- 170 00e8 1846     		mov	r0, r3
- 171 00ea 4FF47A71 		mov	r1, #1000
- 172 00ee FFF7FEFF 		bl	_msgq_receive
- 173 00f2 F866     		str	r0, [r7, #108]
+ 171              		.loc 1 56 0 is_stmt 1
+ 172 00e4 B7F87230 		ldrh	r3, [r7, #114]
+ 173 00e8 1846     		mov	r0, r3
+ 174 00ea 4FF47A71 		mov	r1, #1000
+ 175 00ee FFF7FEFF 		bl	_msgq_receive
+ 176 00f2 F866     		str	r0, [r7, #108]
   57:../Sources/DisplayTask.c **** 		
   58:../Sources/DisplayTask.c **** 		if (msg != NULL ) {
- 174              		.loc 1 58 0
- 175 00f4 FB6E     		ldr	r3, [r7, #108]
- 176 00f6 002B     		cmp	r3, #0
- 177 00f8 00F0D180 		beq	.L4
+ 177              		.loc 1 58 0
+ 178 00f4 FB6E     		ldr	r3, [r7, #108]
+ 179 00f6 002B     		cmp	r3, #0
+ 180 00f8 00F0C780 		beq	.L4
   59:../Sources/DisplayTask.c **** 			//printf("Display task received message %d: %d\n", msg->MESSAGE_TYPE,msg->DATA);
   60:../Sources/DisplayTask.c **** 			
   61:../Sources/DisplayTask.c **** 
   62:../Sources/DisplayTask.c **** 			switch (msg->MESSAGE_TYPE) {
- 178              		.loc 1 62 0
- 179 00fc FB6E     		ldr	r3, [r7, #108]
- 180 00fe 1B7A     		ldrb	r3, [r3, #8]	@ zero_extendqisi2
- 181 0100 A3F10203 		sub	r3, r3, #2
- 182 0104 042B     		cmp	r3, #4
- 183 0106 00F2A780 		bhi	.L5
- 184 010a 01A2     		adr	r2, .L11
- 185 010c 52F823F0 		ldr	pc, [r2, r3, lsl #2]
- 186              		.align	2
- 187              	.L11:
- 188 0110 99010000 		.word	.L6+1
- 189 0114 25010000 		.word	.L7+1
- 190 0118 35010000 		.word	.L8+1
- 191 011c 69010000 		.word	.L9+1
- 192 0120 A7010000 		.word	.L10+1
- 193              	.L7:
+ 181              		.loc 1 62 0
+ 182 00fc FB6E     		ldr	r3, [r7, #108]
+ 183 00fe 1B7A     		ldrb	r3, [r3, #8]	@ zero_extendqisi2
+ 184 0100 A3F10203 		sub	r3, r3, #2
+ 185 0104 042B     		cmp	r3, #4
+ 186 0106 00F29F80 		bhi	.L5
+ 187 010a 01A2     		adr	r2, .L11
+ 188 010c 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 189              		.align	2
+ 190              	.L11:
+ 191 0110 99010000 		.word	.L6+1
+ 192 0114 25010000 		.word	.L7+1
+ 193 0118 35010000 		.word	.L8+1
+ 194 011c 69010000 		.word	.L9+1
+ 195 0120 A7010000 		.word	.L10+1
+ 196              	.L7:
   63:../Sources/DisplayTask.c **** 			
   64:../Sources/DisplayTask.c **** 			case SW1_Message:
   65:../Sources/DisplayTask.c **** 				lwgpio_set_value(&leds[0], LWGPIO_VALUE_LOW); // Orange -ON
- 194              		.loc 1 65 0
- 195 0124 07F12C03 		add	r3, r7, #44
- 196 0128 1846     		mov	r0, r3
- 197 012a 4FF00001 		mov	r1, #0
- 198 012e FFF7FEFF 		bl	lwgpio_set_value
+ 197              		.loc 1 65 0
+ 198 0124 07F12C03 		add	r3, r7, #44
+ 199 0128 1846     		mov	r0, r3
+ 200 012a 4FF00001 		mov	r1, #0
+ 201 012e FFF7FEFF 		bl	lwgpio_set_value
   66:../Sources/DisplayTask.c **** 				break;
- 199              		.loc 1 66 0
- 200 0132 91E0     		b	.L5
- 201              	.L8:
+ 202              		.loc 1 66 0
+ 203 0132 89E0     		b	.L5
+ 204              	.L8:
   67:../Sources/DisplayTask.c **** 			case SW2_Message:
   68:../Sources/DisplayTask.c **** 				//lwgpio_set_value(&leds[1], msg->DATA);
   69:../Sources/DisplayTask.c **** 				lwgpio_set_value(&leds[0], LWGPIO_VALUE_HIGH); // Orange -off
- 202              		.loc 1 69 0
- 203 0134 07F12C03 		add	r3, r7, #44
- 204 0138 1846     		mov	r0, r3
- 205 013a 4FF00101 		mov	r1, #1
- 206 013e FFF7FEFF 		bl	lwgpio_set_value
+ 205              		.loc 1 69 0
+ 206 0134 07F12C03 		add	r3, r7, #44
+ 207 0138 1846     		mov	r0, r3
+ 208 013a 4FF00101 		mov	r1, #1
+ 209 013e FFF7FEFF 		bl	lwgpio_set_value
   70:../Sources/DisplayTask.c **** 				lwgpio_set_value(&leds[1], LWGPIO_VALUE_HIGH); // Yellow -off
- 207              		.loc 1 70 0
- 208 0142 07F12C03 		add	r3, r7, #44
- 209 0146 03F11003 		add	r3, r3, #16
- 210 014a 1846     		mov	r0, r3
- 211 014c 4FF00101 		mov	r1, #1
- 212 0150 FFF7FEFF 		bl	lwgpio_set_value
+ 210              		.loc 1 70 0
+ 211 0142 07F12C03 		add	r3, r7, #44
+ 212 0146 03F11003 		add	r3, r3, #16
+ 213 014a 1846     		mov	r0, r3
+ 214 014c 4FF00101 		mov	r1, #1
+ 215 0150 FFF7FEFF 		bl	lwgpio_set_value
   71:../Sources/DisplayTask.c **** 				lwgpio_set_value(&leds[3], LWGPIO_VALUE_HIGH); // Blue -off
- 213              		.loc 1 71 0
- 214 0154 07F12C03 		add	r3, r7, #44
- 215 0158 03F13003 		add	r3, r3, #48
- 216 015c 1846     		mov	r0, r3
- 217 015e 4FF00101 		mov	r1, #1
- 218 0162 FFF7FEFF 		bl	lwgpio_set_value
+ 216              		.loc 1 71 0
+ 217 0154 07F12C03 		add	r3, r7, #44
+ 218 0158 03F13003 		add	r3, r3, #48
+ 219 015c 1846     		mov	r0, r3
+ 220 015e 4FF00101 		mov	r1, #1
+ 221 0162 FFF7FEFF 		bl	lwgpio_set_value
   72:../Sources/DisplayTask.c **** 				break;
- 219              		.loc 1 72 0
- 220 0166 77E0     		b	.L5
- 221              	.L9:
+ 222              		.loc 1 72 0
+ 223 0166 6FE0     		b	.L5
+ 224              	.L9:
   73:../Sources/DisplayTask.c **** 			
   74:../Sources/DisplayTask.c **** 			case ADC_READ_MESSAGE:					
   75:../Sources/DisplayTask.c **** 							
   76:../Sources/DisplayTask.c **** 				if(gotAccel){
- 222              		.loc 1 76 0
- 223 0168 D7F88430 		ldr	r3, [r7, #132]
- 224 016c 002B     		cmp	r3, #0
- 225 016e 70D0     		beq	.L20
+ 225              		.loc 1 76 0
+ 226 0168 D7F88430 		ldr	r3, [r7, #132]
+ 227 016c 002B     		cmp	r3, #0
+ 228 016e 68D0     		beq	.L20
   77:../Sources/DisplayTask.c **** 					gotPot = 1;	
- 226              		.loc 1 77 0
- 227 0170 4FF00103 		mov	r3, #1
- 228 0174 FB67     		str	r3, [r7, #124]
+ 229              		.loc 1 77 0
+ 230 0170 4FF00103 		mov	r3, #1
+ 231 0174 FB67     		str	r3, [r7, #124]
   78:../Sources/DisplayTask.c **** 					printf("%d;",msg->DATA); /* output ADC potentiometer data directly to serial	*/	
- 229              		.loc 1 78 0
- 230 0176 FB6E     		ldr	r3, [r7, #108]
- 231 0178 DB68     		ldr	r3, [r3, #12]
- 232 017a 40F20000 		movw	r0, #:lower16:.LC4
- 233 017e C0F20000 		movt	r0, #:upper16:.LC4
- 234 0182 1946     		mov	r1, r3
- 235 0184 FFF7FEFF 		bl	_io_printf
+ 232              		.loc 1 78 0
+ 233 0176 FB6E     		ldr	r3, [r7, #108]
+ 234 0178 DB68     		ldr	r3, [r3, #12]
+ 235 017a 40F20000 		movw	r0, #:lower16:.LC4
+ 236 017e C0F20000 		movt	r0, #:upper16:.LC4
+ 237 0182 1946     		mov	r1, r3
+ 238 0184 FFF7FEFF 		bl	_io_printf
   79:../Sources/DisplayTask.c **** 					printf("%s",touch);					
- 236              		.loc 1 79 0
- 237 0188 40F20000 		movw	r0, #:lower16:.LC5
- 238 018c C0F20000 		movt	r0, #:upper16:.LC5
- 239 0190 796F     		ldr	r1, [r7, #116]
- 240 0192 FFF7FEFF 		bl	_io_printf
+ 239              		.loc 1 79 0
+ 240 0188 40F20000 		movw	r0, #:lower16:.LC5
+ 241 018c C0F20000 		movt	r0, #:upper16:.LC5
+ 242 0190 796F     		ldr	r1, [r7, #116]
+ 243 0192 FFF7FEFF 		bl	_io_printf
   80:../Sources/DisplayTask.c **** 				}								
   81:../Sources/DisplayTask.c **** 				break;
- 241              		.loc 1 81 0
- 242 0196 5CE0     		b	.L20
- 243              	.L6:
+ 244              		.loc 1 81 0
+ 245 0196 54E0     		b	.L20
+ 246              	.L6:
   82:../Sources/DisplayTask.c **** 				
   83:../Sources/DisplayTask.c **** 			case ACCEL_MESSAGE:	
   84:../Sources/DisplayTask.c **** 				
   85:../Sources/DisplayTask.c **** 				gotAccel = 1;				
- 244              		.loc 1 85 0
- 245 0198 4FF00103 		mov	r3, #1
- 246 019c C7F88430 		str	r3, [r7, #132]
+ 247              		.loc 1 85 0
+ 248 0198 4FF00103 		mov	r3, #1
+ 249 019c C7F88430 		str	r3, [r7, #132]
   86:../Sources/DisplayTask.c **** 				print_accelerometer_data();
- 247              		.loc 1 86 0
- 248 01a0 FFF7FEFF 		bl	print_accelerometer_data
+ 250              		.loc 1 86 0
+ 251 01a0 FFF7FEFF 		bl	print_accelerometer_data
   87:../Sources/DisplayTask.c **** 				
   88:../Sources/DisplayTask.c **** 				break;
- 249              		.loc 1 88 0
- 250 01a4 58E0     		b	.L5
- 251              	.L10:
+ 252              		.loc 1 88 0
+ 253 01a4 50E0     		b	.L5
+ 254              	.L10:
   89:../Sources/DisplayTask.c **** 				
   90:../Sources/DisplayTask.c **** 			case TOUCH_MESSAGE:
   91:../Sources/DisplayTask.c **** 				
   92:../Sources/DisplayTask.c **** 				gotTouch = 1;			
- 252              		.loc 1 92 0
- 253 01a6 4FF00103 		mov	r3, #1
- 254 01aa C7F88030 		str	r3, [r7, #128]
+ 255              		.loc 1 92 0
+ 256 01a6 4FF00103 		mov	r3, #1
+ 257 01aa C7F88030 		str	r3, [r7, #128]
   93:../Sources/DisplayTask.c **** 				
   94:../Sources/DisplayTask.c **** 				if(1 == msg->DATA){					
- 255              		.loc 1 94 0
- 256 01ae FB6E     		ldr	r3, [r7, #108]
- 257 01b0 DB68     		ldr	r3, [r3, #12]
- 258 01b2 012B     		cmp	r3, #1
- 259 01b4 0ED1     		bne	.L13
+ 258              		.loc 1 94 0
+ 259 01ae FB6E     		ldr	r3, [r7, #108]
+ 260 01b0 DB68     		ldr	r3, [r3, #12]
+ 261 01b2 012B     		cmp	r3, #1
+ 262 01b4 0CD1     		bne	.L13
   95:../Sources/DisplayTask.c **** 					
   96:../Sources/DisplayTask.c **** 					lwgpio_toggle_value(&leds[0]); //toggle orange LED
- 260              		.loc 1 96 0
- 261 01b6 07F12C03 		add	r3, r7, #44
- 262 01ba 1846     		mov	r0, r3
- 263 01bc FFF7FEFF 		bl	lwgpio_toggle_value
-  97:../Sources/DisplayTask.c **** 					strcpy(touch,"1\n");
- 264              		.loc 1 97 0
- 265 01c0 7A6F     		ldr	r2, [r7, #116]
- 266 01c2 40F20003 		movw	r3, #:lower16:.LC6
- 267 01c6 C0F20003 		movt	r3, #:upper16:.LC6
- 268 01ca 1988     		ldrh	r1, [r3, #0]	@ unaligned
- 269 01cc 9B78     		ldrb	r3, [r3, #2]
- 270 01ce 1180     		strh	r1, [r2, #0]	@ unaligned
- 271 01d0 9370     		strb	r3, [r2, #2]
+ 263              		.loc 1 96 0
+ 264 01b6 07F12C03 		add	r3, r7, #44
+ 265 01ba 1846     		mov	r0, r3
+ 266 01bc FFF7FEFF 		bl	lwgpio_toggle_value
+  97:../Sources/DisplayTask.c **** 					strcpy(touch,"1W\n");
+ 267              		.loc 1 97 0
+ 268 01c0 7A6F     		ldr	r2, [r7, #116]
+ 269 01c2 40F20003 		movw	r3, #:lower16:.LC6
+ 270 01c6 C0F20003 		movt	r3, #:upper16:.LC6
+ 271 01ca 1868     		ldr	r0, [r3, #0]	@ unaligned
+ 272 01cc 1060     		str	r0, [r2, #0]	@ unaligned
   98:../Sources/DisplayTask.c **** 					
   99:../Sources/DisplayTask.c **** 					/*if(gotPot){
  100:../Sources/DisplayTask.c **** 						//printf("T 1\n");
@@ -382,7 +382,7 @@
  105:../Sources/DisplayTask.c **** 				else if(2 == msg->DATA){
  106:../Sources/DisplayTask.c **** 					
  107:../Sources/DisplayTask.c **** 						lwgpio_toggle_value(&leds[1]); //toggle yellow LED
- 108:../Sources/DisplayTask.c **** 						strcpy(touch,"2\n"); //printf("T 2\n");
+ 108:../Sources/DisplayTask.c **** 						strcpy(touch,"2W\n"); //printf("T 2\n");
  109:../Sources/DisplayTask.c **** 						/*
  110:../Sources/DisplayTask.c **** 						if(gotPot){
  111:../Sources/DisplayTask.c **** 						gotPot = 0;		//We can now reset the pot since we finished the string
@@ -392,7 +392,7 @@
  115:../Sources/DisplayTask.c **** 				else if(3 == msg->DATA){
  116:../Sources/DisplayTask.c **** 					
  117:../Sources/DisplayTask.c **** 						lwgpio_toggle_value(&leds[2]); //toggle green LED
- 118:../Sources/DisplayTask.c **** 						strcpy(touch,"T 3\n"); //printf("T 3\n");
+ 118:../Sources/DisplayTask.c **** 						strcpy(touch,"3W\n"); //printf("T 3\n");
  119:../Sources/DisplayTask.c **** 						/*if(gotPot){
  120:../Sources/DisplayTask.c **** 						gotPot = 0;		//We can now reset the pot since we finished the string
  121:../Sources/DisplayTask.c **** 						gotAccel = 0;   //We can reset the accel since we finished the string
@@ -401,256 +401,249 @@
  124:../Sources/DisplayTask.c **** 				else if(4 == msg->DATA){
  125:../Sources/DisplayTask.c **** 					
  126:../Sources/DisplayTask.c **** 						lwgpio_toggle_value(&leds[3]); //toggle blue LED
- 127:../Sources/DisplayTask.c **** 						strcpy(touch,"4\n"); //printf("T 4\n");
+ 127:../Sources/DisplayTask.c **** 						strcpy(touch,"4W\n"); //printf("T 4\n");
  128:../Sources/DisplayTask.c **** 					/*if(gotPot){
  129:../Sources/DisplayTask.c **** 						gotPot = 0;		//We can now reset the pot since we finished the string
  130:../Sources/DisplayTask.c **** 						gotAccel = 0;   //We can reset the accel since we finished the string
  131:../Sources/DisplayTask.c **** 					}*/
  132:../Sources/DisplayTask.c **** 				}				
  133:../Sources/DisplayTask.c **** 				break;			
- 272              		.loc 1 133 0
- 273 01d2 40E0     		b	.L21
- 274              	.L13:
+ 273              		.loc 1 133 0
+ 274 01ce 3AE0     		b	.L21
+ 275              	.L13:
  105:../Sources/DisplayTask.c **** 				else if(2 == msg->DATA){
- 275              		.loc 1 105 0
- 276 01d4 FB6E     		ldr	r3, [r7, #108]
- 277 01d6 DB68     		ldr	r3, [r3, #12]
- 278 01d8 022B     		cmp	r3, #2
- 279 01da 10D1     		bne	.L15
+ 276              		.loc 1 105 0
+ 277 01d0 FB6E     		ldr	r3, [r7, #108]
+ 278 01d2 DB68     		ldr	r3, [r3, #12]
+ 279 01d4 022B     		cmp	r3, #2
+ 280 01d6 0ED1     		bne	.L15
  107:../Sources/DisplayTask.c **** 						lwgpio_toggle_value(&leds[1]); //toggle yellow LED
- 280              		.loc 1 107 0
- 281 01dc 07F12C03 		add	r3, r7, #44
- 282 01e0 03F11003 		add	r3, r3, #16
- 283 01e4 1846     		mov	r0, r3
- 284 01e6 FFF7FEFF 		bl	lwgpio_toggle_value
- 108:../Sources/DisplayTask.c **** 						strcpy(touch,"2\n"); //printf("T 2\n");
- 285              		.loc 1 108 0
- 286 01ea 7A6F     		ldr	r2, [r7, #116]
- 287 01ec 40F20003 		movw	r3, #:lower16:.LC7
- 288 01f0 C0F20003 		movt	r3, #:upper16:.LC7
- 289 01f4 1988     		ldrh	r1, [r3, #0]	@ unaligned
- 290 01f6 9B78     		ldrb	r3, [r3, #2]
- 291 01f8 1180     		strh	r1, [r2, #0]	@ unaligned
- 292 01fa 9370     		strb	r3, [r2, #2]
- 293              		.loc 1 133 0
- 294 01fc 2BE0     		b	.L21
- 295              	.L15:
+ 281              		.loc 1 107 0
+ 282 01d8 07F12C03 		add	r3, r7, #44
+ 283 01dc 03F11003 		add	r3, r3, #16
+ 284 01e0 1846     		mov	r0, r3
+ 285 01e2 FFF7FEFF 		bl	lwgpio_toggle_value
+ 108:../Sources/DisplayTask.c **** 						strcpy(touch,"2W\n"); //printf("T 2\n");
+ 286              		.loc 1 108 0
+ 287 01e6 7A6F     		ldr	r2, [r7, #116]
+ 288 01e8 40F20003 		movw	r3, #:lower16:.LC7
+ 289 01ec C0F20003 		movt	r3, #:upper16:.LC7
+ 290 01f0 1868     		ldr	r0, [r3, #0]	@ unaligned
+ 291 01f2 1060     		str	r0, [r2, #0]	@ unaligned
+ 292              		.loc 1 133 0
+ 293 01f4 27E0     		b	.L21
+ 294              	.L15:
  115:../Sources/DisplayTask.c **** 				else if(3 == msg->DATA){
- 296              		.loc 1 115 0
- 297 01fe FB6E     		ldr	r3, [r7, #108]
- 298 0200 DB68     		ldr	r3, [r3, #12]
- 299 0202 032B     		cmp	r3, #3
- 300 0204 10D1     		bne	.L16
+ 295              		.loc 1 115 0
+ 296 01f6 FB6E     		ldr	r3, [r7, #108]
+ 297 01f8 DB68     		ldr	r3, [r3, #12]
+ 298 01fa 032B     		cmp	r3, #3
+ 299 01fc 0ED1     		bne	.L16
  117:../Sources/DisplayTask.c **** 						lwgpio_toggle_value(&leds[2]); //toggle green LED
- 301              		.loc 1 117 0
- 302 0206 07F12C03 		add	r3, r7, #44
- 303 020a 03F12003 		add	r3, r3, #32
- 304 020e 1846     		mov	r0, r3
- 305 0210 FFF7FEFF 		bl	lwgpio_toggle_value
- 118:../Sources/DisplayTask.c **** 						strcpy(touch,"T 3\n"); //printf("T 3\n");
- 306              		.loc 1 118 0
- 307 0214 7A6F     		ldr	r2, [r7, #116]
- 308 0216 40F20003 		movw	r3, #:lower16:.LC8
- 309 021a C0F20003 		movt	r3, #:upper16:.LC8
- 310 021e 1868     		ldr	r0, [r3, #0]	@ unaligned
- 311 0220 1060     		str	r0, [r2, #0]	@ unaligned
- 312 0222 1B79     		ldrb	r3, [r3, #4]
- 313 0224 1371     		strb	r3, [r2, #4]
- 314              		.loc 1 133 0
- 315 0226 16E0     		b	.L21
- 316              	.L16:
+ 300              		.loc 1 117 0
+ 301 01fe 07F12C03 		add	r3, r7, #44
+ 302 0202 03F12003 		add	r3, r3, #32
+ 303 0206 1846     		mov	r0, r3
+ 304 0208 FFF7FEFF 		bl	lwgpio_toggle_value
+ 118:../Sources/DisplayTask.c **** 						strcpy(touch,"3W\n"); //printf("T 3\n");
+ 305              		.loc 1 118 0
+ 306 020c 7A6F     		ldr	r2, [r7, #116]
+ 307 020e 40F20003 		movw	r3, #:lower16:.LC8
+ 308 0212 C0F20003 		movt	r3, #:upper16:.LC8
+ 309 0216 1868     		ldr	r0, [r3, #0]	@ unaligned
+ 310 0218 1060     		str	r0, [r2, #0]	@ unaligned
+ 311              		.loc 1 133 0
+ 312 021a 14E0     		b	.L21
+ 313              	.L16:
  124:../Sources/DisplayTask.c **** 				else if(4 == msg->DATA){
- 317              		.loc 1 124 0
- 318 0228 FB6E     		ldr	r3, [r7, #108]
- 319 022a DB68     		ldr	r3, [r3, #12]
- 320 022c 042B     		cmp	r3, #4
- 321 022e 12D1     		bne	.L21
+ 314              		.loc 1 124 0
+ 315 021c FB6E     		ldr	r3, [r7, #108]
+ 316 021e DB68     		ldr	r3, [r3, #12]
+ 317 0220 042B     		cmp	r3, #4
+ 318 0222 10D1     		bne	.L21
  126:../Sources/DisplayTask.c **** 						lwgpio_toggle_value(&leds[3]); //toggle blue LED
- 322              		.loc 1 126 0
- 323 0230 07F12C03 		add	r3, r7, #44
- 324 0234 03F13003 		add	r3, r3, #48
- 325 0238 1846     		mov	r0, r3
- 326 023a FFF7FEFF 		bl	lwgpio_toggle_value
- 127:../Sources/DisplayTask.c **** 						strcpy(touch,"4\n"); //printf("T 4\n");
- 327              		.loc 1 127 0
- 328 023e 7A6F     		ldr	r2, [r7, #116]
- 329 0240 40F20003 		movw	r3, #:lower16:.LC9
- 330 0244 C0F20003 		movt	r3, #:upper16:.LC9
- 331 0248 1988     		ldrh	r1, [r3, #0]	@ unaligned
- 332 024a 9B78     		ldrb	r3, [r3, #2]
- 333 024c 1180     		strh	r1, [r2, #0]	@ unaligned
- 334 024e 9370     		strb	r3, [r2, #2]
- 335              		.loc 1 133 0
- 336 0250 01E0     		b	.L21
- 337              	.L20:
+ 319              		.loc 1 126 0
+ 320 0224 07F12C03 		add	r3, r7, #44
+ 321 0228 03F13003 		add	r3, r3, #48
+ 322 022c 1846     		mov	r0, r3
+ 323 022e FFF7FEFF 		bl	lwgpio_toggle_value
+ 127:../Sources/DisplayTask.c **** 						strcpy(touch,"4W\n"); //printf("T 4\n");
+ 324              		.loc 1 127 0
+ 325 0232 7A6F     		ldr	r2, [r7, #116]
+ 326 0234 40F20003 		movw	r3, #:lower16:.LC9
+ 327 0238 C0F20003 		movt	r3, #:upper16:.LC9
+ 328 023c 1868     		ldr	r0, [r3, #0]	@ unaligned
+ 329 023e 1060     		str	r0, [r2, #0]	@ unaligned
+ 330              		.loc 1 133 0
+ 331 0240 01E0     		b	.L21
+ 332              	.L20:
   81:../Sources/DisplayTask.c **** 				break;
- 338              		.loc 1 81 0
- 339 0252 00BF     		nop
- 340 0254 00E0     		b	.L5
- 341              	.L21:
- 342              		.loc 1 133 0
- 343 0256 00BF     		nop
- 344              	.L5:
+ 333              		.loc 1 81 0
+ 334 0242 00BF     		nop
+ 335 0244 00E0     		b	.L5
+ 336              	.L21:
+ 337              		.loc 1 133 0
+ 338 0246 00BF     		nop
+ 339              	.L5:
  134:../Sources/DisplayTask.c **** 			}
  135:../Sources/DisplayTask.c **** 			if((!gotTouch) && (gotPot == 1) && (gotAccel == 1)){	/* If there was no touch, and we are ready 
- 345              		.loc 1 135 0
- 346 0258 D7F88030 		ldr	r3, [r7, #128]
- 347 025c 002B     		cmp	r3, #0
- 348 025e 16D1     		bne	.L17
- 349              		.loc 1 135 0 is_stmt 0
- 350 0260 FB6F     		ldr	r3, [r7, #124]
- 351 0262 012B     		cmp	r3, #1
- 352 0264 13D1     		bne	.L17
- 353 0266 D7F88430 		ldr	r3, [r7, #132]
- 354 026a 012B     		cmp	r3, #1
- 355 026c 0FD1     		bne	.L17
- 136:../Sources/DisplayTask.c **** 				strcpy(touch,"0\n");//printf("T 0\n");
- 356              		.loc 1 136 0 is_stmt 1
- 357 026e 7A6F     		ldr	r2, [r7, #116]
- 358 0270 40F20003 		movw	r3, #:lower16:.LC2
- 359 0274 C0F20003 		movt	r3, #:upper16:.LC2
- 360 0278 1988     		ldrh	r1, [r3, #0]	@ unaligned
- 361 027a 9B78     		ldrb	r3, [r3, #2]
- 362 027c 1180     		strh	r1, [r2, #0]	@ unaligned
- 363 027e 9370     		strb	r3, [r2, #2]
+ 340              		.loc 1 135 0
+ 341 0248 D7F88030 		ldr	r3, [r7, #128]
+ 342 024c 002B     		cmp	r3, #0
+ 343 024e 14D1     		bne	.L17
+ 344              		.loc 1 135 0 is_stmt 0
+ 345 0250 FB6F     		ldr	r3, [r7, #124]
+ 346 0252 012B     		cmp	r3, #1
+ 347 0254 11D1     		bne	.L17
+ 348 0256 D7F88430 		ldr	r3, [r7, #132]
+ 349 025a 012B     		cmp	r3, #1
+ 350 025c 0DD1     		bne	.L17
+ 136:../Sources/DisplayTask.c **** 				strcpy(touch,"0W\n");//printf("T 0\n");
+ 351              		.loc 1 136 0 is_stmt 1
+ 352 025e 7A6F     		ldr	r2, [r7, #116]
+ 353 0260 40F20003 		movw	r3, #:lower16:.LC10
+ 354 0264 C0F20003 		movt	r3, #:upper16:.LC10
+ 355 0268 1868     		ldr	r0, [r3, #0]	@ unaligned
+ 356 026a 1060     		str	r0, [r2, #0]	@ unaligned
  137:../Sources/DisplayTask.c **** 				gotPot = 0;		//We can now reset the pot since we finished the string
- 364              		.loc 1 137 0
- 365 0280 4FF00003 		mov	r3, #0
- 366 0284 FB67     		str	r3, [r7, #124]
+ 357              		.loc 1 137 0
+ 358 026c 4FF00003 		mov	r3, #0
+ 359 0270 FB67     		str	r3, [r7, #124]
  138:../Sources/DisplayTask.c **** 				gotAccel = 0;   //We can reset the accel since we finished the string
- 367              		.loc 1 138 0
- 368 0286 4FF00003 		mov	r3, #0
- 369 028a C7F88430 		str	r3, [r7, #132]
- 370              	.L17:
+ 360              		.loc 1 138 0
+ 361 0272 4FF00003 		mov	r3, #0
+ 362 0276 C7F88430 		str	r3, [r7, #132]
+ 363              	.L17:
  139:../Sources/DisplayTask.c **** 			}
  140:../Sources/DisplayTask.c **** 			gotTouch = 0; //We are now finished with the touch, it should be reset				
- 371              		.loc 1 140 0
- 372 028e 4FF00003 		mov	r3, #0
- 373 0292 C7F88030 		str	r3, [r7, #128]
+ 364              		.loc 1 140 0
+ 365 027a 4FF00003 		mov	r3, #0
+ 366 027e C7F88030 		str	r3, [r7, #128]
  141:../Sources/DisplayTask.c **** 			_msg_free(msg);
- 374              		.loc 1 141 0
- 375 0296 F86E     		ldr	r0, [r7, #108]
- 376 0298 FFF7FEFF 		bl	_msg_free
+ 367              		.loc 1 141 0
+ 368 0282 F86E     		ldr	r0, [r7, #108]
+ 369 0284 FFF7FEFF 		bl	_msg_free
  142:../Sources/DisplayTask.c **** 		}  
  143:../Sources/DisplayTask.c **** 		else{
  144:../Sources/DisplayTask.c **** 			lwgpio_toggle_value(&leds[2]); //toggle green LED
  145:../Sources/DisplayTask.c **** 		}
  146:../Sources/DisplayTask.c **** 	}
- 377              		.loc 1 146 0
- 378 029c 22E7     		b	.L19
- 379              	.L4:
+ 370              		.loc 1 146 0
+ 371 0288 2CE7     		b	.L19
+ 372              	.L4:
  144:../Sources/DisplayTask.c **** 			lwgpio_toggle_value(&leds[2]); //toggle green LED
- 380              		.loc 1 144 0
- 381 029e 07F12C03 		add	r3, r7, #44
- 382 02a2 03F12003 		add	r3, r3, #32
- 383 02a6 1846     		mov	r0, r3
- 384 02a8 FFF7FEFF 		bl	lwgpio_toggle_value
- 385              		.loc 1 146 0
- 386 02ac 1AE7     		b	.L19
- 387              		.cfi_endproc
- 388              	.LFE0:
- 390 02ae 00BF     		.section	.rodata
- 391              		.align	2
- 392              	.LC10:
- 393 0058 25303464 		.ascii	"%04d;\000"
- 393      3B00
- 394 005e 0000     		.section	.text.print_accelerometer_data,"ax",%progbits
- 395              		.align	2
- 396              		.global	print_accelerometer_data
- 397              		.thumb
- 398              		.thumb_func
- 400              	print_accelerometer_data:
- 401              	.LFB1:
+ 373              		.loc 1 144 0
+ 374 028a 07F12C03 		add	r3, r7, #44
+ 375 028e 03F12003 		add	r3, r3, #32
+ 376 0292 1846     		mov	r0, r3
+ 377 0294 FFF7FEFF 		bl	lwgpio_toggle_value
+ 378              		.loc 1 146 0
+ 379 0298 24E7     		b	.L19
+ 380              		.cfi_endproc
+ 381              	.LFE0:
+ 383 029a 00BF     		.section	.rodata
+ 384              		.align	2
+ 385              	.LC11:
+ 386 0058 25303464 		.ascii	"%04d;\000"
+ 386      3B00
+ 387 005e 0000     		.section	.text.print_accelerometer_data,"ax",%progbits
+ 388              		.align	2
+ 389              		.global	print_accelerometer_data
+ 390              		.thumb
+ 391              		.thumb_func
+ 393              	print_accelerometer_data:
+ 394              	.LFB1:
  147:../Sources/DisplayTask.c **** }
  148:../Sources/DisplayTask.c **** void print_accelerometer_data()
  149:../Sources/DisplayTask.c **** {
- 402              		.loc 1 149 0
- 403              		.cfi_startproc
- 404              		@ args = 0, pretend = 0, frame = 0
- 405              		@ frame_needed = 1, uses_anonymous_args = 0
- 406 0000 80B5     		push	{r7, lr}
- 407              	.LCFI3:
- 408              		.cfi_def_cfa_offset 8
- 409              		.cfi_offset 7, -8
- 410              		.cfi_offset 14, -4
- 411 0002 00AF     		add	r7, sp, #0
- 412              	.LCFI4:
- 413              		.cfi_def_cfa_register 7
+ 395              		.loc 1 149 0
+ 396              		.cfi_startproc
+ 397              		@ args = 0, pretend = 0, frame = 0
+ 398              		@ frame_needed = 1, uses_anonymous_args = 0
+ 399 0000 80B5     		push	{r7, lr}
+ 400              	.LCFI3:
+ 401              		.cfi_def_cfa_offset 8
+ 402              		.cfi_offset 7, -8
+ 403              		.cfi_offset 14, -4
+ 404 0002 00AF     		add	r7, sp, #0
+ 405              	.LCFI4:
+ 406              		.cfi_def_cfa_register 7
  150:../Sources/DisplayTask.c ****    //MMA7660 Sensor
  151:../Sources/DisplayTask.c **** 
  152:../Sources/DisplayTask.c ****    printf("%04d;", Sensor.mma7660_x*5 );
- 414              		.loc 1 152 0
- 415 0004 40F20003 		movw	r3, #:lower16:Sensor
- 416 0008 C0F20003 		movt	r3, #:upper16:Sensor
- 417 000c 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
- 418 000e 5AB2     		sxtb	r2, r3
- 419 0010 1346     		mov	r3, r2
- 420 0012 4FEA8303 		lsl	r3, r3, #2
- 421 0016 9B18     		adds	r3, r3, r2
- 422 0018 40F20000 		movw	r0, #:lower16:.LC10
- 423 001c C0F20000 		movt	r0, #:upper16:.LC10
- 424 0020 1946     		mov	r1, r3
- 425 0022 FFF7FEFF 		bl	_io_printf
+ 407              		.loc 1 152 0
+ 408 0004 40F20003 		movw	r3, #:lower16:Sensor
+ 409 0008 C0F20003 		movt	r3, #:upper16:Sensor
+ 410 000c 1B78     		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 411 000e 5AB2     		sxtb	r2, r3
+ 412 0010 1346     		mov	r3, r2
+ 413 0012 4FEA8303 		lsl	r3, r3, #2
+ 414 0016 9B18     		adds	r3, r3, r2
+ 415 0018 40F20000 		movw	r0, #:lower16:.LC11
+ 416 001c C0F20000 		movt	r0, #:upper16:.LC11
+ 417 0020 1946     		mov	r1, r3
+ 418 0022 FFF7FEFF 		bl	_io_printf
  153:../Sources/DisplayTask.c ****    printf("%04d;", Sensor.mma7660_y*5 );
- 426              		.loc 1 153 0
- 427 0026 40F20003 		movw	r3, #:lower16:Sensor
- 428 002a C0F20003 		movt	r3, #:upper16:Sensor
- 429 002e 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
- 430 0030 5AB2     		sxtb	r2, r3
- 431 0032 1346     		mov	r3, r2
- 432 0034 4FEA8303 		lsl	r3, r3, #2
- 433 0038 9B18     		adds	r3, r3, r2
- 434 003a 40F20000 		movw	r0, #:lower16:.LC10
- 435 003e C0F20000 		movt	r0, #:upper16:.LC10
- 436 0042 1946     		mov	r1, r3
- 437 0044 FFF7FEFF 		bl	_io_printf
+ 419              		.loc 1 153 0
+ 420 0026 40F20003 		movw	r3, #:lower16:Sensor
+ 421 002a C0F20003 		movt	r3, #:upper16:Sensor
+ 422 002e 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 423 0030 5AB2     		sxtb	r2, r3
+ 424 0032 1346     		mov	r3, r2
+ 425 0034 4FEA8303 		lsl	r3, r3, #2
+ 426 0038 9B18     		adds	r3, r3, r2
+ 427 003a 40F20000 		movw	r0, #:lower16:.LC11
+ 428 003e C0F20000 		movt	r0, #:upper16:.LC11
+ 429 0042 1946     		mov	r1, r3
+ 430 0044 FFF7FEFF 		bl	_io_printf
  154:../Sources/DisplayTask.c ****    printf("%04d;", Sensor.mma7660_z*5 );
- 438              		.loc 1 154 0
- 439 0048 40F20003 		movw	r3, #:lower16:Sensor
- 440 004c C0F20003 		movt	r3, #:upper16:Sensor
- 441 0050 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 442 0052 5AB2     		sxtb	r2, r3
- 443 0054 1346     		mov	r3, r2
- 444 0056 4FEA8303 		lsl	r3, r3, #2
- 445 005a 9B18     		adds	r3, r3, r2
- 446 005c 40F20000 		movw	r0, #:lower16:.LC10
- 447 0060 C0F20000 		movt	r0, #:upper16:.LC10
- 448 0064 1946     		mov	r1, r3
- 449 0066 FFF7FEFF 		bl	_io_printf
+ 431              		.loc 1 154 0
+ 432 0048 40F20003 		movw	r3, #:lower16:Sensor
+ 433 004c C0F20003 		movt	r3, #:upper16:Sensor
+ 434 0050 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 435 0052 5AB2     		sxtb	r2, r3
+ 436 0054 1346     		mov	r3, r2
+ 437 0056 4FEA8303 		lsl	r3, r3, #2
+ 438 005a 9B18     		adds	r3, r3, r2
+ 439 005c 40F20000 		movw	r0, #:lower16:.LC11
+ 440 0060 C0F20000 		movt	r0, #:upper16:.LC11
+ 441 0064 1946     		mov	r1, r3
+ 442 0066 FFF7FEFF 		bl	_io_printf
  155:../Sources/DisplayTask.c **** }
- 450              		.loc 1 155 0
- 451 006a 80BD     		pop	{r7, pc}
- 452              		.cfi_endproc
- 453              	.LFE1:
- 455              		.text
- 456              	.Letext0:
- 457              		.file 2 "C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cstdint"
- 458              		.file 3 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/MK60DZ10.h"
- 459              		.file 4 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/lwgpio_kgpio.h"
- 460              		.file 5 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/lwgpio.h"
- 461              		.file 6 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/message.h"
- 462              		.file 7 "../Sources/main.h"
- 463              		.file 8 "<built-in>"
+ 443              		.loc 1 155 0
+ 444 006a 80BD     		pop	{r7, pc}
+ 445              		.cfi_endproc
+ 446              	.LFE1:
+ 448              		.text
+ 449              	.Letext0:
+ 450              		.file 2 "C:/Freescale/CW MCU v10.6/MCU/ARM_GCC_Support/ewl/EWL_C/include/cstdint"
+ 451              		.file 3 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/MK60DZ10.h"
+ 452              		.file 4 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/lwgpio_kgpio.h"
+ 453              		.file 5 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/bsp/lwgpio.h"
+ 454              		.file 6 "C:/Freescale/Freescale_MQX_4_1/lib/twrk60n512.cw10gcc/debug/psp/message.h"
+ 455              		.file 7 "../Sources/main.h"
+ 456              		.file 8 "<built-in>"
 DEFINED SYMBOLS
                             *ABS*:00000000 DisplayTask.c
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:19     .rodata:00000000 $d
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:20     .rodata:00000000 .LC2
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:23     .rodata:00000004 .LC3
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:26     .rodata:0000001c .LC4
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:29     .rodata:00000020 .LC5
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:32     .rodata:00000024 .LC6
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:35     .rodata:00000028 .LC7
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:38     .rodata:0000002c .LC8
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:41     .rodata:00000034 .LC9
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:44     .rodata:00000038 .LC0
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:50     .rodata:00000048 .LC1
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:56     .text.Display_task:00000000 $t
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:61     .text.Display_task:00000000 Display_task
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:188    .text.Display_task:00000110 $d
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:195    .text.Display_task:00000124 $t
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:400    .text.print_accelerometer_data:00000000 print_accelerometer_data
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:392    .rodata:00000058 .LC10
-C:\Users\Angus\AppData\Local\Temp\ccI8Klpp.s:395    .text.print_accelerometer_data:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:19     .rodata:00000000 $d
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:20     .rodata:00000000 .LC2
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:23     .rodata:00000004 .LC3
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:26     .rodata:0000001c .LC4
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:29     .rodata:00000020 .LC5
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:32     .rodata:00000024 .LC6
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:35     .rodata:00000028 .LC7
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:38     .rodata:0000002c .LC8
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:41     .rodata:00000030 .LC9
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:44     .rodata:00000034 .LC10
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:47     .rodata:00000038 .LC0
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:53     .rodata:00000048 .LC1
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:59     .text.Display_task:00000000 $t
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:64     .text.Display_task:00000000 Display_task
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:191    .text.Display_task:00000110 $d
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:198    .text.Display_task:00000124 $t
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:393    .text.print_accelerometer_data:00000000 print_accelerometer_data
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:385    .rodata:00000058 .LC11
+C:\Users\Angus\AppData\Local\Temp\ccEBB35d.s:388    .text.print_accelerometer_data:00000000 $t
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
